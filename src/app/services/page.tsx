@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
 import { HeroPhoto } from "@/components/HeroPhoto";
 import { PageHero } from "@/components/PageHero";
 import { ReelWatermark } from "@/components/ReelWatermark";
@@ -10,16 +11,19 @@ import {
   CtaBand,
 } from "@/components/ui";
 import { services } from "@/data/services";
+import { servicesSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
     "Airport pick-ups and drop-offs, hotel booking, travel consultancy, event planning and management, and product deliveries from Zackella in Kampala.",
+  alternates: { canonical: "/services/" }
 };
 
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd data={servicesSchema} />
       <PageHero
         variant="services"
         crumb="Services"

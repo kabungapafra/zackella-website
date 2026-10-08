@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   title: "About us",
   description:
     "Zackella Tours and Travel is a Kampala travel company offering tailor-made tours, car hire and the practical services that keep a trip running smoothly.",
+  alternates: { canonical: "/about/" }
 };
 
 const values = [

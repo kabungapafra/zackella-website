@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
 import { HeroPhoto } from "@/components/HeroPhoto";
 import { PageHero } from "@/components/PageHero";
 import { ReelWatermark } from "@/components/ReelWatermark";
@@ -13,11 +14,13 @@ import {
 } from "@/components/ui";
 import { tourChips, tours } from "@/data/tours";
 import { site } from "@/lib/site";
+import { toursSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Tours & Travel",
   description:
     "Seven tailor-made Uganda journeys: gorilla trekking in Bwindi, Murchison Falls, Queen Elizabeth, Jinja, Lake Bunyonyi, Sipi Falls and Kidepo Valley.",
+  alternates: { canonical: "/tours/" }
 };
 
 const included = [
@@ -42,6 +45,7 @@ const included = [
 export default function ToursPage() {
   return (
     <>
+      <JsonLd data={toursSchema} />
       <PageHero
         variant="tours"
         crumb="Tours & Travel"

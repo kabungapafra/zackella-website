@@ -1,0 +1,33 @@
+# Zackella Tours and Travel
+
+> A tours, travel and car hire company in Kampala, Uganda. Tailor-made safaris
+> and gorilla treks, vehicles with a driver or for self-drive, and the
+> arrangements around a trip: airport transfers, hotels, event planning and
+> deliveries.
+
+Run by Isaac Paul Odeke (Director) and Adellah Owembabazi (Managing Director)
+from Room B02, Agenda 2000 Shopping Mall, Mbalwa, Kira, Uganda.
+
+Enquiries are answered on WhatsApp. There is no online booking or payment: a
+trip is quoted and arranged by the team directly.
+
+## Pages
+
+- [Tours and travel](https://zackellatours.com/tours/): the journeys offered, including gorilla trekking in Bwindi, Murchison Falls, Queen Elizabeth, Kidepo Valley, Sipi Falls, Lake Bunyonyi and the source of the Nile. Each lists length, highlights and who it suits.
+- [Car hire](https://zackellatours.com/car-hire/): the fleet, what each vehicle suits, and whether it comes with a driver or self-drive.
+- [Services](https://zackellatours.com/services/): airport pick-ups and drop-offs, hotel booking, travel consultancy, event planning and management, product deliveries.
+- [About](https://zackellatours.com/about/): who runs the company and how it works.
+- [Contact](https://zackellatours.com/contact/): phone, WhatsApp, email and the office location.
+
+## Contact
+
+- Phone: +256 772 610 016
+- WhatsApp: +256 775 772 636
+- Email: info@zackellatours.com
+- Hours: 8.00am to 5.00pm
+
+## Notes
+
+Every page carries schema.org structured data describing the business, the
+tours and the fleet; that is the authoritative machine-readable source and is
+generated from the same content the pages render.

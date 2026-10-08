@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
 import Image from "next/image";
 import { DateRangeIcon, GroupIcon, PinIcon } from "@/components/Icon";
 import { HeroPhoto } from "@/components/HeroPhoto";
@@ -15,11 +16,13 @@ import {
 } from "@/components/ui";
 import { fleet, hireOptions } from "@/data/fleet";
 import { site } from "@/lib/site";
+import { fleetSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Car Hire",
   description:
     "Hire a saloon, SUV, 4x4 safari cruiser or minibus in Uganda, with a driver or self-drive. Airport transfers, day hire and long-term rentals from Kampala.",
+  alternates: { canonical: "/car-hire/" }
 };
 
 const checklist = [
@@ -46,6 +49,7 @@ const checklist = [
 export default function CarHirePage() {
   return (
     <>
+      <JsonLd data={fleetSchema} />
       <PageHero
         variant="carHire"
         crumb="Car Hire"

@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Call, WhatsApp or email Zackella Tours and Travel in Kampala to plan a tour, hire a car or arrange an airport transfer.",
+  alternates: { canonical: "/contact/" }
 };
 
 const cardBase =

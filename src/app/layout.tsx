@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import { BackToTop } from "@/components/BackToTop";
+import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TopBar } from "@/components/TopBar";
 import { site } from "@/lib/site";
+import { organizationSchema } from "@/lib/structured-data";
 import "./globals.css";
 
 /** Headings (700/800) and buttons (600/700). */
@@ -28,6 +30,9 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description: site.description,
+  // Pages are served with a trailing slash, so the canonical has to carry one
+  // too or it points at a URL that redirects.
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: site.name,
@@ -35,8 +40,16 @@ export const metadata: Metadata = {
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
     url: site.url,
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: `${site.name} — ${site.tagline}`,
+      },
+    ],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: { card: "summary_large_image", images: ["/og-image.jpg"] },
 };
 
 export const viewport: Viewport = {
@@ -55,6 +68,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <JsonLd data={organizationSchema} />
         <TopBar />
         <SiteHeader />
         {/* tabIndex lets both the skip link and Back to top land focus here. */}
