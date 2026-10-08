@@ -11,7 +11,6 @@ import {
   CheckList,
   Container,
   CtaBand,
-  PlaceholderNote,
   SectionLabel,
 } from "@/components/ui";
 import { fleet, hireOptions } from "@/data/fleet";
@@ -206,9 +205,14 @@ export default function CarHirePage() {
                 </div>
               </div>
             ))}
-            <PlaceholderNote label="Self-drive terms">
-              {site.selfDriveTerms}
-            </PlaceholderNote>
+            {/* Real terms now, so they take the page's own list treatment
+                rather than the dashed note that marks something missing. */}
+            <div className="border-line bg-cream-200 rounded-2xl border p-4 lg:rounded-[18px] lg:px-6 lg:py-5.5">
+              <p className="text-gold-800 text-xs font-bold tracking-[0.14em] uppercase">
+                Self-drive terms
+              </p>
+              <CheckList items={site.selfDriveTerms} className="mt-3 lg:mt-3.5" />
+            </div>
           </div>
         </Container>
       </section>

@@ -62,8 +62,19 @@ export const site = {
   },
   story:
     "Zackella is run by Isaac Paul Odeke and Adellah Owembabazi, out of an office in Mbalwa, Kira. The person who answers your message is the same one who knows which vehicle is free and which driver knows the road \u2014 which is what service beyond boundaries means to us.",
-  selfDriveTerms:
-    "[ADD YOUR REQUIREMENTS: driving licence, ID, deposit, insurance, fuel policy]",
+  /**
+   * What a self-drive hirer brings and agrees to. Amounts are settled at
+   * booking rather than published, so a rate change does not leave a figure
+   * stranded here.
+   */
+  selfDriveTerms: [
+    "A valid driving licence. If you are visiting Uganda, bring an international driving permit with it.",
+    "A national ID or passport, which we take a copy of when you collect the vehicle.",
+    "A refundable security deposit, agreed when you book and returned once the vehicle is back as it went out.",
+    "Comprehensive insurance is included. Any excess is yours, as is damage from driving outside what we agreed.",
+    "Fuel is not included. The vehicle leaves full and should come back full.",
+    "Tell us before you take the vehicle across a border, so we can arrange the paperwork.",
+  ] as const,
 } as const;
 
 export const nav = [

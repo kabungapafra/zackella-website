@@ -191,23 +191,3 @@ export function CtaBand({
     </section>
   );
 }
-
-/** Dashed placeholder box for information still to be supplied. */
-export function PlaceholderNote({
-  label,
-  children,
-}: {
-  label: string;
-  children: ReactNode;
-}) {
-  return (
-    <div className="border-line-dashed bg-cream-200 rounded-2xl border-2 border-dashed p-4 lg:rounded-[18px] lg:px-6 lg:py-5.5">
-      <p className="text-gold-800 text-xs font-bold tracking-[0.14em] uppercase">
-        {label}
-      </p>
-      <p className="text-ink-muted mt-1.5 text-[15px] leading-relaxed lg:mt-2 lg:text-[17px]">
-        {children}
-      </p>
-    </div>
-  );
-}
