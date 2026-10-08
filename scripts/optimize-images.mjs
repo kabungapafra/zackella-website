@@ -39,7 +39,7 @@ const OUT = path.join(PUBLIC, "opt");
  * tightly as a palette PNG, and resizing it re-introduces the soft edges that
  * made it small, so every variant comes out larger than the original.
  */
-const SERVE_AS_IS = new Set(["safari-pattern.png", "safari-pattern-light.png"]);
+const SERVE_AS_IS = new Set(["safari-pattern.png"]);
 
 const sources = (await readdir(PUBLIC, { withFileTypes: true }))
   .filter(

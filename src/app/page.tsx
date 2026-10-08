@@ -197,13 +197,8 @@ export default function HomePage() {
       {/* Car hire */}
       <section
         id="car-hire"
-        className="bg-forest-900 text-cream relative isolate overflow-hidden pt-15 pb-14 lg:pt-27.5 lg:pb-25"
+        className="bg-forest-900 text-cream pt-15 pb-14 lg:pt-27.5 lg:pb-25"
       >
-        {/* Drawn across the whole band. Cream ink, since it sits on forest. */}
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-[url('/safari-pattern-light.png')] bg-cover bg-center opacity-[0.07]"
-        />
         <Container>
           <div className="grid items-end gap-x-16 gap-y-3 lg:grid-cols-2 lg:gap-y-6">
             <div>
