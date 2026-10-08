@@ -61,7 +61,7 @@ export const site = {
     return `https://maps.google.com/maps?q=${encodeURIComponent(this.mapsQuery)}&t=k&z=19&output=embed`;
   },
   story:
-    "[ADD YOUR STORY: who started Zackella, when, and why. Two or three honest sentences work best.]",
+    "Zackella is run by Isaac Paul Odeke and Adellah Owembabazi, out of an office in Mbalwa, Kira. The person who answers your message is the same one who knows which vehicle is free and which driver knows the road \u2014 which is what service beyond boundaries means to us.",
   selfDriveTerms:
     "[ADD YOUR REQUIREMENTS: driving licence, ID, deposit, insurance, fuel policy]",
 } as const;

@@ -10,7 +10,6 @@ import {
   ButtonRow,
   Container,
   CtaBand,
-  PlaceholderNote,
   SectionLabel,
 } from "@/components/ui";
 import { site, team } from "@/lib/site";
@@ -88,7 +87,14 @@ export default function AboutPage() {
               </span>
               .
             </p>
-            <PlaceholderNote label="Our story">{site.story}</PlaceholderNote>
+            {/* Real copy now, so it loses the dashed placeholder treatment and
+                keeps only the label, marked off by a rule. */}
+            <div className="border-gold/55 mt-0.5 border-l-2 pl-4.5 lg:pl-5">
+              <p className="text-gold-800 text-xs font-bold tracking-[0.14em] uppercase">
+                Our story
+              </p>
+              <p className="mt-1.5 lg:mt-2">{site.story}</p>
+            </div>
           </div>
         </Container>
       </section>
