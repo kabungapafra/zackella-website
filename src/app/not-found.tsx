@@ -61,7 +61,7 @@ export default function NotFound() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="lift border-line bg-cream-100 flex h-full items-center justify-between gap-3 rounded-2xl border px-5 py-4.5 font-sans text-base font-bold lg:rounded-[18px]"
+                  className="reveal lift border-line bg-cream-100 flex h-full items-center justify-between gap-3 rounded-2xl border px-5 py-4.5 font-sans text-base font-bold lg:rounded-[18px]"
                 >
                   {item.label === "Tours" ? "Tours & Travel" : item.label}
                   <span aria-hidden="true" className="text-forest-800">

@@ -93,7 +93,7 @@ export default function CarHirePage() {
               <article
                 key={slug}
                 id={slug}
-                className={`lift flex scroll-mt-8 flex-col gap-3.5 rounded-[22px] p-4.5 lg:gap-5 lg:rounded-[26px] lg:p-6.5 ${
+                className={`reveal lift flex scroll-mt-8 flex-col gap-3.5 rounded-[22px] p-4.5 lg:gap-5 lg:rounded-[26px] lg:p-6.5 ${
                   accent ? "bg-gold text-forest-900" : "border-line border bg-white"
                 }`}
               >

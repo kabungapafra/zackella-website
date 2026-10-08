@@ -41,7 +41,7 @@ export default function ContactPage() {
               href={site.whatsapp.href}
               target="_blank"
               rel="noopener"
-              className="lift bg-gold text-forest-900 flex items-center gap-4 rounded-[20px] p-5 shadow-[0_16px_32px_rgb(12_51_32_/_0.18)] lg:gap-4.5 lg:p-6"
+              className="reveal lift bg-gold text-forest-900 flex items-center gap-4 rounded-[20px] p-5 shadow-[0_16px_32px_rgb(12_51_32_/_0.18)] lg:gap-4.5 lg:p-6"
             >
               <WhatsAppIcon size={34} className="stroke-forest-900 shrink-0" />
               <div>

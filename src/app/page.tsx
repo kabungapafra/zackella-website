@@ -138,7 +138,7 @@ export default function HomePage() {
               <Link
                 key={slug}
                 href={`/tours#${slug}`}
-                className={`tile-wrap bg-forest-700 relative block h-[380px] w-[280px] overflow-hidden rounded-[22px] lg:h-[360px] lg:w-auto lg:rounded-3xl ${
+                className={`reveal tile-wrap bg-forest-700 relative block h-[380px] w-[280px] overflow-hidden rounded-[22px] lg:h-[360px] lg:w-auto lg:rounded-3xl ${
                   wide ? "lg:col-span-2" : ""
                 }`}
               >
@@ -241,7 +241,7 @@ export default function HomePage() {
             }) => (
               <div
                 key={slug}
-                className={`lift flex w-[300px] flex-col gap-3.5 rounded-[22px] p-4.5 lg:w-auto lg:gap-5 lg:rounded-3xl lg:p-6 ${
+                className={`reveal lift flex w-[300px] flex-col gap-3.5 rounded-[22px] p-4.5 lg:w-auto lg:gap-5 lg:rounded-3xl lg:p-6 ${
                   accent ? "bg-gold text-forest-900" : "bg-cream text-ink"
                 }`}
               >
@@ -382,7 +382,7 @@ export default function HomePage() {
               <Link
                 key={slug}
                 href={`/services#${slug}`}
-                className="lift bg-cream flex items-center gap-3.5 rounded-2xl p-4 lg:flex-col lg:items-start lg:gap-3 lg:rounded-[18px] lg:p-5.5"
+                className="reveal lift bg-cream flex items-center gap-3.5 rounded-2xl p-4 lg:flex-col lg:items-start lg:gap-3 lg:rounded-[18px] lg:p-5.5"
               >
                 <Icon size={28} className="stroke-forest-800 shrink-0 lg:size-[30px]" />
                 <div>

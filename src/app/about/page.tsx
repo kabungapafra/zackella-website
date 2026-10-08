@@ -106,7 +106,7 @@ export default function AboutPage() {
             {values.map(({ Icon, title, body }) => (
               <div
                 key={title}
-                className="lift border-line rounded-[20px] border bg-white p-5.5 lg:rounded-[22px] lg:p-7.5"
+                className="reveal lift border-line rounded-[20px] border bg-white p-5.5 lg:rounded-[22px] lg:p-7.5"
               >
                 <Icon size={34} className="stroke-forest-800 lg:size-[38px]" />
                 <h2 className="mt-3 text-[25px] lg:mt-4.5 lg:text-[28px]">{title}</h2>
@@ -129,7 +129,7 @@ export default function AboutPage() {
           <div className="mt-6 grid gap-3.5 md:grid-cols-2 lg:mt-12 lg:gap-5.5">
             <Link
               href="/tours"
-              className="lift bg-gold text-forest-900 flex flex-col gap-2 rounded-[22px] p-6 lg:min-h-[200px] lg:gap-3 lg:rounded-3xl lg:p-8.5"
+              className="reveal lift bg-gold text-forest-900 flex flex-col gap-2 rounded-[22px] p-6 lg:min-h-[200px] lg:gap-3 lg:rounded-3xl lg:p-8.5"
             >
               <h3 className="text-[28px] lg:text-[34px]">Tours &amp; Travel</h3>
               <p className="max-w-[420px] text-base leading-normal lg:text-[17px]">
@@ -141,7 +141,7 @@ export default function AboutPage() {
             </Link>
             <Link
               href="/car-hire"
-              className="lift bg-cream text-ink flex flex-col gap-2 rounded-[22px] p-6 lg:min-h-[200px] lg:gap-3 lg:rounded-3xl lg:p-8.5"
+              className="reveal lift bg-cream text-ink flex flex-col gap-2 rounded-[22px] p-6 lg:min-h-[200px] lg:gap-3 lg:rounded-3xl lg:p-8.5"
             >
               <h3 className="text-[28px] lg:text-[34px]">Car Hire</h3>
               <p className="text-ink-muted max-w-[420px] text-base leading-normal lg:text-[17px]">
@@ -178,7 +178,7 @@ export default function AboutPage() {
             {team.map((member, index) => (
               <li
                 key={index}
-                className="border-line bg-cream-200 flex items-center gap-4.5 rounded-[22px] border p-4 lg:gap-6 lg:p-5"
+                className="reveal border-line bg-cream-200 flex items-center gap-4.5 rounded-[22px] border p-4 lg:gap-6 lg:p-5"
               >
                 <div className="border-line relative h-[138px] w-[104px] shrink-0 overflow-hidden rounded-[16px] border lg:h-[168px] lg:w-[127px] lg:rounded-[18px]">
                   <Image

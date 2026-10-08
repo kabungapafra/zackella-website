@@ -45,7 +45,7 @@ export default function ServicesPage() {
             <article
               key={slug}
               id={slug}
-              className={`grid scroll-mt-8 items-start gap-x-16 gap-y-4 py-7.5 lg:gap-y-7 lg:py-11 ${
+              className={`reveal grid scroll-mt-8 items-start gap-x-16 gap-y-4 py-7.5 lg:gap-y-7 lg:py-11 ${
                 index === 0
                   ? "border-forest-800 border-t-2"
                   : "border-line-300 border-t"

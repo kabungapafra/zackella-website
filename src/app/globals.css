@@ -142,6 +142,28 @@
     box-shadow: 0 10px 24px rgb(12 51 32 / 0.25);
   }
 
+  /* Brings a block up as it scrolls into view.
+   *
+   * Driven by the scroll position itself rather than by JavaScript, so it
+   * costs no hydration and cannot hold up the page. It is wrapped twice over
+   * on purpose: a browser without scroll-driven animations never applies the
+   * rule, so the element keeps its ordinary opacity instead of being left
+   * invisible, and a visitor who asks for reduced motion never sees it at all.
+   *
+   * Only transform and opacity move, so this stays off the layout and cannot
+   * shift anything around it. Never put it on a hero: the first thing painted
+   * should not be waiting on a scroll.
+   */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .reveal {
+        animation: reveal-rise linear both;
+        animation-timeline: view();
+        animation-range: entry 8% cover 26%;
+      }
+    }
+  }
+
   /* Destination tile: the illustration zooms and the arrow nudges together. */
   .tile-wrap .tile-art {
     transition: transform 0.35s ease;
@@ -173,5 +195,16 @@
   .tile-wrap:hover .tile-art,
   .tile-wrap:hover .tile-arrow {
     transform: none !important;
+  }
+}
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
