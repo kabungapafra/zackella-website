@@ -302,14 +302,21 @@ export default function HomePage() {
         </Carousel>
 
         <Container className="mt-6 lg:mt-10">
-          <div className="border-gold/40 flex flex-col items-center gap-4 rounded-3xl border border-dashed px-6 py-7 text-center sm:flex-row sm:justify-between sm:text-left lg:px-9 lg:py-8">
-            <p className="text-cream max-w-[560px] text-[17px] leading-relaxed lg:text-lg">
+          <div className="border-gold/40 relative flex flex-col items-center gap-4 overflow-hidden rounded-3xl border border-dashed px-6 py-7 text-center sm:flex-row sm:justify-between sm:text-left lg:px-9 lg:py-8">
+            {/* Cream ink for this one; the panel sits on the forest ground. */}
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 bg-[url('/safari-pattern-light.png')] bg-cover bg-center opacity-[0.09]"
+            />
+            <p className="text-cream relative max-w-[560px] text-[17px] leading-relaxed lg:text-lg">
               Three of our {fleet.length} vehicles. See the rest, with hire options
               and what each one suits.
             </p>
-            <ButtonLink href="/car-hire" variant="gold" className="shrink-0">
-              See all {fleet.length} vehicles <span aria-hidden="true">&rarr;</span>
-            </ButtonLink>
+            <span className="relative shrink-0">
+              <ButtonLink href="/car-hire" variant="gold">
+                See all {fleet.length} vehicles <span aria-hidden="true">&rarr;</span>
+              </ButtonLink>
+            </span>
           </div>
 
           <div className="border-forest-rule mt-11 hidden gap-6 border-t pt-9 sm:grid sm:grid-cols-2 lg:grid-cols-4">
