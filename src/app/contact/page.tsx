@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { MailIcon, PhoneIcon, PinIcon, WhatsAppIcon } from "@/components/Icon";
 import { HeroPhoto } from "@/components/HeroPhoto";
+import { MapEmbed } from "@/components/MapEmbed";
 import { PageHero } from "@/components/PageHero";
 import { Container, SectionLabel } from "@/components/ui";
 import { site } from "@/lib/site";
@@ -111,13 +112,7 @@ export default function ContactPage() {
             </p>
           </div>
           <div className="border-line-300 relative min-h-[240px] overflow-hidden rounded-[22px] border lg:min-h-[340px] lg:rounded-[26px]">
-            <iframe
-              title={`Map showing ${site.name} at ${site.address.oneLine}`}
-              src={site.mapsEmbed}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0 h-full w-full border-0"
-            />
+            <MapEmbed />
             {/* The embed carries its own "Open in Maps" control, so this one
                 starts navigation instead of repeating it. */}
             <a
