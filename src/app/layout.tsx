@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Montserrat } from "next/font/google";
+import { BackToTop } from "@/components/BackToTop";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TopBar } from "@/components/TopBar";
@@ -56,8 +57,12 @@ export default function RootLayout({
         </a>
         <TopBar />
         <SiteHeader />
-        <main id="main">{children}</main>
+        {/* tabIndex lets both the skip link and Back to top land focus here. */}
+        <main id="main" tabIndex={-1}>
+          {children}
+        </main>
         <SiteFooter />
+        <BackToTop />
       </body>
     </html>
   );

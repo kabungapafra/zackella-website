@@ -165,6 +165,15 @@ export function GroupIcon(props: IconProps) {
 }
 
 /** The tick used in every feature list. Heavier stroke, no circle. */
+export function ArrowUpIcon(props: IconProps) {
+  return (
+    <LineIcon {...props}>
+      <path d="M12 19V5" />
+      <path d="M5 12l7-7 7 7" />
+    </LineIcon>
+  );
+}
+
 export function TickIcon({ size = 22, ...rest }: IconProps) {
   return (
     <svg
