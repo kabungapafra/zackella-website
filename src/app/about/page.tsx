@@ -142,13 +142,21 @@ export default function AboutPage() {
             </Link>
             <Link
               href="/car-hire"
-              className="reveal lift bg-cream text-ink flex flex-col gap-2 rounded-[22px] p-6 lg:min-h-[200px] lg:gap-3 lg:rounded-3xl lg:p-8.5"
+              className="reveal lift bg-cream text-ink relative flex flex-col gap-2 overflow-hidden rounded-[22px] p-6 lg:min-h-[200px] lg:gap-3 lg:rounded-3xl lg:p-8.5"
             >
-              <h3 className="text-[28px] lg:text-[34px]">Car Hire</h3>
-              <p className="text-ink-muted max-w-[420px] text-base leading-normal lg:text-[17px]">
+              {/* Watermark across the whole card. A background rather than an
+                  <Image>: the drawing is one flat colour over a cut-out, which
+                  a PNG stores in 57KB and a resized WebP cannot touch. It sits
+                  first so the text, which is positioned, paints over it. */}
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 bg-[url('/safari-pattern.png')] bg-cover bg-center opacity-[0.07]"
+              />
+              <h3 className="relative text-[28px] lg:text-[34px]">Car Hire</h3>
+              <p className="text-ink-muted relative max-w-[420px] text-base leading-normal lg:text-[17px]">
                 Saloons to safari cruisers, with a driver or self-drive.
               </p>
-              <p className="text-forest-800 mt-1.5 font-bold lg:mt-auto">
+              <p className="text-forest-800 relative mt-1.5 font-bold lg:mt-auto">
                 See the fleet <span aria-hidden="true">&rarr;</span>
               </p>
             </Link>

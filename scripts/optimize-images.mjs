@@ -34,8 +34,18 @@ const quality = (width) => (width <= 640 ? 84 : width <= 1080 ? 80 : 76);
 const PUBLIC = "public";
 const OUT = path.join(PUBLIC, "opt");
 
+/**
+ * Served as-is rather than resized. Flat-colour artwork over a cut-out stores
+ * tightly as a palette PNG, and resizing it re-introduces the soft edges that
+ * made it small, so every variant comes out larger than the original.
+ */
+const SERVE_AS_IS = new Set(["safari-pattern.png"]);
+
 const sources = (await readdir(PUBLIC, { withFileTypes: true }))
-  .filter((e) => e.isFile() && /\.(jpe?g|png)$/i.test(e.name))
+  .filter(
+    (e) =>
+      e.isFile() && /\.(jpe?g|png)$/i.test(e.name) && !SERVE_AS_IS.has(e.name),
+  )
   .map((e) => e.name)
   .sort();
 
