@@ -197,7 +197,7 @@ export default function HomePage() {
       {/* Car hire */}
       <section
         id="car-hire"
-        className="bg-forest-900 text-cream relative overflow-hidden pt-15 pb-14 lg:pt-27.5 lg:pb-25"
+        className="bg-forest-900 text-cream relative isolate overflow-hidden pt-15 pb-14 lg:pt-27.5 lg:pb-25"
       >
         {/* Drawn across the whole band. Cream ink, since it sits on forest. */}
         <span
