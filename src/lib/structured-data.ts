@@ -6,8 +6,8 @@
  * is and what it offers. Everything here is built from the same data the pages
  * render, so the two cannot drift apart.
  *
- * Only facts we actually hold go in. Opening days, prices and social profiles
- * are deliberately absent rather than guessed.
+ * Only facts we actually hold go in. Prices and social profiles are
+ * deliberately absent rather than guessed.
  */
 import { fleet } from "@/data/fleet";
 import { services } from "@/data/services";
@@ -43,6 +43,19 @@ export const organizationSchema = {
     longitude: site.coordinates.lng,
   },
   hasMap: site.mapsLink,
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ],
+    opens: "08:00",
+    closes: "17:00",
+  },
   areaServed: { "@type": "Country", name: "Uganda" },
   founder: team.map((member) => ({
     "@type": "Person",

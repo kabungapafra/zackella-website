@@ -36,7 +36,7 @@ export const site = {
     },
   },
   coordinates: { lat: 0.3663964, lng: 32.6484008 },
-  openingHours: "8.00am to 5.00pm",
+  openingHours: "Monday to Saturday, 8.00am to 5.00pm",
   developer: {
     name: "Digiflect Tech",
     href: "https://digiflecttech.dev",
