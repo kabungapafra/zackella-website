@@ -197,8 +197,13 @@ export default function HomePage() {
       {/* Car hire */}
       <section
         id="car-hire"
-        className="bg-forest-900 text-cream pt-15 pb-14 lg:pt-27.5 lg:pb-25"
+        className="bg-forest-900 text-cream relative overflow-hidden pt-15 pb-14 lg:pt-27.5 lg:pb-25"
       >
+        {/* Drawn across the whole band. Cream ink, since it sits on forest. */}
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[url('/safari-pattern-light.png')] bg-cover bg-center opacity-[0.07]"
+        />
         <Container>
           <div className="grid items-end gap-x-16 gap-y-3 lg:grid-cols-2 lg:gap-y-6">
             <div>
@@ -302,21 +307,14 @@ export default function HomePage() {
         </Carousel>
 
         <Container className="mt-6 lg:mt-10">
-          <div className="border-gold/40 relative flex flex-col items-center gap-4 overflow-hidden rounded-3xl border border-dashed px-6 py-7 text-center sm:flex-row sm:justify-between sm:text-left lg:px-9 lg:py-8">
-            {/* Cream ink for this one; the panel sits on the forest ground. */}
-            <span
-              aria-hidden="true"
-              className="absolute inset-0 bg-[url('/safari-pattern-light.png')] bg-cover bg-center opacity-[0.09]"
-            />
-            <p className="text-cream relative max-w-[560px] text-[17px] leading-relaxed lg:text-lg">
+          <div className="border-gold/40 flex flex-col items-center gap-4 rounded-3xl border border-dashed px-6 py-7 text-center sm:flex-row sm:justify-between sm:text-left lg:px-9 lg:py-8">
+            <p className="text-cream max-w-[560px] text-[17px] leading-relaxed lg:text-lg">
               Three of our {fleet.length} vehicles. See the rest, with hire options
               and what each one suits.
             </p>
-            <span className="relative shrink-0">
-              <ButtonLink href="/car-hire" variant="gold">
-                See all {fleet.length} vehicles <span aria-hidden="true">&rarr;</span>
-              </ButtonLink>
-            </span>
+            <ButtonLink href="/car-hire" variant="gold" className="shrink-0">
+              See all {fleet.length} vehicles <span aria-hidden="true">&rarr;</span>
+            </ButtonLink>
           </div>
 
           <div className="border-forest-rule mt-11 hidden gap-6 border-t pt-9 sm:grid sm:grid-cols-2 lg:grid-cols-4">
