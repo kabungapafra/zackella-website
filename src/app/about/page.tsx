@@ -166,31 +166,30 @@ export default function AboutPage() {
           <h2 className="mt-3.5 max-w-[760px] text-[clamp(31px,4vw,52px)] leading-[1.1] text-balance lg:mt-5">
             The people behind Zackella.
           </h2>
-          {/* Photo beside the name on phones, portrait cards from md up. */}
-          <ul className="mt-6 flex flex-col gap-5.5 md:mt-12 md:flex-row md:flex-wrap md:justify-center md:gap-7">
+          {/* Two of them, so each gets a card of its own with the name set
+              beside the photograph rather than under it. */}
+          <ul className="mt-6 grid gap-4.5 md:mt-12 md:grid-cols-2 md:gap-7">
             {team.map((member, index) => (
               <li
                 key={index}
-                className="flex items-center gap-4 md:w-full md:max-w-[220px] md:flex-col md:items-stretch md:gap-3.5"
+                className="border-line bg-cream-200 flex items-center gap-4.5 rounded-[22px] border p-4 lg:gap-6 lg:p-5"
               >
-                {member.photo ? (
-                  <div className="border-line bg-cream-200 relative h-[150px] w-30 shrink-0 overflow-hidden rounded-[18px] border md:aspect-4/5 md:h-auto md:w-auto md:rounded-[22px]">
-                    <Image
-                      src={member.photo}
-                      alt={`${member.name}, ${member.role} at ${site.name}`}
-                      fill
-                      sizes="(min-width: 768px) 33vw, 120px"
-                      className="object-cover object-[center_28%]"
-                    />
-                  </div>
-                ) : (
-                  <div className="border-line-dashed bg-cream-200 text-ink-muted flex h-[150px] w-30 shrink-0 items-center justify-center rounded-[18px] border-2 border-dashed text-sm md:aspect-4/5 md:h-auto md:w-auto md:rounded-[22px] md:p-4 md:text-center md:text-[15px]">
-                    [PHOTO]
-                  </div>
-                )}
+                <div className="border-line relative h-[138px] w-[104px] shrink-0 overflow-hidden rounded-[16px] border lg:h-[168px] lg:w-[127px] lg:rounded-[18px]">
+                  <Image
+                    src={member.photo}
+                    alt={`${member.name}, ${member.role} at ${site.name}`}
+                    fill
+                    sizes="(min-width: 1024px) 127px, 104px"
+                    className="object-cover object-[center_28%]"
+                  />
+                </div>
                 <div>
-                  <p className="font-display text-[22px] font-bold tracking-[-0.015em]">{member.name}</p>
-                  <p className="text-ink-muted mt-1 text-base">{member.role}</p>
+                  <p className="font-display text-[21px] leading-[1.15] font-bold tracking-[-0.015em] text-balance lg:text-[26px]">
+                    {member.name}
+                  </p>
+                  {/* Separates the name from the role without another rule of type. */}
+                  <span className="bg-gold mt-3 block h-[3px] w-9 rounded-full" />
+                  <p className="text-ink-muted mt-3 text-[15px] lg:text-[17px]">{member.role}</p>
                 </div>
               </li>
             ))}

@@ -94,9 +94,8 @@ export const footerServices = [
 export const team: readonly {
   name: string;
   role: string;
-  photo?: string;
+  photo: string;
 }[] = [
-  { name: "[NAME]", role: "[ROLE]", photo: "/team-1.jpg" },
-  { name: "[NAME]", role: "[ROLE]" },
-  { name: "[NAME]", role: "[ROLE]" },
+  { name: "Isaac Paul Odeke", role: "Director", photo: "/team-1.jpg" },
+  { name: "Adellah Owembabazi", role: "Managing Director", photo: "/team-2.jpg" },
 ];
