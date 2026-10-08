@@ -23,12 +23,13 @@ import sharp from "sharp";
 const WIDTHS = [200, 320, 400, 640, 828, 1080, 1440, 1920];
 
 /**
- * Quality falls as the variant grows. The wide variants go to high-density
- * phones and large screens, where each stored pixel covers less of what the
- * eye resolves, so they take more compression before anything shows — and they
- * are the ones on the critical path for LCP.
+ * Quality still eases off as the variant grows, because a wide variant is shown
+ * on a dense screen where each stored pixel covers less of what the eye
+ * resolves. It eases off far less than it used to: the first pass traded too
+ * much of the photographs away for bytes the site did not need, and these are
+ * pictures of places people are deciding whether to pay to visit.
  */
-const quality = (width) => (width <= 640 ? 78 : width <= 1080 ? 70 : 62);
+const quality = (width) => (width <= 640 ? 84 : width <= 1080 ? 80 : 76);
 
 const PUBLIC = "public";
 const OUT = path.join(PUBLIC, "opt");
