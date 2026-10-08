@@ -1,0 +1,26 @@
+# Cache rules for Cloudflare Pages, which reads this file from the deploy root.
+# Rules apply in order and later ones win, so the catch-all comes first.
+
+# HTML must revalidate, or a deploy would not reach returning visitors.
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Next writes a content hash into every filename here, so the URL changes
+# whenever the bytes do and these can be held forever.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Every generated variant carries a hash of its own bytes in its name, so a
+# changed photograph arrives under a new URL and these can be held forever.
+/opt/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Original photographs and the reel. Same reasoning as the variants.
+/*.jpg
+  Cache-Control: public, max-age=2592000
+/*.png
+  Cache-Control: public, max-age=2592000
+/*.mp4
+  Cache-Control: public, max-age=2592000
+/*.svg
+  Cache-Control: public, max-age=2592000

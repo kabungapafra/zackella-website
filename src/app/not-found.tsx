@@ -20,7 +20,7 @@ export default function NotFound() {
         <HeroPhoto
           src="/kidepo-valley.jpg"
           position="object-[center_55%]"
-          priority
+          preload
         />
         <Container className="relative pt-16 pb-20 lg:pt-28 lg:pb-32">
           <p className="text-gold text-[13px] font-bold tracking-[0.18em] uppercase">

@@ -61,7 +61,7 @@ export default function CarHirePage() {
             src="/fleet-blurred.jpg"
             // The fleet sits across the lower middle of the frame.
             position="object-[center_58%]"
-            priority
+            preload
           />
         }
         actions={

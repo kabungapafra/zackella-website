@@ -34,7 +34,7 @@ export default function ServicesPage() {
             src="/services-hero.jpg"
             // Keeps the vehicle and the horizon in the band.
             position="object-[center_52%]"
-            priority
+            preload
           />
         }
       />

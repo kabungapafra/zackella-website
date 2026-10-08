@@ -18,7 +18,9 @@ export function SiteHeader() {
             alt={`${site.name} — ${site.tagline}`}
             width={1170}
             height={340}
-            priority
+            // Deliberately not preloaded: it is in the viewport so it loads
+            // straight away regardless, and the head's image preload belongs
+            // to the hero, which is the LCP element on every page.
             sizes="200px"
             className="block h-11 w-auto lg:h-[58px]"
           />

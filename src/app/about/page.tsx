@@ -59,7 +59,7 @@ export default function AboutPage() {
             // the figure under it both clear the crop rather than being cut off
             // at the top edge.
             position="object-[center_42%] lg:object-[center_40%]"
-            priority
+            preload
           />
         }
       />

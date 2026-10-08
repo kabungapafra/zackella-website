@@ -11,6 +11,10 @@ import { useEffect, useRef, useState } from "react";
  * photograph — when the visitor asks for reduced motion, has Data Saver on, or
  * is on a 2G-class connection.
  *
+ * Nothing is fetched until the band is nearly in view. `preload="none"` alone
+ * does not hold the download back, because calling `play()` starts it; the clip
+ * is mounted only once the visitor has scrolled to it.
+ *
  * The footage has near-white highlights (luminance ~0.86), so a flat scrim dark
  * enough for body text would hide the video almost entirely. Instead it is
  * weighted so it only covers what the text needs:
@@ -37,8 +41,10 @@ export function VideoBackdrop({
    */
   variant?: "feature" | "watermark";
 }) {
+  const bandRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [enabled, setEnabled] = useState(false);
+  const [near, setNear] = useState(false);
   const [visible, setVisible] = useState(false);
 
   // Decide once, after mount, whether this visitor should get video at all.
@@ -60,28 +66,44 @@ export function VideoBackdrop({
     return () => motion.removeEventListener("change", decide);
   }, []);
 
+  // Hold the download until the band is close, so a visitor who never scrolls
+  // this far never pays for the clip.
   useEffect(() => {
-    if (!enabled) return;
+    const band = bandRef.current;
+    if (!band) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setNear(true);
+        observer.disconnect();
+      },
+      { rootMargin: "200px" },
+    );
+    observer.observe(band);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!enabled || !near) return;
     // Autoplay can still be refused (low power mode); the photograph stays.
     void videoRef.current?.play().catch(() => {});
-  }, [enabled]);
+  }, [enabled, near]);
 
   const watermark = variant === "watermark";
 
   return (
-    <div aria-hidden="true" className="bg-forest-900 absolute inset-0">
+    <div ref={bandRef} aria-hidden="true" className="bg-forest-900 absolute inset-0">
       {photo && (
         <Image
           src={photo}
           alt=""
           fill
           sizes="100vw"
-          quality={80}
           className={`object-cover ${photoPosition}`}
         />
       )}
 
-      {enabled && (
+      {enabled && near && (
         <video
           ref={videoRef}
           muted

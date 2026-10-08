@@ -74,7 +74,7 @@ export default function HomePage() {
         <HeroPhoto
           src="/hero-gorilla.jpg"
           position="object-[center_58%]"
-          priority
+          preload
         />
         <Container className="relative pt-11 pb-32 lg:pt-24 lg:pb-50">
           <SectionLabel tone="dark">

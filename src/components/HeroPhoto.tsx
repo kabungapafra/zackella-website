@@ -9,11 +9,12 @@ export function HeroPhoto({
   src,
   /** Crop focus, e.g. to keep a subject in frame on narrow screens. */
   position = "object-center",
-  priority = false,
+  preload = false,
 }: {
   src: string;
   position?: string;
-  priority?: boolean;
+  /** Set on the one hero that is the page's LCP element. */
+  preload?: boolean;
 }) {
   return (
     <div aria-hidden="true" className="bg-forest-900 absolute inset-0">
@@ -21,9 +22,8 @@ export function HeroPhoto({
         src={src}
         alt=""
         fill
-        priority={priority}
+        preload={preload}
         sizes="100vw"
-        quality={80}
         className={`object-cover ${position}`}
       />
       <HeroScrim />
