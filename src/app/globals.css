@@ -178,6 +178,15 @@
   .tile-wrap:hover .tile-arrow {
     transform: translateX(5px);
   }
+
+  /* A photograph that eases closer under the cursor and settles back on the
+     way out. Goes on the cropping frame, which already clips the overflow. */
+  .photo-zoom img {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .photo-zoom:hover img {
+    transform: scale(1.06);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -187,13 +196,15 @@
   .lift,
   .btn-lift,
   .tile-wrap .tile-art,
-  .tile-wrap .tile-arrow {
+  .tile-wrap .tile-arrow,
+  .photo-zoom img {
     transition: none !important;
   }
   .lift:hover,
   .btn-lift:hover,
   .tile-wrap:hover .tile-art,
-  .tile-wrap:hover .tile-arrow {
+  .tile-wrap:hover .tile-arrow,
+  .photo-zoom:hover img {
     transform: none !important;
   }
 }

@@ -101,7 +101,7 @@ export default function CarHirePage() {
                 }`}
               >
                 <div
-                  className={`relative aspect-4/3 overflow-hidden rounded-[14px] lg:rounded-[18px] ${
+                  className={`photo-zoom relative aspect-4/3 overflow-hidden rounded-[14px] lg:rounded-[18px] ${
                     accent ? "bg-gold-soft" : "bg-sand"
                   }`}
                 >

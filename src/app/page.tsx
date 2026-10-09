@@ -246,7 +246,7 @@ export default function HomePage() {
                 }`}
               >
                 <div
-                  className={`relative h-[200px] overflow-hidden rounded-[14px] lg:h-[280px] lg:rounded-[18px] ${
+                  className={`photo-zoom relative h-[200px] overflow-hidden rounded-[14px] lg:h-[280px] lg:rounded-[18px] ${
                     accent ? "bg-gold-soft" : "bg-sand"
                   }`}
                 >

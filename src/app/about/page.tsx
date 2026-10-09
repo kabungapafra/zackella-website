@@ -189,7 +189,7 @@ export default function AboutPage() {
                 key={index}
                 className="reveal border-line bg-cream-200 flex items-center gap-4.5 rounded-[22px] border p-4 lg:gap-6 lg:p-5"
               >
-                <div className="border-line relative h-[138px] w-[104px] shrink-0 overflow-hidden rounded-[16px] border lg:h-[168px] lg:w-[127px] lg:rounded-[18px]">
+                <div className="photo-zoom border-line relative h-[138px] w-[104px] shrink-0 overflow-hidden rounded-[16px] border lg:h-[168px] lg:w-[127px] lg:rounded-[18px]">
                   <Image
                     src={member.photo}
                     alt={`${member.name}, ${member.role} at ${site.name}`}

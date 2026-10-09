@@ -91,7 +91,7 @@ export default function ToursPage() {
                 className="grid scroll-mt-8 items-center gap-x-16 gap-y-4.5 lg:grid-cols-2 lg:gap-y-9"
               >
                 <div
-                  className={`bg-forest-700 relative h-[230px] overflow-hidden rounded-[22px] lg:aspect-5/4 lg:h-auto lg:rounded-[26px] ${
+                  className={`photo-zoom bg-forest-700 relative h-[230px] overflow-hidden rounded-[22px] lg:aspect-5/4 lg:h-auto lg:rounded-[26px] ${
                     artRight ? "lg:order-2" : ""
                   }`}
                 >
