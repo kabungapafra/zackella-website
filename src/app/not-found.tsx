@@ -16,7 +16,7 @@ const elsewhere = nav.filter((item) => item.href !== "/");
 export default function NotFound() {
   return (
     <>
-      <section className="bg-forest-900 text-cream relative overflow-hidden">
+      <section className="photo-zoom bg-forest-900 text-cream relative overflow-hidden">
         <HeroPhoto
           src="/kidepo-valley.jpg"
           position="object-[center_55%]"

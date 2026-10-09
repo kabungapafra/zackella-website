@@ -70,7 +70,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-forest-900 text-cream relative overflow-hidden">
+      <section className="photo-zoom bg-forest-900 text-cream relative overflow-hidden">
         <HeroPhoto
           src="/hero-gorilla.jpg"
           position="object-[center_58%]"

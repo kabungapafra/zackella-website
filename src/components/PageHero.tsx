@@ -33,7 +33,7 @@ export function PageHero({
   media?: ReactNode;
 }) {
   return (
-    <section className="bg-forest-900 text-cream relative overflow-hidden">
+    <section className="photo-zoom bg-forest-900 text-cream relative overflow-hidden">
       {media ?? <PageHeroScene variant={variant} />}
       <Container
         className={`relative ${

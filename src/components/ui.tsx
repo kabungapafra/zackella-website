@@ -166,7 +166,7 @@ export function CtaBand({
     <section
       className={`py-12 lg:py-21 ${
         backdrop
-          ? "text-cream relative overflow-hidden"
+          ? "photo-zoom text-cream relative overflow-hidden"
           : "bg-gold text-forest-900"
       }`}
     >
