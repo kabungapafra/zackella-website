@@ -13,7 +13,7 @@ import {
   PinIcon,
   WhatsAppIcon,
 } from "@/components/Icon";
-import { HeroPhoto } from "@/components/HeroPhoto";
+import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { VideoBackdrop } from "@/components/VideoBackdrop";
 import { TourMedia } from "@/components/TourMedia";
 import {
@@ -26,6 +26,14 @@ import { fleet } from "@/data/fleet";
 import { services } from "@/data/services";
 import { tours } from "@/data/tours";
 import { site } from "@/lib/site";
+
+/** The hero's crossfade, in the order they appear. */
+const heroSlides = [
+  { src: "/hero-cheetah.jpg" },
+  { src: "/hero-elephants.jpg" },
+  { src: "/hero-plains.jpg" },
+  { src: "/hero-giraffe.jpg" },
+];
 
 const reasons = [
   {
@@ -81,12 +89,7 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className="photo-zoom bg-forest-900 text-cream relative flex min-h-[88svh] overflow-hidden lg:min-h-[100svh]">
-        <HeroPhoto
-          src="/hero-gorilla.jpg"
-          position="object-[center_58%]"
-          preload
-          scrim="even"
-        />
+        <HeroSlideshow slides={heroSlides} scrim="even" />
         {/* The scrim is held back so the photograph reads; the copy carries its
             own soft shadow instead, which keeps it legible over the bright
             leaves without flattening the picture behind it. */}

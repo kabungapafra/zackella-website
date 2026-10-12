@@ -142,6 +142,39 @@
     box-shadow: 0 10px 24px rgb(12 51 32 / 0.25);
   }
 
+  /* Hero slideshow. Four photographs crossfade on a 32s loop, each drifting
+     slightly larger as it goes, so the hero keeps moving without video.
+     Pure CSS: no timer, no hydration, and the first slide stays put on its
+     own where animation is unavailable or unwanted. */
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0;
+    will-change: opacity, transform;
+  }
+  .hero-slide:first-child {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-slide {
+      animation: hero-slide 32s ease infinite;
+    }
+    .hero-slide:nth-child(1) {
+      animation-delay: -2s;
+    }
+    .hero-slide:nth-child(2) {
+      animation-delay: 6s;
+    }
+    .hero-slide:nth-child(3) {
+      animation-delay: 14s;
+    }
+    .hero-slide:nth-child(4) {
+      animation-delay: 22s;
+    }
+  }
+
   /* Main-nav link. A gold rule wipes out from the middle on hover and sits
      there on the current page, so hovering shows you what the active state
      already looks like rather than a second, unrelated effect. */
@@ -275,5 +308,32 @@
   }
   to {
     transform: scale(1);
+  }
+}
+
+@keyframes hero-slide {
+  0% {
+    opacity: 0;
+    transform: scale(1.06);
+    animation-timing-function: cubic-bezier(0.33, 0, 0.2, 1);
+  }
+  6% {
+    opacity: 1;
+    animation-timing-function: linear;
+  }
+  25% {
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.65, 0, 0.6, 1);
+  }
+  31% {
+    opacity: 0;
+    transform: scale(1.24);
+  }
+  32% {
+    transform: scale(1.06);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.06);
   }
 }
