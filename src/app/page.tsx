@@ -77,18 +77,15 @@ export default function HomePage() {
           preload
         />
         <Container className="relative pt-11 pb-32 lg:pt-24 lg:pb-50">
-          <SectionLabel tone="dark">
-            <span className="lg:hidden">Kampala &middot; Uganda</span>
-            <span className="hidden lg:inline">
-              Kampala &middot; Uganda &middot; East Africa
-            </span>
-          </SectionLabel>
+          <SectionLabel tone="dark">Discover the Pearl of Africa</SectionLabel>
           <h1 className="mt-4.5 max-w-[880px] text-[clamp(44px,7vw,98px)] leading-[1.03] tracking-[-0.01em] text-balance lg:mt-6.5">
-            See Uganda the <span className="text-gold">unhurried</span> way.
+            Uganda, <span className="text-gold">fully handled.</span>
           </h1>
-          <p className="text-on-dark mt-4.5 max-w-[560px] text-[17px] leading-relaxed text-pretty lg:mt-7 lg:text-[clamp(18px,1.6vw,21px)]">
-            Safaris, gorilla treks and dependable car hire, planned by a Kampala team
-            that answers you on WhatsApp.
+          <p className="text-on-dark mt-4.5 max-w-[620px] text-[17px] leading-relaxed text-pretty lg:mt-7 lg:text-[clamp(18px,1.6vw,21px)]">
+            From your arrival at Entebbe to your last adventure, we take care of every
+            detail. Big Five safaris, unforgettable gorilla trekking, breathtaking
+            mountains, beautiful lakes and rivers &mdash; plus reliable 4x4 vehicle
+            hire.
           </p>
           <div className="mt-6.5 lg:mt-9.5">
             <ButtonRow>
@@ -372,12 +369,14 @@ export default function HomePage() {
               </h2>
             </div>
             <p className="text-ink-muted hidden text-[17px] leading-relaxed text-pretty lg:block">
-              Add these to a tour or car hire, or book them on their own.
+              Add these to a tour or car hire, or book them on their own. We can even
+              book and pay for your tickets from your own country, and for the journey
+              home again.
             </p>
           </div>
 
           {/* Icon-beside-text rows on phones, a five-across strip on desktop. */}
-          <div className="mt-6 flex flex-col gap-2.5 lg:mt-10 lg:grid lg:grid-cols-5 lg:gap-4">
+          <div className="mt-6 flex flex-col gap-2.5 lg:mt-10 lg:grid lg:grid-cols-3 lg:gap-4">
             {services.map(({ slug, name, teaser, teaserShort, Icon }) => (
               <Link
                 key={slug}

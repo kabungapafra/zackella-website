@@ -16,7 +16,7 @@ import { servicesSchema } from "@/lib/structured-data";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Airport pick-ups and drop-offs, hotel booking, travel consultancy, event planning and management, and product deliveries from Zackella in Kampala.",
+    "Flight and ticket booking from your own country, airport pick-ups and drop-offs, hotel booking, travel consultancy, event planning and management, and product deliveries from Zackella in Kampala.",
   alternates: { canonical: "/services/" }
 };
 
@@ -32,7 +32,7 @@ export default function ServicesPage() {
             Everything around <span className="text-gold">the trip.</span>
           </>
         }
-        intro="Tours and car hire are our core. These five services make them easier. Add them to a trip, or book them on their own."
+        intro="Tours and car hire are our core. These six services make them easier. We can even book and pay for your tickets from your own country, and for the journey home. Add them to a trip, or book them on their own."
         media={
           <HeroPhoto
             src="/services-hero.jpg"

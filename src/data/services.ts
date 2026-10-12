@@ -4,6 +4,7 @@ import {
   CalendarIcon,
   CompassIcon,
   HotelIcon,
+  TicketIcon,
   TransferIcon,
 } from "@/components/Icon";
 
@@ -24,6 +25,22 @@ export type Service = {
 };
 
 export const services: readonly Service[] = [
+  {
+    slug: "flight-tickets",
+    name: "Flight & Ticket Booking",
+    teaser: "Paid for from your own country, both ways.",
+    teaserShort: "Tickets paid for from home.",
+    blurb:
+      "We also plan and pay for your tickets right from your own country, and for the journey back home, so the flights are settled long before you pack.",
+    details: [
+      "Tickets booked and paid for from your own country",
+      "Return flights home arranged at the same time",
+      "Park entry, permits and activity tickets handled too",
+      "Flights timed around your transfers and your route",
+    ],
+    cta: "Ask about tickets",
+    Icon: TicketIcon,
+  },
   {
     slug: "airport-transfers",
     name: "Airport Pick-ups & Drop-offs",
@@ -110,6 +127,7 @@ export const services: readonly Service[] = [
 export const enquiryTopics = [
   "Tours and travel",
   "Car hire",
+  "Flight and ticket booking",
   "Airport pick-up or drop-off",
   "Hotel booking",
   "Travel consultancy",

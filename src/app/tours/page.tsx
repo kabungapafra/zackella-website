@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
+import { LodgeCard } from "@/components/LodgeCard";
 import { HeroPhoto } from "@/components/HeroPhoto";
 import { PageHero } from "@/components/PageHero";
 import { ReelWatermark } from "@/components/ReelWatermark";
@@ -12,6 +13,7 @@ import {
   CtaBand,
   SectionLabel,
 } from "@/components/ui";
+import { lodges } from "@/data/lodges";
 import { tourChips, tours } from "@/data/tours";
 import { site } from "@/lib/site";
 import { toursSchema } from "@/lib/structured-data";
@@ -141,8 +143,42 @@ export default function ToursPage() {
         </Container>
       </section>
 
+      {/* Lodges */}
+      <section id="lodges" className="bg-sand mt-9 scroll-mt-8 py-14 lg:mt-17.5 lg:py-22.5">
+        <Container>
+          <div className="grid items-end gap-x-16 gap-y-3 lg:grid-cols-2 lg:gap-y-5">
+            <div>
+              <SectionLabel>Lodges</SectionLabel>
+              <h2 className="mt-3.5 text-[clamp(30px,4vw,52px)] leading-[1.1] text-balance lg:mt-5">
+                Where you sleep is half the trip.
+              </h2>
+            </div>
+            <p className="text-ink-muted text-base leading-relaxed text-pretty lg:text-lg">
+              A few of the stays we book on these routes. Tap a lodge to see more of
+              it. We&apos;ll be adding more pictures, and more lodges, soon.
+            </p>
+          </div>
+
+          <div className="mt-6.5 flex flex-col gap-6 lg:mt-12 lg:gap-10">
+            {lodges.map((lodge) => (
+              <LodgeCard key={lodge.slug} lodge={lodge} />
+            ))}
+          </div>
+
+          <div className="border-forest-800/30 mt-7 flex flex-col items-center gap-4 rounded-3xl border border-dashed px-6 py-7 text-center sm:flex-row sm:justify-between sm:text-left lg:mt-10 lg:px-9 lg:py-8">
+            <p className="text-ink-soft max-w-[620px] text-base leading-relaxed lg:text-[17px]">
+              Looking for somewhere in particular? We book city hotels, tented camps
+              and lodges across Uganda, at every budget.
+            </p>
+            <ButtonLink href="/contact" className="shrink-0">
+              Ask about a stay <span aria-hidden="true">&rarr;</span>
+            </ButtonLink>
+          </div>
+        </Container>
+      </section>
+
       {/* What's taken care of */}
-      <section className="bg-forest-900 text-cream mt-9 py-13 lg:mt-17.5 lg:py-24">
+      <section className="bg-forest-900 text-cream py-13 lg:py-24">
         <Container>
           <SectionLabel tone="dark">On every trip</SectionLabel>
           <h2 className="mt-3.5 max-w-[760px] text-[clamp(30px,4vw,52px)] leading-[1.1] text-balance lg:mt-5">

@@ -101,6 +101,15 @@ export function PaperPlaneIcon(props: IconProps) {
   );
 }
 
+export function TicketIcon(props: IconProps) {
+  return (
+    <LineIcon {...props}>
+      <path d="M3 9V7a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v2a3 3 0 0 0 0 6v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-2a3 3 0 0 0 0-6z" />
+      <path d="M12 8v1.5M12 12v1.5M12 16v-.5" />
+    </LineIcon>
+  );
+}
+
 export function TransferIcon(props: IconProps) {
   return (
     <LineIcon {...props}>
