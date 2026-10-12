@@ -3,8 +3,11 @@ import Link from "next/link";
 import { Carousel } from "@/components/Carousel";
 import { EnquiryPanel } from "@/components/EnquiryPanel";
 import {
+  ArrowUpIcon,
+  CheckCircleIcon,
   ClockIcon,
   PaperPlaneIcon,
+  PencilIcon,
   PersonIcon,
   PhoneIcon,
   PinIcon,
@@ -17,7 +20,6 @@ import {
   ButtonLink,
   ButtonRow,
   Container,
-  CtaBand,
   SectionLabel,
 } from "@/components/ui";
 import { fleet } from "@/data/fleet";
@@ -25,24 +27,32 @@ import { services } from "@/data/services";
 import { tours } from "@/data/tours";
 import { site } from "@/lib/site";
 
-const steps = [
+const reasons = [
   {
-    number: "01",
-    title: "Tell us the plan",
-    body: "Where, when and with how many people. A message or a call is all we need to start.",
+    Icon: WhatsAppIcon,
+    title: "You talk to the people who plan the trip",
+    body: "A message or a call reaches the team that builds the route, not a form in a queue. Most questions are answered the same day, on WhatsApp.",
+    cta: { label: "Message us on WhatsApp", href: site.whatsapp.href },
   },
   {
-    number: "02",
-    title: "We shape your trip",
-    body: "We put together the route, the vehicle and the stays, then send you a clear quote to adjust.",
+    Icon: PencilIcon,
+    title: "The route is shaped around your dates",
+    body: "Tell us how long you have and the pace you want. We put together the route, the vehicle and the stays, then send a clear quote you can adjust.",
+    cta: { label: "See the tours", href: "/tours" },
   },
   {
-    number: "03",
-    title: "You just travel",
-    body: "Your driver, transfers and bookings are handled, so all that is left is the journey.",
+    Icon: PinIcon,
+    title: "The vehicles and the drivers are ours",
+    body: "Saloons, vans and pop-top safari cruisers, kept on the road by the same team that plans your trip, with drivers who know the routes.",
+    cta: { label: "See the fleet", href: "/car-hire" },
+  },
+  {
+    Icon: CheckCircleIcon,
+    title: "From the airport to the last night, handled",
+    body: "Pick-up when you land, permits and park entry booked ahead, lodges confirmed and transfers timed. Nothing left to arrange once you arrive.",
+    cta: { label: "Get a quote", href: "/contact" },
   },
 ];
-
 const carHirePromises = [
   {
     Icon: ClockIcon,
@@ -75,20 +85,48 @@ export default function HomePage() {
           src="/hero-gorilla.jpg"
           position="object-[center_58%]"
           preload
+          scrim="even"
         />
-        <Container className="relative pt-11 pb-32 lg:pt-24 lg:pb-50">
+        {/* The scrim is held back so the photograph reads; the copy carries its
+            own soft shadow instead, which keeps it legible over the bright
+            leaves without flattening the picture behind it. */}
+        <Container className="relative flex flex-col items-center pt-11 pb-32 text-center [text-shadow:0_2px_14px_rgb(12_51_32/0.6)] lg:pt-24 lg:pb-50">
           <SectionLabel tone="dark">Discover the Pearl of Africa</SectionLabel>
-          <h1 className="mt-4.5 max-w-[880px] text-[clamp(44px,7vw,98px)] leading-[1.03] tracking-[-0.01em] text-balance lg:mt-6.5">
-            Uganda, <span className="text-gold">fully handled.</span>
+          {/* Sized off the viewport so the whole line always fits across one
+              line, down to the narrowest phone. */}
+          <h1 className="mt-4.5 text-[clamp(25px,6.2vw,68px)] leading-[1.1] tracking-[-0.01em] whitespace-nowrap lg:mt-6.5">
+            {/* The brush stroke is drawn under the word rather than ruled
+                across it, so it reads as a mark someone made by hand. */}
+            <span className="whitespace-nowrap">
+              <span className="relative inline-block">
+                Uganda
+                <svg
+                  viewBox="0 0 200 20"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                  className="text-gold absolute -right-1.5 -bottom-[0.14em] -left-1.5 h-[0.24em]"
+                >
+                  <path
+                    d="M3 12c40-7 110-10 194-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="7"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+              ,
+            </span>{" "}
+            <span className="text-gold">fully handled.</span>
           </h1>
-          <p className="text-on-dark mt-4.5 max-w-[560px] text-[15px] leading-relaxed text-pretty lg:mt-7 lg:text-[clamp(16px,1.25vw,18px)]">
+          <p className="text-on-dark mt-4.5 max-w-[620px] text-[15px] leading-relaxed text-pretty lg:mt-7 lg:text-[clamp(16px,1.25vw,18px)]">
             From your arrival at Entebbe to your last adventure, we take care of every
             detail. Big Five safaris, unforgettable gorilla trekking, breathtaking
             mountains, beautiful lakes and rivers &mdash; plus reliable 4x4 vehicle
             hire.
           </p>
-          <div className="mt-6.5 lg:mt-9.5">
-            <ButtonRow>
+          <div className="mt-6.5 w-full lg:mt-9.5">
+            <ButtonRow className="sm:justify-center">
               <ButtonLink href="/tours" variant="gold" size="lg">
                 Explore tours
               </ButtonLink>
@@ -196,120 +234,64 @@ export default function HomePage() {
         id="car-hire"
         className="bg-forest-900 text-cream pt-15 pb-14 lg:pt-27.5 lg:pb-25"
       >
-        <Container>
-          <div className="grid items-end gap-x-16 gap-y-3 lg:grid-cols-2 lg:gap-y-6">
-            <div>
-              <SectionLabel tone="dark">Car Hire</SectionLabel>
-              <h2 className="mt-3.5 text-[clamp(33px,4.6vw,60px)] leading-[1.08] text-balance lg:mt-5">
-                <span className="lg:hidden">The right vehicle for every road.</span>
-                <span className="hidden lg:inline">
-                  The right vehicle for every road in Uganda.
-                </span>
-              </h2>
-            </div>
-            <p className="text-on-dark-soft text-base leading-relaxed text-pretty lg:text-lg">
-              <span className="lg:hidden">
-                With a driver who knows the route, or take the wheel yourself.
-              </span>
-              <span className="hidden lg:inline">
-                From airport transfers to park roads and long upcountry drives. Hire
-                with a driver who knows the route, or take the wheel yourself.
-              </span>
+        <Container className="lg:grid lg:grid-cols-[minmax(0,330px)_1fr] lg:items-start lg:gap-16">
+          <div className="lg:sticky lg:top-8">
+            <SectionLabel tone="dark">Car Hire</SectionLabel>
+            <h2 className="mt-3.5 text-[clamp(31px,3.6vw,50px)] leading-[1.08] text-balance lg:mt-5">
+              The right vehicle{" "}
+              <span className="text-gold">for every road.</span>
+            </h2>
+            <p className="text-on-dark-soft mt-3.5 text-base leading-relaxed text-pretty lg:mt-5 lg:text-[17px]">
+              From airport transfers to park tracks and long upcountry drives. Hire
+              with a driver who knows the route, or take the wheel yourself. Rates
+              follow the vehicle, the route and the number of days.
             </p>
-          </div>
-        </Container>
-
-        {/* Three shown large here - the full fleet is on the Car Hire page. */}
-        <Carousel
-          gridClassName="mt-6.5 lg:mt-14 lg:grid-cols-3"
-          className="lg:px-7"
-        >
-          {fleet.slice(0, 3).map(
-            ({
-              slug,
-              name,
-              teaser,
-              teaserShort,
-              tileTags,
-              tileTagShort,
-              accent,
-              photo,
-              photoPosition,
-            }) => (
-              <div
-                key={slug}
-                className={`reveal lift flex w-[300px] flex-col gap-3.5 rounded-[22px] p-4.5 lg:w-auto lg:gap-5 lg:rounded-3xl lg:p-6 ${
-                  accent ? "bg-gold text-forest-900" : "bg-cream text-ink"
-                }`}
-              >
-                <div
-                  className={`photo-zoom relative h-[200px] overflow-hidden rounded-[14px] lg:h-[280px] lg:rounded-[18px] ${
-                    accent ? "bg-gold-soft" : "bg-sand"
-                  }`}
-                >
-                  <Image
-                    src={photo}
-                    alt={name}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, 300px"
-                    className={`object-cover ${photoPosition ?? "object-center"}`}
-                  />
-                </div>
-                <h3 className="text-2xl lg:text-[28px]">{name}</h3>
-                <p
-                  className={`text-[15px] leading-normal lg:text-base ${
-                    accent ? "text-ink-dim" : "text-ink-muted"
-                  }`}
-                >
-                  <span className="lg:hidden">{teaserShort}</span>
-                  <span className="hidden lg:inline">{teaser}</span>
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  <span
-                    className={`rounded-full px-3 py-1.5 text-[13px] font-semibold lg:hidden ${
-                      accent ? "bg-forest-900 text-cream" : "bg-sand-deep"
-                    }`}
-                  >
-                    {tileTagShort}
-                  </span>
-                  {tileTags.map((tag) => (
-                    <span
-                      key={tag}
-                      className={`hidden rounded-full px-3 py-1.5 text-[13px] font-semibold lg:inline-block ${
-                        accent ? "bg-forest-900 text-cream" : "bg-sand-deep"
-                      }`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <Link
-                  href="#enquire"
-                  className={`mt-auto hidden text-[15px] font-bold lg:block ${
-                    accent ? "text-forest-900" : "text-forest-800"
-                  }`}
-                >
-                  Check availability <span aria-hidden="true">&rarr;</span>
-                </Link>
-              </div>
-            ),
-          )}
-        </Carousel>
-
-        <Container className="mt-6 lg:mt-10">
-          <div className="border-gold/40 flex flex-col items-center gap-4 rounded-3xl border border-dashed px-6 py-7 text-center sm:flex-row sm:justify-between sm:text-left lg:px-9 lg:py-8">
-            <p className="text-cream max-w-[560px] text-[17px] leading-relaxed lg:text-lg">
-              Three of our {fleet.length} vehicles. See the rest, with hire options
-              and what each one suits.
-            </p>
-            <ButtonLink href="/car-hire" variant="gold" className="shrink-0">
+            <ButtonLink href="/car-hire" variant="gold" className="mt-5 lg:mt-7">
               See all {fleet.length} vehicles <span aria-hidden="true">&rarr;</span>
             </ButtonLink>
           </div>
 
-          <div className="border-forest-rule mt-11 hidden gap-6 border-t pt-9 sm:grid sm:grid-cols-2 lg:grid-cols-4">
+          {/* A rail on phones; from `lg` the three columns sit at different
+              heights, so the fleet reads as a wall of photographs. */}
+          <div className="scroller mt-6.5 gap-3.5 pb-2 lg:mt-0 lg:grid lg:grid-cols-3 lg:items-start lg:gap-5 lg:overflow-visible lg:pb-0 lg:[&>*:nth-child(3n+1)]:mt-14 lg:[&>*:nth-child(3n)]:mt-7">
+            {fleet.map(({ slug, name, tileTagShort, photo, photoPosition }) => (
+              <Link
+                key={slug}
+                href="/car-hire"
+                className="tile-wrap photo-zoom bg-forest-700 relative block h-[300px] w-[240px] overflow-hidden rounded-[20px] lg:h-[300px] lg:w-auto lg:rounded-[22px]"
+              >
+                <Image
+                  src={photo}
+                  alt={name}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, 240px"
+                  className={`tile-art object-cover ${photoPosition ?? "object-center"}`}
+                />
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-linear-to-b from-transparent from-45% to-[rgb(12_51_32_/_0.94)]"
+                />
+                <span className="absolute inset-x-4.5 bottom-4.5 pr-12 lg:inset-x-5 lg:bottom-5">
+                  <span className="text-gold block text-[11px] font-bold tracking-[0.12em] uppercase">
+                    {tileTagShort}
+                  </span>
+                  <span className="font-display text-cream mt-1 block text-[20px] leading-tight font-bold lg:text-[22px]">
+                    {name}
+                  </span>
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="bg-gold text-forest-900 absolute right-4 bottom-4 flex size-9 items-center justify-center rounded-full lg:right-4.5 lg:bottom-4.5 lg:size-10"
+                >
+                  <ArrowUpIcon size={18} className="stroke-forest-900 rotate-90" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </Container>
+
+        <Container>
+          <div className="border-forest-rule mt-11 hidden gap-6 border-t pt-9 sm:grid sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
             {carHirePromises.map(({ Icon, title, body }) => (
               <div key={title} className="flex items-start gap-3.5">
                 <Icon size={28} className="stroke-gold shrink-0" />
@@ -322,38 +304,77 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-
-          <div className="bg-forest-800 mt-11 hidden flex-wrap items-center justify-between gap-x-7 gap-y-4 rounded-[20px] px-7 py-6.5 lg:flex">
-            <p className="text-cream max-w-[640px] text-lg leading-normal">
-              Rates depend on the vehicle, route and number of days. Send us your dates
-              and we&apos;ll come back with a clear quote.
-            </p>
-            <ButtonLink href="/car-hire" variant="gold">
-              See the fleet &amp; hire options
-            </ButtonLink>
-          </div>
         </Container>
       </section>
 
-      {/* How it works */}
-      <section id="how" className="pt-15 pb-12 lg:pt-27.5 lg:pb-25">
+      {/* Why Zackella */}
+      <section id="why" className="pt-15 pb-12 lg:pt-27.5 lg:pb-25">
         <Container>
-          <SectionLabel>How it works</SectionLabel>
-          <h2 className="mt-3.5 max-w-[760px] text-[clamp(33px,4.6vw,60px)] leading-[1.08] text-balance lg:mt-5">
-            Planning is the easy part.
-          </h2>
-          <div className="mt-7 grid gap-5.5 md:grid-cols-3 lg:mt-14 lg:gap-7">
-            {steps.map(({ number, title, body }) => (
-              <div key={number} className="border-forest-800 border-t-2 pt-4 lg:pt-5.5">
-                <p className="font-display text-gold-600 text-[44px] leading-none font-extrabold tracking-[-0.02em] lg:text-[64px]">
-                  {number}
-                </p>
-                <h3 className="mt-2.5 text-[23px] lg:mt-4 lg:text-[26px]">{title}</h3>
-                <p className="text-ink-muted mt-2 text-base leading-relaxed lg:mt-2.5 lg:text-[17px]">
-                  {body}
-                </p>
+          <div className="bg-forest-900 text-cream border-gold overflow-hidden rounded-[24px] border-t-4 lg:rounded-[30px]">
+            <div className="grid gap-x-16 gap-y-4 px-6 py-8 lg:grid-cols-2 lg:px-12 lg:py-11">
+              <div>
+                <SectionLabel tone="dark">Why Zackella</SectionLabel>
+                <h2 className="mt-3.5 text-[clamp(29px,3.4vw,46px)] leading-[1.1] text-balance lg:mt-5">
+                  Why travel with{" "}
+                  <span className="text-gold">Zackella?</span>
+                </h2>
               </div>
-            ))}
+              <p className="text-on-dark-soft text-base leading-relaxed text-pretty lg:text-[17px]">
+                Tours, car hire, airport transfers and the stays in between all come
+                from one team in Kampala. One person to ask, one quote to read. Here
+                is what that means in practice.
+              </p>
+            </div>
+
+            {/* A 1px gap over the rule colour draws the dividers, so no cell
+                carries a border that would run off the rounded corners. */}
+            <div className="bg-forest-rule border-forest-rule grid gap-px border-t sm:grid-cols-2">
+              {reasons.map(({ Icon, title, body, cta }, index) => {
+                const external = cta.href.startsWith("http");
+                const linkClasses =
+                  "text-gold mt-3.5 inline-flex items-center gap-2 text-[15px] font-bold";
+                const label = (
+                  <>
+                    {cta.label} <span aria-hidden="true">&rarr;</span>
+                  </>
+                );
+                return (
+                  <div
+                    key={title}
+                    className="bg-forest-900 flex gap-4 px-6 py-7 lg:gap-5 lg:px-12 lg:py-10"
+                  >
+                    <span className="bg-forest-800 flex size-11 shrink-0 items-center justify-center rounded-full lg:size-12">
+                      <Icon size={21} className="stroke-gold" />
+                    </span>
+                    <div>
+                      <p className="font-display text-gold text-xs font-extrabold tracking-[0.14em]">
+                        {String(index + 1).padStart(2, "0")}
+                      </p>
+                      <h3 className="mt-1.5 text-[20px] leading-snug lg:text-[23px]">
+                        {title}
+                      </h3>
+                      <p className="text-on-dark-soft mt-2 text-[15px] leading-relaxed lg:mt-2.5 lg:text-base">
+                        {body}
+                      </p>
+                      {external ? (
+                        <a
+                          href={cta.href}
+                          target="_blank"
+                          rel="noopener"
+                          className={linkClasses}
+                        >
+                          {label}
+                        </a>
+                      ) : (
+                        <Link href={cta.href} className={linkClasses}>
+                          {label}
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </Container>
       </section>
@@ -399,25 +420,50 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <CtaBand
-        heading="Tell us where. We'll plan the rest."
-        body={`${site.tagline}, one message away.`}
-        backdrop={
-          <ReelWatermark />
-        }
-        actions={
-          <ButtonRow>
-            <ButtonLink href={site.whatsapp.href} variant="gold" size="lg">
-              <WhatsAppIcon size={20} className="stroke-forest-900" strokeWidth={2} />
-              WhatsApp us
-            </ButtonLink>
-            <ButtonLink href={site.phone.href} variant="outlineCream" size="lg">
-              <PhoneIcon size={20} className="stroke-cream" strokeWidth={2} />
-              Call {site.phone.display}
-            </ButtonLink>
-          </ButtonRow>
-        }
-      />
+      {/* The reel plays out the page on its own: the words that sat here were
+          saying again what the section above already says. */}
+      <section className="photo-zoom text-cream relative min-h-[220px] overflow-hidden lg:min-h-[320px]">
+        <ReelWatermark />
+      </section>
+
+      {/* Over to you */}
+      <section className="bg-forest-900 text-cream border-gold/60 border-b-2 py-14 lg:py-24">
+        <Container className="flex flex-col items-center text-center">
+          <p className="text-gold flex items-center gap-3.5 text-xs font-bold tracking-[0.18em] uppercase lg:text-[13px]">
+            <span aria-hidden="true" className="bg-gold/40 block h-px w-10 lg:w-16" />
+            Over to you
+            <span aria-hidden="true" className="bg-gold/40 block h-px w-10 lg:w-16" />
+          </p>
+
+          <h2 className="mt-4.5 max-w-[760px] text-[clamp(30px,4vw,54px)] leading-[1.08] text-balance lg:mt-6">
+            Every trip here starts{" "}
+            <span className="text-gold">with a message.</span>
+          </h2>
+
+          <p className="text-on-dark-soft mt-4 max-w-[620px] text-base leading-relaxed text-pretty lg:mt-5 lg:text-[17px]">
+            It reaches the people who plan the routes and drive them, not a booking
+            engine. There is nothing to pay on this site. Tell us your dates and we
+            come back with a plan and a clear quote.
+          </p>
+
+          <span className="border-gold/35 mt-7 flex size-16 items-center justify-center rounded-full border lg:mt-9 lg:size-20">
+            <WhatsAppIcon size={28} className="stroke-gold lg:size-8" />
+          </span>
+
+          <div className="mt-7 w-full lg:mt-9">
+            <ButtonRow className="sm:justify-center">
+              <ButtonLink href={site.whatsapp.href} variant="gold" size="lg">
+                <WhatsAppIcon size={20} className="stroke-forest-900" strokeWidth={2} />
+                WhatsApp us
+              </ButtonLink>
+              <ButtonLink href={site.phone.href} variant="outlineCream" size="lg">
+                <PhoneIcon size={20} className="stroke-cream" strokeWidth={2} />
+                Call {site.phone.display}
+              </ButtonLink>
+            </ButtonRow>
+          </div>
+        </Container>
+      </section>
     </>
   );
 }

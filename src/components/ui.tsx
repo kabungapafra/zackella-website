@@ -111,9 +111,17 @@ export function ButtonLink({
  * which is what the mobile artboards specify and what thumbs expect; from the
  * `sm` breakpoint up they sit side by side as pills.
  */
-export function ButtonRow({ children }: { children: ReactNode }) {
+export function ButtonRow({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-3.5 [&>*]:w-full sm:[&>*]:w-auto">
+    <div
+      className={`flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-3.5 [&>*]:w-full sm:[&>*]:w-auto ${className}`}
+    >
       {children}
     </div>
   );

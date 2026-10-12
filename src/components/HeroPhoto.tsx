@@ -10,11 +10,14 @@ export function HeroPhoto({
   /** Crop focus, e.g. to keep a subject in frame on narrow screens. */
   position = "object-center",
   preload = false,
+  scrim = "edge",
 }: {
   src: string;
   position?: string;
   /** Set on the one hero that is the page's LCP element. */
   preload?: boolean;
+  /** `even` for centred copy, which has no empty half to ramp into. */
+  scrim?: "edge" | "even";
 }) {
   return (
     <div aria-hidden="true" className="bg-forest-900 absolute inset-0">
@@ -26,7 +29,7 @@ export function HeroPhoto({
         sizes="100vw"
         className={`object-cover ${position}`}
       />
-      <HeroScrim />
+      <HeroScrim spread={scrim} />
     </div>
   );
 }

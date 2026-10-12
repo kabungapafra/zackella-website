@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { BackToTop } from "@/components/BackToTop";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -9,17 +9,10 @@ import { site } from "@/lib/site";
 import { organizationSchema } from "@/lib/structured-data";
 import "./globals.css";
 
-/** Headings (700/800) and buttons (600/700). */
+/** The whole site: body copy (400/500), headings (700/800), buttons (600/700). */
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
-  display: "swap",
-});
-
-/** Body copy (400/500). */
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
   display: "swap",
 });
 
@@ -60,7 +53,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${inter.variable}`}>
+    <html lang="en" className={montserrat.variable}>
       <body>
         <a
           href="#main"
