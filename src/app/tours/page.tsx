@@ -81,61 +81,62 @@ export default function ToursPage() {
 
       {/* Destinations */}
       <section className="pt-11 pb-5 lg:pt-22.5 lg:pb-10">
-        <Container className="flex flex-col gap-14 lg:gap-27.5">
-          {tours.map((tour, index) => {
+        <Container className="flex flex-col gap-6 lg:gap-10">
+          {tours.map((tour) => {
             const { slug, name, badge, blurb, highlights, length, goodFor } = tour;
-            // Alternate which column the illustration sits in on desktop.
-            const artRight = index % 2 === 1;
             return (
               <article
                 key={slug}
                 id={slug}
-                className="grid scroll-mt-8 items-center gap-x-16 gap-y-4.5 lg:grid-cols-2 lg:gap-y-9"
+                className="bg-cream border-line-300 scroll-mt-8 overflow-hidden rounded-[22px] border lg:rounded-[26px]"
               >
-                <div
-                  className={`photo-zoom bg-forest-700 relative h-[230px] overflow-hidden rounded-[22px] lg:aspect-5/4 lg:h-auto lg:rounded-[26px] ${
-                    artRight ? "lg:order-2" : ""
-                  }`}
-                >
+                <div className="photo-zoom bg-forest-700 relative h-[260px] w-full overflow-hidden lg:h-[420px]">
                   <TourMedia tour={tour} variant="feature" />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-linear-to-b from-transparent from-40% to-[rgb(12_51_32_/_0.93)]"
+                  />
+                  <div className="text-cream absolute inset-x-5 bottom-5 lg:inset-x-8 lg:bottom-7">
+                    <span className="bg-gold text-forest-900 inline-block rounded-full px-2.5 py-1.25 text-[11px] font-bold tracking-[0.1em] uppercase lg:px-3 lg:py-1.5 lg:text-xs">
+                      {badge}
+                    </span>
+                    <h2 className="mt-2.5 text-[27px] leading-tight lg:mt-3.5 lg:text-[40px]">
+                      {name}
+                    </h2>
+                  </div>
                 </div>
-                <div>
-                  <span className="bg-gold text-forest-900 inline-block rounded-full px-2.5 py-1.25 text-[11px] font-bold tracking-[0.1em] uppercase lg:px-3 lg:py-1.5 lg:text-xs">
-                    {badge}
-                  </span>
-                  <h2 className="mt-3 text-[clamp(29px,3.6vw,46px)] leading-[1.1] lg:mt-4">
-                    {name}
-                  </h2>
-                  <p className="text-ink-soft mt-3 text-base leading-relaxed text-pretty lg:mt-4 lg:text-lg">
-                    {blurb}
-                  </p>
-                  <CheckList items={highlights} className="mt-3.5 lg:mt-5" />
 
-                  {/* Label-left, value-right rows on phones; two tiles on desktop. */}
-                  <dl className="mt-4 flex flex-col gap-2 lg:mt-6 lg:grid lg:grid-cols-2 lg:gap-3">
-                    <div className="bg-sand flex justify-between gap-3 rounded-xl px-3.5 py-3 text-[15px] lg:flex-col lg:justify-start lg:gap-0 lg:rounded-[14px] lg:px-4 lg:py-3.5">
-                      <dt className="text-ink-muted font-semibold lg:text-xs lg:font-bold lg:tracking-[0.12em] lg:uppercase">
-                        Suggested length
-                      </dt>
-                      <dd className="font-bold lg:mt-1 lg:text-[17px]">{length}</dd>
-                    </div>
-                    <div className="bg-sand flex justify-between gap-3 rounded-xl px-3.5 py-3 text-[15px] lg:flex-col lg:justify-start lg:gap-0 lg:rounded-[14px] lg:px-4 lg:py-3.5">
-                      <dt className="text-ink-muted font-semibold lg:text-xs lg:font-bold lg:tracking-[0.12em] lg:uppercase">
-                        Good for
-                      </dt>
-                      <dd className="text-right font-bold lg:mt-1 lg:text-left lg:text-[17px]">
-                        {goodFor}
-                      </dd>
-                    </div>
-                  </dl>
+                <div className="grid items-start gap-x-14 gap-y-4.5 px-5 py-5.5 lg:grid-cols-[1.4fr_1fr] lg:px-8 lg:py-8">
+                  <div>
+                    <p className="text-ink-soft text-base leading-relaxed text-pretty lg:text-lg">
+                      {blurb}
+                    </p>
+                    <CheckList items={highlights} className="mt-3.5 lg:mt-5" />
+                  </div>
 
-                  <ButtonLink
-                    href="/contact"
-                    block
-                    className="mt-4.5 lg:mt-6.5 lg:w-auto"
-                  >
-                    Plan this trip <span aria-hidden="true">&rarr;</span>
-                  </ButtonLink>
+                  <div>
+                    {/* Label-left, value-right rows on phones; stacked tiles alongside the text on desktop. */}
+                    <dl className="flex flex-col gap-2 lg:gap-3">
+                      <div className="bg-sand flex justify-between gap-3 rounded-xl px-3.5 py-3 text-[15px] lg:flex-col lg:justify-start lg:gap-0 lg:rounded-[14px] lg:px-4.5 lg:py-4">
+                        <dt className="text-ink-muted font-semibold lg:text-xs lg:font-bold lg:tracking-[0.12em] lg:uppercase">
+                          Suggested length
+                        </dt>
+                        <dd className="font-bold lg:mt-1 lg:text-[17px]">{length}</dd>
+                      </div>
+                      <div className="bg-sand flex justify-between gap-3 rounded-xl px-3.5 py-3 text-[15px] lg:flex-col lg:justify-start lg:gap-0 lg:rounded-[14px] lg:px-4.5 lg:py-4">
+                        <dt className="text-ink-muted font-semibold lg:text-xs lg:font-bold lg:tracking-[0.12em] lg:uppercase">
+                          Good for
+                        </dt>
+                        <dd className="text-right font-bold lg:mt-1 lg:text-left lg:text-[17px]">
+                          {goodFor}
+                        </dd>
+                      </div>
+                    </dl>
+
+                    <ButtonLink href="/contact" block className="mt-4 lg:mt-3">
+                      Plan this trip <span aria-hidden="true">&rarr;</span>
+                    </ButtonLink>
+                  </div>
                 </div>
               </article>
             );

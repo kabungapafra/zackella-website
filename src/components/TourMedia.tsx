@@ -20,7 +20,7 @@ export function TourMedia({
       sizes={
         variant === "tile"
           ? "(min-width: 1024px) 50vw, 280px"
-          : "(min-width: 1024px) 50vw, 100vw"
+          : "(min-width: 1024px) 1100px, 100vw"
       }
       className={`object-cover ${photo.position ?? "object-center"} ${className}`}
     />

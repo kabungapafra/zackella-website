@@ -22,8 +22,8 @@ export type Tour = {
     alt: string;
     /**
      * Crop focus. Several of these photographs are portrait but the feature
-     * slot is 5:4, so centring would cut the subject; set this where the
-     * interesting part is not in the middle.
+     * slot is a wide band, so centring would cut the subject; set this where
+     * the interesting part is not in the middle.
      */
     position?: string;
   };
