@@ -11,14 +11,16 @@
 export function HeroScrim({ spread = "edge" }: { spread?: "edge" | "even" }) {
   return (
     <>
+      {/* `even` lays nothing over the photograph at all: the copy is centred,
+          carries its own shadow, and the picture is the point. */}
+      {spread === "edge" && (
+        <span className="from-forest-900/90 via-forest-900/88 to-forest-900/86 lg:from-forest-900/95 lg:via-50% lg:via-forest-900/85 lg:to-forest-900/15 absolute inset-0 bg-linear-to-r" />
+      )}
       <span
-        className={`absolute inset-0 bg-linear-to-r ${
-          spread === "even"
-            ? "from-forest-900/58 via-forest-900/38 to-forest-900/58 lg:from-forest-900/46 lg:via-forest-900/24 lg:to-forest-900/46"
-            : "from-forest-900/90 via-forest-900/88 to-forest-900/86 lg:from-forest-900/95 lg:via-50% lg:via-forest-900/85 lg:to-forest-900/15"
+        className={`from-forest-900 absolute inset-x-0 bottom-0 bg-linear-to-t to-transparent ${
+          spread === "even" ? "h-1/5" : "h-1/3"
         }`}
       />
-      <span className="from-forest-900 absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t to-transparent" />
     </>
   );
 }
