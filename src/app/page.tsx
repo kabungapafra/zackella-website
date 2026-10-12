@@ -93,7 +93,7 @@ export default function HomePage() {
         {/* The scrim is held back so the photograph reads; the copy carries its
             own soft shadow instead, which keeps it legible over the bright
             leaves without flattening the picture behind it. */}
-        <Container className="relative flex flex-col items-center justify-center pt-11 pb-32 text-center [text-shadow:0_2px_14px_rgb(12_51_32/0.6)] lg:pt-24 lg:pb-50">
+        <Container className="relative flex flex-col items-center justify-center pt-11 pb-32 text-center [text-shadow:0_2px_10px_rgb(12_51_32/0.85),0_1px_28px_rgb(12_51_32/0.6)] lg:pt-24 lg:pb-50">
           <SectionLabel tone="dark" rule={false}>
             Discover the Pearl of Africa
           </SectionLabel>

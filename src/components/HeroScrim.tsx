@@ -14,7 +14,7 @@ export function HeroScrim({ spread = "edge" }: { spread?: "edge" | "even" }) {
       <span
         className={`absolute inset-0 bg-linear-to-r ${
           spread === "even"
-            ? "from-forest-900/78 via-forest-900/62 to-forest-900/78 lg:from-forest-900/70 lg:via-forest-900/52 lg:to-forest-900/70"
+            ? "from-forest-900/58 via-forest-900/38 to-forest-900/58 lg:from-forest-900/46 lg:via-forest-900/24 lg:to-forest-900/46"
             : "from-forest-900/90 via-forest-900/88 to-forest-900/86 lg:from-forest-900/95 lg:via-50% lg:via-forest-900/85 lg:to-forest-900/15"
         }`}
       />
