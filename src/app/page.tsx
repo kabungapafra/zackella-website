@@ -14,7 +14,7 @@ import {
   WhatsAppIcon,
 } from "@/components/Icon";
 import { HeroPhoto } from "@/components/HeroPhoto";
-import { ReelWatermark } from "@/components/ReelWatermark";
+import { VideoBackdrop } from "@/components/VideoBackdrop";
 import { TourMedia } from "@/components/TourMedia";
 import {
   ButtonLink,
@@ -91,10 +91,12 @@ export default function HomePage() {
             own soft shadow instead, which keeps it legible over the bright
             leaves without flattening the picture behind it. */}
         <Container className="relative flex flex-col items-center pt-11 pb-32 text-center [text-shadow:0_2px_14px_rgb(12_51_32/0.6)] lg:pt-24 lg:pb-50">
-          <SectionLabel tone="dark">Discover the Pearl of Africa</SectionLabel>
+          <SectionLabel tone="dark" rule={false}>
+            Discover the Pearl of Africa
+          </SectionLabel>
           {/* Sized off the viewport so the whole line always fits across one
               line, down to the narrowest phone. */}
-          <h1 className="mt-4.5 text-[clamp(25px,6.2vw,68px)] leading-[1.1] tracking-[-0.01em] whitespace-nowrap lg:mt-6.5">
+          <h1 className="mt-4.5 text-[clamp(27px,7vw,86px)] leading-[1.1] tracking-[-0.01em] whitespace-nowrap lg:mt-6.5">
             {/* The brush stroke is drawn under the word rather than ruled
                 across it, so it reads as a mark someone made by hand. */}
             <span className="whitespace-nowrap">
@@ -235,8 +237,10 @@ export default function HomePage() {
         className="bg-forest-900 text-cream pt-15 pb-14 lg:pt-27.5 lg:pb-25"
       >
         <Container className="lg:grid lg:grid-cols-[minmax(0,330px)_1fr] lg:items-start lg:gap-16">
-          <div className="lg:sticky lg:top-8">
-            <SectionLabel tone="dark">Car Hire</SectionLabel>
+          <div>
+            <SectionLabel tone="dark" rule={false}>
+              Car Hire
+            </SectionLabel>
             <h2 className="mt-3.5 text-[clamp(31px,3.6vw,50px)] leading-[1.08] text-balance lg:mt-5">
               The right vehicle{" "}
               <span className="text-gold">for every road.</span>
@@ -422,8 +426,11 @@ export default function HomePage() {
 
       {/* The reel plays out the page on its own: the words that sat here were
           saying again what the section above already says. */}
-      <section className="photo-zoom text-cream relative min-h-[220px] overflow-hidden lg:min-h-[320px]">
-        <ReelWatermark />
+      <section className="text-cream relative min-h-[320px] overflow-hidden lg:min-h-[560px]">
+        <VideoBackdrop
+          sources={[{ src: "/hero-reel.mp4", type: "video/mp4" }]}
+          variant="clear"
+        />
       </section>
 
       {/* Over to you */}

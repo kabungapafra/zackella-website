@@ -38,7 +38,7 @@ export function SiteHeader() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={`nav-link hover:text-forest-800 relative py-2 transition-colors ${
-                  active ? "text-forest-800" : ""
+                  active ? "text-gold-700" : ""
                 }`}
               >
                 {item.label}

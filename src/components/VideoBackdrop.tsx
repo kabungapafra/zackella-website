@@ -37,9 +37,10 @@ export function VideoBackdrop({
   /**
    * `feature` fills the band with the footage. `watermark` holds it right back
    * over the forest ground, so it reads as movement behind the words rather
-   * than as a picture.
+   * than as a picture. `clear` is the footage alone, for a band with no words
+   * over it and so nothing to keep legible.
    */
-  variant?: "feature" | "watermark";
+  variant?: "feature" | "watermark" | "clear";
 }) {
   const bandRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -90,6 +91,7 @@ export function VideoBackdrop({
   }, [enabled, near]);
 
   const watermark = variant === "watermark";
+  const clear = variant === "clear";
 
   return (
     <div ref={bandRef} aria-hidden="true" className="bg-forest-900 absolute inset-0">
@@ -122,6 +124,7 @@ export function VideoBackdrop({
         </video>
       )}
 
+      {!clear && (
       <span
         className={
           watermark
@@ -131,6 +134,7 @@ export function VideoBackdrop({
             : "absolute inset-0 bg-[linear-gradient(180deg,rgb(12_51_32/0.88)_0%,rgb(12_51_32/0.88)_44%,rgb(12_51_32/0.26)_72%,rgb(12_51_32/0.26)_100%)] lg:bg-[linear-gradient(90deg,rgb(12_51_32/0.88)_0%,rgb(12_51_32/0.88)_30%,rgb(12_51_32/0.30)_75%,rgb(12_51_32/0.30)_100%)]"
         }
       />
+      )}
     </div>
   );
 }

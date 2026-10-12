@@ -17,17 +17,22 @@ export function Container({
 export function SectionLabel({
   children,
   tone = "light",
+  rule = true,
 }: {
   children: ReactNode;
   tone?: "light" | "dark";
+  /** The short bar before the label; off where the label stands alone. */
+  rule?: boolean;
 }) {
   const color = tone === "dark" ? "text-gold" : "text-gold-800";
-  const rule = tone === "dark" ? "bg-gold" : "bg-gold-800";
+  const ruleColor = tone === "dark" ? "bg-gold" : "bg-gold-800";
   return (
     <p
       className={`flex items-center gap-2.5 text-xs tracking-[0.16em] font-bold uppercase lg:gap-3.5 lg:text-[13px] lg:tracking-[0.18em] ${color}`}
     >
-      <span aria-hidden="true" className={`block h-0.5 w-7 lg:w-11 ${rule}`} />
+      {rule && (
+        <span aria-hidden="true" className={`block h-0.5 w-7 lg:w-11 ${ruleColor}`} />
+      )}
       {children}
     </p>
   );
