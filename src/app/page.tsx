@@ -80,7 +80,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="photo-zoom bg-forest-900 text-cream relative overflow-hidden">
+      <section className="photo-zoom bg-forest-900 text-cream relative flex min-h-[88svh] overflow-hidden lg:min-h-[100svh]">
         <HeroPhoto
           src="/hero-gorilla.jpg"
           position="object-[center_58%]"
@@ -90,13 +90,13 @@ export default function HomePage() {
         {/* The scrim is held back so the photograph reads; the copy carries its
             own soft shadow instead, which keeps it legible over the bright
             leaves without flattening the picture behind it. */}
-        <Container className="relative flex flex-col items-center pt-11 pb-32 text-center [text-shadow:0_2px_14px_rgb(12_51_32/0.6)] lg:pt-24 lg:pb-50">
+        <Container className="relative flex flex-col items-center justify-center pt-11 pb-32 text-center [text-shadow:0_2px_14px_rgb(12_51_32/0.6)] lg:pt-24 lg:pb-50">
           <SectionLabel tone="dark" rule={false}>
             Discover the Pearl of Africa
           </SectionLabel>
           {/* Sized off the viewport so the whole line always fits across one
               line, down to the narrowest phone. */}
-          <h1 className="mt-4.5 text-[clamp(27px,7vw,86px)] leading-[1.1] tracking-[-0.01em] whitespace-nowrap lg:mt-6.5">
+          <h1 className="mt-4.5 text-[clamp(23px,5.4vw,64px)] leading-[1.1] tracking-[-0.01em] whitespace-nowrap lg:mt-6.5">
             {/* The brush stroke is drawn under the word rather than ruled
                 across it, so it reads as a mark someone made by hand. */}
             <span className="whitespace-nowrap">
@@ -121,7 +121,7 @@ export default function HomePage() {
             </span>{" "}
             <span className="text-gold">fully handled.</span>
           </h1>
-          <p className="text-on-dark mt-4.5 max-w-[620px] text-[15px] leading-relaxed text-pretty lg:mt-7 lg:text-[clamp(16px,1.25vw,18px)]">
+          <p className="text-on-dark mt-4 max-w-[560px] text-[14px] leading-relaxed text-pretty lg:mt-6 lg:text-[clamp(15px,1.05vw,16px)]">
             From your arrival at Entebbe to your last adventure, we take care of every
             detail. Big Five safaris, unforgettable gorilla trekking, breathtaking
             mountains, beautiful lakes and rivers &mdash; plus reliable 4x4 vehicle
@@ -129,10 +129,10 @@ export default function HomePage() {
           </p>
           <div className="mt-6.5 w-full lg:mt-9.5">
             <ButtonRow className="sm:justify-center">
-              <ButtonLink href="/tours" variant="gold" size="lg">
+              <ButtonLink href="/tours" variant="gold">
                 Explore tours
               </ButtonLink>
-              <ButtonLink href="/car-hire" variant="outlineCream" size="lg">
+              <ButtonLink href="/car-hire" variant="outlineCream">
                 Hire a car
               </ButtonLink>
             </ButtonRow>
@@ -237,7 +237,7 @@ export default function HomePage() {
         className="bg-forest-900 text-cream pt-15 pb-14 lg:pt-27.5 lg:pb-25"
       >
         <Container className="lg:grid lg:grid-cols-[minmax(0,330px)_1fr] lg:items-start lg:gap-16">
-          <div>
+          <div className="lg:pt-28">
             <SectionLabel tone="dark" rule={false}>
               Car Hire
             </SectionLabel>
