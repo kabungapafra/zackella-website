@@ -81,7 +81,7 @@ export default function HomePage() {
           <h1 className="mt-4.5 max-w-[880px] text-[clamp(44px,7vw,98px)] leading-[1.03] tracking-[-0.01em] text-balance lg:mt-6.5">
             Uganda, <span className="text-gold">fully handled.</span>
           </h1>
-          <p className="text-on-dark mt-4.5 max-w-[620px] text-[17px] leading-relaxed text-pretty lg:mt-7 lg:text-[clamp(18px,1.6vw,21px)]">
+          <p className="text-on-dark mt-4.5 max-w-[560px] text-[15px] leading-relaxed text-pretty lg:mt-7 lg:text-[clamp(16px,1.25vw,18px)]">
             From your arrival at Entebbe to your last adventure, we take care of every
             detail. Big Five safaris, unforgettable gorilla trekking, breathtaking
             mountains, beautiful lakes and rivers &mdash; plus reliable 4x4 vehicle

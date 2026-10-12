@@ -91,6 +91,7 @@ export const nav = [
  * wide and the full names wrap badly.
  */
 export const footerServices = [
+  { full: "Flight & Ticket Booking", short: "Flights & tickets" },
   { full: "Airport Pick-ups & Drop-offs", short: "Airport transfers" },
   { full: "Hotel Booking", short: "Hotel booking" },
   { full: "Travel Consultancy", short: "Consultancy" },

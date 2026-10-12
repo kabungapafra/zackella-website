@@ -142,6 +142,25 @@
     box-shadow: 0 10px 24px rgb(12 51 32 / 0.25);
   }
 
+  /* Main-nav link. A gold rule wipes out from the middle on hover and sits
+     there on the current page, so hovering shows you what the active state
+     already looks like rather than a second, unrelated effect. */
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    inset-inline: -2px;
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-gold);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+  }
+  .nav-link:hover::after,
+  .nav-link[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+
   /* Brings a block up as it scrolls into view.
    *
    * Driven by the scroll position itself rather than by JavaScript, so it
@@ -219,6 +238,7 @@
   }
   .lift,
   .btn-lift,
+  .nav-link::after,
   .tile-wrap .tile-art,
   .tile-wrap .tile-arrow,
   .photo-zoom img,
