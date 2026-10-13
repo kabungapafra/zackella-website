@@ -93,13 +93,13 @@ export default function HomePage() {
         {/* The scrim is held back so the photograph reads; the copy carries its
             own soft shadow instead, which keeps it legible over the bright
             leaves without flattening the picture behind it. */}
-        <Container className="relative flex flex-col items-center justify-center pt-11 pb-32 text-center [text-shadow:0_1px_3px_rgb(0_0_0/0.9),0_2px_14px_rgb(0_0_0/0.75),0_0_40px_rgb(0_0_0/0.5)] lg:pt-24 lg:pb-50">
+        <Container className="relative flex flex-col items-center justify-center pt-11 pb-32 text-center lg:pt-24 lg:pb-50">
           <SectionLabel tone="dark" rule={false}>
-            Discover the Pearl of Africa
+            <span className="text-white">Discover the Pearl of Africa</span>
           </SectionLabel>
           {/* Sized off the viewport so the whole line always fits across one
               line, down to the narrowest phone. */}
-          <h1 className="mt-4.5 text-[clamp(23px,5.4vw,64px)] leading-[1.1] tracking-[-0.01em] whitespace-nowrap lg:mt-6.5">
+          <h1 className="text-white mt-4.5 text-[clamp(23px,5.4vw,64px)] leading-[1.1] tracking-[-0.01em] whitespace-nowrap lg:mt-6.5">
             {/* The brush stroke is drawn under the word rather than ruled
                 across it, so it reads as a mark someone made by hand. */}
             <span className="whitespace-nowrap">
