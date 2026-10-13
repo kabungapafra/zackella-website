@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Image from "next/image";
-import { DateRangeIcon, GroupIcon, PinIcon } from "@/components/Icon";
+import {
+  DateRangeIcon,
+  GroupIcon,
+  PinIcon,
+  TickIcon,
+  WhatsAppIcon,
+} from "@/components/Icon";
 import { HeroPhoto } from "@/components/HeroPhoto";
 import { PageHero } from "@/components/PageHero";
 import { VideoBackdrop } from "@/components/VideoBackdrop";
@@ -80,76 +86,159 @@ export default function CarHirePage() {
       />
 
       {/* Fleet */}
-      <section className="pt-13 pb-12 lg:pt-25 lg:pb-22.5">
+      <section className="pt-12 pb-14 lg:pt-22 lg:pb-20">
         <Container>
-          <SectionLabel>The fleet</SectionLabel>
-          <h2 className="mt-3.5 max-w-[760px] text-[clamp(32px,4vw,52px)] leading-[1.08] text-balance lg:mt-5">
-            Choose your vehicle.
-          </h2>
-          <p className="text-ink-muted mt-3 max-w-[640px] text-base leading-relaxed lg:mt-4 lg:text-lg">
-            Not sure which one suits your trip? Tell us the route, the group size and
-            the luggage, and we&apos;ll recommend one.
-          </p>
+          {/* Section Introduction */}
+          <div className="mb-10 max-w-3xl lg:mb-14">
+            <div className="inline-flex items-center gap-2 rounded-full border border-forest-900/10 bg-forest-900/5 px-3.5 py-1.5 text-xs font-bold tracking-[0.14em] uppercase text-forest-800">
+              <span className="size-1.5 rounded-full bg-gold" />
+              4x4 Safari &amp; Commercial Fleet
+            </div>
+            <h2 className="font-display mt-3 text-[clamp(30px,4vw,50px)] font-extrabold leading-[1.08] tracking-tight text-forest-900">
+              Choose your vehicle, <span className="text-gold-700">conquer every road.</span>
+            </h2>
+            <p className="text-ink-soft mt-3 max-w-[660px] text-base leading-relaxed lg:mt-4 lg:text-[17px]">
+              Not sure which one suits your trip? Tell us the route, the group size and
+              the luggage, and our team will recommend the ideal match.
+            </p>
+          </div>
 
-          <div className="mt-6.5 grid gap-4 lg:mt-13 lg:grid-cols-2 lg:gap-6">
-            {fleet.map(({ slug, name, blurb, bestFor, hireTags, cta, accent, photo, photoPosition }) => (
-              <article
-                key={slug}
-                id={slug}
-                className={`reveal lift flex scroll-mt-8 flex-col gap-3.5 rounded-[22px] p-4.5 lg:gap-5 lg:rounded-[26px] lg:p-6.5 ${
-                  accent ? "bg-gold text-forest-900" : "border-line border bg-white"
-                }`}
-              >
-                <div
-                  className={`photo-zoom relative aspect-4/3 overflow-hidden rounded-[14px] lg:rounded-[18px] ${
-                    accent ? "bg-gold-soft" : "bg-sand"
-                  }`}
+          {/* Horizontal Split Fleet Showcase */}
+          <div className="flex flex-col gap-6 lg:gap-8">
+            {fleet.map(
+              ({
+                slug,
+                name,
+                blurb,
+                bestFor,
+                hireTags,
+                cta,
+                photo,
+                photoPosition,
+                teaser,
+                accent,
+                tileTagShort,
+              }) => (
+                <article
+                  key={slug}
+                  id={slug}
+                  className="reveal group relative grid grid-cols-1 overflow-hidden rounded-[24px] border border-line-200/90 bg-white shadow-[0_4px_24px_rgb(12_51_32/0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-[0_20px_45px_rgb(12_51_32/0.1)] lg:grid-cols-[1.1fr_1.3fr] lg:rounded-[30px]"
                 >
-                  <Image
-                    src={photo}
-                    alt={`${name} available for hire from ${site.name}`}
-                    fill
-                    sizes="(min-width: 1024px) 45vw, 100vw"
-                    className={`object-cover ${photoPosition ?? "object-center"}`}
-                  />
-                </div>
-                <h3 className="text-[28px] lg:text-[32px]">{name}</h3>
-                <p
-                  className={`text-base leading-relaxed lg:text-[17px] ${
-                    accent ? "text-ink-dim" : "text-ink-muted"
-                  }`}
-                >
-                  {blurb}
-                </p>
-                <CheckList
-                  items={bestFor}
-                  tone={accent ? "gold" : "light"}
-                  className="lg:text-base"
-                />
-                <div className="mt-auto flex flex-wrap items-center justify-between gap-3">
-                  <div className="flex flex-wrap gap-2">
-                    {hireTags.map((tag) => (
-                      <span
-                        key={tag}
-                        className={`rounded-full px-3 py-1.5 text-[13px] font-semibold ${
-                          accent ? "bg-forest-900 text-cream" : "bg-sand-deep"
-                        }`}
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  {/* Left Column: Cinematic Vehicle Photo */}
+                  <div className="relative h-[250px] w-full overflow-hidden bg-sand sm:h-[300px] lg:h-full lg:min-h-[360px]">
+                    <Image
+                      src={photo}
+                      alt={`${name} available for hire from ${site.name}`}
+                      fill
+                      sizes="(min-width: 1024px) 45vw, 100vw"
+                      className={`object-cover transition-transform duration-500 ease-out group-hover:scale-105 ${
+                        photoPosition ?? "object-center"
+                      }`}
+                    />
+                    {/* Gradient Overlay for photo readability */}
+                    <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/65 via-transparent to-black/25" />
+
+                    {/* Top Floating Badge */}
+                    <div className="absolute top-4 left-4">
+                      {accent ? (
+                        <span className="font-display rounded-full bg-gold px-3.5 py-1 text-xs font-black tracking-wide uppercase text-forest-900 shadow-md">
+                          ★ Flagship 4x4
+                        </span>
+                      ) : (
+                        <span className="font-display rounded-full bg-forest-900/85 px-3.5 py-1 text-xs font-bold text-cream backdrop-blur-md border border-white/20">
+                          {tileTagShort || "Safari & Travel"}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Bottom Photo Tagline */}
+                    <div className="absolute bottom-3.5 inset-x-4">
+                      <p className="text-white text-xs sm:text-sm font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)] line-clamp-1">
+                        {teaser}
+                      </p>
+                    </div>
                   </div>
-                  <ButtonLink
-                    href="/contact"
-                    variant={accent ? "dark" : "forest"}
-                    block
-                    className="!text-[15px] lg:!w-auto"
-                  >
-                    {cta}
-                  </ButtonLink>
-                </div>
-              </article>
-            ))}
+
+                  {/* Right Column: Vehicle Specs, Best For & Actions */}
+                  <div className="flex flex-col justify-between p-6 sm:p-7 lg:p-8">
+                    <div>
+                      {/* Top Meta & Title */}
+                      <div className="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                          <span className="font-display text-[11px] font-black uppercase tracking-[0.16em] text-forest-800/60">
+                            Available in Kampala &amp; Nationwide
+                          </span>
+                          <h3 className="font-display text-[24px] sm:text-[28px] font-extrabold leading-tight tracking-tight text-forest-900 transition-colors group-hover:text-forest-800 lg:text-[30px] mt-0.5">
+                            {name}
+                          </h3>
+                        </div>
+                        {/* Rental Options Tags */}
+                        <div className="flex flex-wrap gap-1.5">
+                          {hireTags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="rounded-full bg-cream border border-line-300 px-3 py-1 text-xs font-bold text-forest-900"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <p className="text-ink-soft mt-3 text-[14.5px] leading-relaxed text-pretty lg:text-[15.5px]">
+                        {blurb}
+                      </p>
+
+                      {/* Best for feature highlights grid */}
+                      <div className="my-5 rounded-2xl border border-line-200/70 bg-[#faf8f4] p-4.5 sm:p-5">
+                        <p className="font-display text-forest-900/50 mb-3 text-[11px] font-extrabold tracking-[0.14em] uppercase">
+                          Ideal for this vehicle
+                        </p>
+                        <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                          {bestFor.map((item) => (
+                            <li
+                              key={item}
+                              className="flex items-start gap-2 text-[13px] leading-snug text-ink/85 sm:text-[13.5px]"
+                            >
+                              <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-gold/25 text-forest-900">
+                                <TickIcon size={11} className="stroke-[2.5]" />
+                              </span>
+                              <span className="font-medium">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Card Footer with CTA & WhatsApp */}
+                    <div className="flex flex-col items-stretch justify-between gap-3 border-t border-line-200/80 pt-4 sm:flex-row sm:items-center mt-2">
+                      <ButtonLink
+                        href="/contact"
+                        variant="dark"
+                        className="w-full !px-6 !py-3.5 text-[14px] font-bold shadow-sm transition-all group-hover:bg-forest-800 sm:w-auto lg:text-[15px]"
+                      >
+                        <span>{cta}</span>
+                        <span
+                          aria-hidden="true"
+                          className="transition-transform duration-200 group-hover:translate-x-1"
+                        >
+                          &rarr;
+                        </span>
+                      </ButtonLink>
+                      <a
+                        href={site.whatsapp.href}
+                        target="_blank"
+                        rel="noopener"
+                        className="inline-flex items-center justify-center gap-2 text-xs font-bold text-forest-800 transition-colors hover:text-gold-700 py-1"
+                      >
+                        <WhatsAppIcon size={16} className="stroke-current" />
+                        <span>Quick WhatsApp quote</span>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              )
+            )}
           </div>
         </Container>
       </section>
