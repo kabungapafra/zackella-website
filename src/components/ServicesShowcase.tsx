@@ -71,7 +71,7 @@ export function ServicesShowcase() {
         {/* Subtle background watermark number */}
         <span
           aria-hidden="true"
-          className="font-display pointer-events-none absolute right-6 top-3 select-none text-[90px] font-black text-forest-900/[0.035] sm:right-10 sm:text-[130px] lg:text-[160px]"
+          className="font-display pointer-events-none absolute right-6 top-3 select-none text-[90px] font-bold text-forest-900/[0.035] sm:right-10 sm:text-[130px] lg:text-[160px]"
         >
           {String(activeIndex + 1).padStart(2, "0")}
         </span>
@@ -92,7 +92,7 @@ export function ServicesShowcase() {
                   <Icon size={32} className="stroke-current" />
                 </div>
                 <div>
-                  <span className="font-display rounded-full border border-forest-900/10 bg-forest-900/5 px-3 py-1 text-xs font-black tracking-widest text-forest-800">
+                  <span className="font-sans rounded-full border border-forest-900/10 bg-forest-900/5 px-3 py-1 text-xs font-bold tracking-widest text-forest-800">
                     SERVICE {String(activeIndex + 1).padStart(2, "0")} OF 06
                   </span>
                   <p className="mt-1 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gold-700">
@@ -103,7 +103,7 @@ export function ServicesShowcase() {
               </div>
 
               {/* Title & Blurb */}
-              <h3 className="font-display mt-5 text-[26px] font-extrabold leading-[1.12] tracking-tight text-forest-900 sm:text-[32px] lg:text-[38px]">
+              <h3 className="font-display mt-5 text-[26px] font-bold leading-[1.12] text-forest-900 sm:text-[32px] lg:text-[38px]">
                 {name}
               </h3>
               <p className="text-ink-soft mt-3.5 max-w-xl text-[15px] leading-relaxed text-pretty sm:text-[16.5px]">
@@ -141,7 +141,7 @@ export function ServicesShowcase() {
           {/* Right Column: Inset "What's Included" Box */}
           <div className="rounded-[22px] border border-line-200/80 bg-[#faf8f4] p-5.5 sm:p-7">
             <div className="flex items-center justify-between border-b border-line-200/70 pb-3.5">
-              <p className="font-display text-[11px] font-extrabold tracking-[0.14em] uppercase text-forest-900/60">
+              <p className="font-sans text-[11px] font-bold tracking-[0.14em] uppercase text-forest-900/60">
                 What&apos;s Included
               </p>
               <span className="rounded-full bg-gold/20 px-2.5 py-0.5 text-[11px] font-bold text-forest-900">

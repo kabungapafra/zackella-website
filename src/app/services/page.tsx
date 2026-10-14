@@ -50,8 +50,8 @@ export default function ServicesPage() {
               <span className="size-1.5 rounded-full bg-gold" />
               Tailored Travel Capabilities
             </div>
-            <h2 className="font-display mt-3 text-[clamp(28px,3.5vw,44px)] font-extrabold leading-tight tracking-tight text-forest-900">
-              Six dedicated services, <span className="text-gold-700">handled with perfection.</span>
+            <h2 className="font-display mt-3 text-[clamp(28px,3.5vw,44px)] font-bold leading-tight text-forest-900">
+              Six dedicated services, <span className="text-gold-700 font-serif font-medium">handled with perfection.</span>
             </h2>
             <p className="text-ink-soft mt-3 text-[15px] leading-relaxed text-pretty lg:text-[17px]">
               Every moving piece of your journey coordinated by our Kampala team. Switch between services below to explore what&apos;s included and request your quote.

@@ -5,7 +5,6 @@ import {
   DateRangeIcon,
   GroupIcon,
   PinIcon,
-  TickIcon,
   WhatsAppIcon,
 } from "@/components/Icon";
 import { HeroPhoto } from "@/components/HeroPhoto";
@@ -94,8 +93,8 @@ export default function CarHirePage() {
               <span className="size-1.5 rounded-full bg-gold" />
               4x4 Safari &amp; Commercial Fleet
             </div>
-            <h2 className="font-display mt-3 text-[clamp(30px,4vw,50px)] font-extrabold leading-[1.08] tracking-tight text-forest-900">
-              Choose your vehicle, <span className="text-gold-700">conquer every road.</span>
+            <h2 className="mt-3 text-[clamp(30px,4vw,50px)] leading-[1.08] text-forest-900">
+              Choose your vehicle, <span className="text-gold-700 font-serif font-medium">conquer every road.</span>
             </h2>
             <p className="text-ink-soft mt-3 max-w-[660px] text-base leading-relaxed lg:mt-4 lg:text-[17px]">
               Not sure which one suits your trip? Tell us the route, the group size and
@@ -103,8 +102,8 @@ export default function CarHirePage() {
             </p>
           </div>
 
-          {/* Horizontal Split Fleet Showcase */}
-          <div className="flex flex-col gap-6 lg:gap-8">
+          {/* Fleet grid — same card shape as the tours page */}
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {fleet.map(
               ({
                 slug,
@@ -112,128 +111,89 @@ export default function CarHirePage() {
                 blurb,
                 bestFor,
                 hireTags,
-                cta,
                 photo,
                 photoPosition,
-                teaser,
                 accent,
                 tileTagShort,
               }) => (
                 <article
                   key={slug}
                   id={slug}
-                  className="reveal group relative grid grid-cols-1 overflow-hidden rounded-[24px] border border-line-200/90 bg-white shadow-[0_4px_24px_rgb(12_51_32/0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-[0_20px_45px_rgb(12_51_32/0.1)] lg:grid-cols-[1.1fr_1.3fr] lg:rounded-[30px]"
+                  className="group flex scroll-mt-24 flex-col overflow-hidden rounded-2xl border border-line-200/80 bg-white shadow-[0_2px_12px_rgb(12_51_32/0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_36px_rgb(12_51_32/0.12)]"
                 >
-                  {/* Left Column: Cinematic Vehicle Photo */}
-                  <div className="relative h-[250px] w-full overflow-hidden bg-sand sm:h-[300px] lg:h-full lg:min-h-[360px]">
+                  {/* Card Photo */}
+                  <div className="relative h-[210px] shrink-0 overflow-hidden bg-forest-900 sm:h-[220px]">
                     <Image
                       src={photo}
                       alt={`${name} available for hire from ${site.name}`}
                       fill
-                      sizes="(min-width: 1024px) 45vw, 100vw"
-                      className={`object-cover transition-transform duration-500 ease-out group-hover:scale-105 ${
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className={`object-cover transition-transform duration-500 group-hover:scale-105 ${
                         photoPosition ?? "object-center"
                       }`}
                     />
-                    {/* Gradient Overlay for photo readability */}
-                    <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/65 via-transparent to-black/25" />
 
-                    {/* Top Floating Badge */}
-                    <div className="absolute top-4 left-4">
-                      {accent ? (
-                        <span className="font-display rounded-full bg-gold px-3.5 py-1 text-xs font-black tracking-wide uppercase text-forest-900 shadow-md">
-                          ★ Flagship 4x4
-                        </span>
-                      ) : (
-                        <span className="font-display rounded-full bg-forest-900/85 px-3.5 py-1 text-xs font-bold text-cream backdrop-blur-md border border-white/20">
-                          {tileTagShort || "Safari & Travel"}
+                    {/* Floating top badges */}
+                    <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                      {accent && (
+                        <span className="bg-gold text-forest-900 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide shadow-sm">
+                          Flagship
                         </span>
                       )}
-                    </div>
-
-                    {/* Bottom Photo Tagline */}
-                    <div className="absolute bottom-3.5 inset-x-4">
-                      <p className="text-white text-xs sm:text-sm font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)] line-clamp-1">
-                        {teaser}
-                      </p>
+                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[10px] font-bold text-white backdrop-blur-sm">
+                        <GroupIcon size={10} className="stroke-current stroke-[2.5]" />
+                        {tileTagShort}
+                      </span>
+                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[10px] font-bold text-white backdrop-blur-sm">
+                        <PinIcon size={10} className="stroke-current stroke-[2.5]" />
+                        Uganda
+                      </span>
                     </div>
                   </div>
 
-                  {/* Right Column: Vehicle Specs, Best For & Actions */}
-                  <div className="flex flex-col justify-between p-6 sm:p-7 lg:p-8">
-                    <div>
-                      {/* Top Meta & Title */}
-                      <div className="flex flex-wrap items-start justify-between gap-3">
-                        <div>
-                          <span className="font-display text-[11px] font-black uppercase tracking-[0.16em] text-forest-800/60">
-                            Available in Kampala &amp; Nationwide
-                          </span>
-                          <h3 className="font-display text-[24px] sm:text-[28px] font-extrabold leading-tight tracking-tight text-forest-900 transition-colors group-hover:text-forest-800 lg:text-[30px] mt-0.5">
-                            {name}
-                          </h3>
-                        </div>
-                        {/* Rental Options Tags */}
-                        <div className="flex flex-wrap gap-1.5">
-                          {hireTags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="rounded-full bg-cream border border-line-300 px-3 py-1 text-xs font-bold text-forest-900"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+                  {/* Card Body */}
+                  <div className="flex flex-1 flex-col p-4 sm:p-5">
+                    {/* Title */}
+                    <h3 className="font-display text-forest-900 text-[17px] font-bold leading-[1.2] group-hover:text-forest-700 transition-colors">
+                      {name}
+                    </h3>
 
-                      <p className="text-ink-soft mt-3 text-[14.5px] leading-relaxed text-pretty lg:text-[15.5px]">
-                        {blurb}
-                      </p>
+                    {/* Ideal for */}
+                    <p className="text-ink-muted mt-1.5 text-[12.5px] leading-relaxed">
+                      <span className="font-bold text-forest-900/80">Ideal for: </span>
+                      {bestFor.slice(0, 2).join(" · ")}
+                    </p>
 
-                      {/* Best for feature highlights grid */}
-                      <div className="my-5 rounded-2xl border border-line-200/70 bg-[#faf8f4] p-4.5 sm:p-5">
-                        <p className="font-display text-forest-900/50 mb-3 text-[11px] font-extrabold tracking-[0.14em] uppercase">
-                          Ideal for this vehicle
-                        </p>
-                        <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                          {bestFor.map((item) => (
-                            <li
-                              key={item}
-                              className="flex items-start gap-2 text-[13px] leading-snug text-ink/85 sm:text-[13.5px]"
-                            >
-                              <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-gold/25 text-forest-900">
-                                <TickIcon size={11} className="stroke-[2.5]" />
-                              </span>
-                              <span className="font-medium">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
+                    {/* Blurb */}
+                    <p className="text-ink-soft mt-2.5 text-[13px] leading-relaxed line-clamp-3">
+                      {blurb}
+                    </p>
 
-                    {/* Card Footer with CTA & WhatsApp */}
-                    <div className="flex flex-col items-stretch justify-between gap-3 border-t border-line-200/80 pt-4 sm:flex-row sm:items-center mt-2">
-                      <ButtonLink
-                        href="/contact"
-                        variant="dark"
-                        className="w-full !px-6 !py-3.5 text-[14px] font-bold shadow-sm transition-all group-hover:bg-forest-800 sm:w-auto lg:text-[15px]"
-                      >
-                        <span>{cta}</span>
-                        <span
-                          aria-hidden="true"
-                          className="transition-transform duration-200 group-hover:translate-x-1"
+                    {/* Hire options */}
+                    <p className="text-ink-muted mt-2 flex items-center gap-1.5 text-[12px]">
+                      <DateRangeIcon size={11} className="stroke-forest-700 shrink-0 stroke-[2.5]" />
+                      {hireTags.join(" · ")}
+                    </p>
+
+                    {/* Footer */}
+                    <div className="mt-auto pt-4">
+                      <div className="flex items-center justify-between gap-2">
+                        <a
+                          href="/contact"
+                          className="bg-forest-900 text-cream hover:bg-forest-800 inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2.5 text-[13px] font-bold transition-colors"
                         >
-                          &rarr;
-                        </span>
-                      </ButtonLink>
-                      <a
-                        href={site.whatsapp.href}
-                        target="_blank"
-                        rel="noopener"
-                        className="inline-flex items-center justify-center gap-2 text-xs font-bold text-forest-800 transition-colors hover:text-gold-700 py-1"
-                      >
-                        <WhatsAppIcon size={16} className="stroke-current" />
-                        <span>Quick WhatsApp quote</span>
-                      </a>
+                          Request a quote <span aria-hidden="true">→</span>
+                        </a>
+                        <a
+                          href={site.whatsapp.href}
+                          target="_blank"
+                          rel="noopener"
+                          className="text-forest-800 hover:text-gold-700 inline-flex items-center gap-1.5 text-xs font-bold transition-colors"
+                        >
+                          <WhatsAppIcon size={15} className="stroke-current" />
+                          <span>WhatsApp</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </article>

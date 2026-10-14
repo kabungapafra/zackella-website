@@ -50,7 +50,7 @@ export default function ContactPage() {
                 <p className="text-[13px] font-bold tracking-[0.12em] uppercase">
                   WhatsApp
                 </p>
-                <p className="font-display mt-0.5 text-2xl font-bold tracking-[-0.015em] lg:mt-1 lg:text-[26px]">
+                <p className="font-display mt-0.5 text-2xl font-bold lg:mt-1 lg:text-[26px]">
                   {site.whatsapp.display}
                 </p>
               </div>
@@ -60,7 +60,7 @@ export default function ContactPage() {
               <PhoneIcon size={34} className="stroke-forest-800 shrink-0" />
               <div>
                 <p className={cardLabel}>Call</p>
-                <p className="font-display mt-0.5 text-2xl font-bold tracking-[-0.015em] lg:mt-1 lg:text-[26px]">
+                <p className="font-display mt-0.5 text-2xl font-bold lg:mt-1 lg:text-[26px]">
                   {site.phone.display}
                 </p>
               </div>
@@ -70,7 +70,7 @@ export default function ContactPage() {
               <MailIcon size={34} className="stroke-forest-800 shrink-0" />
               <div className="min-w-0">
                 <p className={cardLabel}>Email</p>
-                <p className="font-display mt-0.5 text-[19px] font-bold tracking-[-0.015em] [overflow-wrap:anywhere] lg:mt-1 lg:text-[21px]">
+                <p className="font-display mt-0.5 text-[19px] font-bold [overflow-wrap:anywhere] lg:mt-1 lg:text-[21px]">
                   {site.email.display}
                 </p>
               </div>
@@ -80,7 +80,7 @@ export default function ContactPage() {
               <PinIcon size={34} className="stroke-forest-800 shrink-0" />
               <div>
                 <p className={cardLabel}>Visit us</p>
-                <p className="font-display mt-0.5 text-[19px] leading-tight font-bold tracking-[-0.015em] lg:mt-1 lg:text-[21px]">
+                <p className="font-display mt-0.5 text-[19px] leading-tight font-bold lg:mt-1 lg:text-[21px]">
                   {site.address.oneLine}
                 </p>
               </div>

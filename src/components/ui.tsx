@@ -89,7 +89,7 @@ export function ButtonLink({
         : "px-6 py-4";
   const text = size === "lg" ? "text-[17px]" : "text-base";
   const width = block ? "flex w-full" : "inline-flex";
-  const classes = `btn-lift font-display ${width} items-center justify-center gap-2.5 rounded-full text-center font-bold ${padding} ${text} ${buttonVariants[variant]} ${className}`;
+  const classes = `btn-lift font-sans ${width} items-center justify-center gap-2.5 rounded-full text-center font-bold ${padding} ${text} ${buttonVariants[variant]} ${className}`;
 
   const isExternal = external ?? /^(https?:|tel:|mailto:)/.test(href);
   if (isExternal) {

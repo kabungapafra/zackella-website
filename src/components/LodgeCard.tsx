@@ -37,7 +37,7 @@ export function LodgeCard({ lodge }: { lodge: Lodge }) {
           <span className="bg-gold text-forest-900 inline-block rounded-full px-2.5 py-1.25 text-[11px] font-bold tracking-[0.1em] uppercase lg:px-3 lg:py-1.5 lg:text-xs">
             {lodge.badge}
           </span>
-          <span className="font-display mt-2.5 block text-[27px] leading-tight font-extrabold tracking-[-0.01em] lg:mt-3.5 lg:text-[40px]">
+          <span className="font-display mt-2.5 block text-[27px] leading-tight font-bold lg:mt-3.5 lg:text-[40px]">
             {lodge.name}
           </span>
           <span className="text-gold mt-2 flex items-center gap-2 text-[15px] font-bold lg:mt-3 lg:text-base">

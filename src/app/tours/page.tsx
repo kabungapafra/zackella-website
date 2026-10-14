@@ -8,7 +8,6 @@ import { TourMedia } from "@/components/TourMedia";
 import {
   ButtonLink,
   ButtonRow,
-  CheckList,
   Container,
   CtaBand,
   SectionLabel,
@@ -60,17 +59,17 @@ export default function ToursPage() {
         media={<HeroPhoto src="/uganda-road.jpg" preload />}
       />
 
-      {/* Jump links: a scrolling rail on phones, a wrapping row on desktop. */}
-      <nav aria-label="Destinations" className="bg-sand border-line-200 border-b">
-        <div className="scroller gap-2.5 px-5 py-3.5 sm:px-7 lg:mx-auto lg:max-w-[1600px] lg:flex-wrap lg:items-center lg:py-4.5">
-          <span className="text-ink-muted mr-1.5 hidden text-[13px] font-bold tracking-[0.14em] uppercase lg:inline">
-            Jump to
-          </span>
+      {/* Quick-Jump Navigation — scrolls away with the page */}
+      <nav
+        aria-label="Destinations"
+        className="border-b border-line-300/80 bg-cream/95 shadow-[0_2px_12px_rgb(12_51_32/0.04)]"
+      >
+        <div className="scroller flex items-center gap-2 px-4 py-3 sm:px-7 lg:mx-auto lg:max-w-[1280px] lg:flex-wrap lg:py-3">
           {tourChips.map(({ slug, label, short }) => (
             <a
               key={slug}
               href={`#${slug}`}
-              className="border-line-300 bg-cream hover:bg-forest-800 hover:text-cream rounded-full border px-4.5 py-2.5 text-[15px] font-semibold transition-colors"
+              className="border-line-300 text-ink-soft hover:bg-forest-900 hover:text-cream hover:border-forest-900 shrink-0 rounded-full border bg-white/80 px-3.5 py-1.5 text-xs font-semibold shadow-2xs transition-all sm:text-[13px]"
             >
               <span className="lg:hidden">{short}</span>
               <span className="hidden lg:inline">{label}</span>
@@ -79,114 +78,102 @@ export default function ToursPage() {
         </div>
       </nav>
 
-      {/* Destinations */}
-      <section className="pt-11 pb-5 lg:pt-22.5 lg:pb-10">
-        <Container className="flex flex-col gap-5 lg:gap-7">
-          {tours.map((tour, index) => {
-            const { slug, name, badge, blurb, highlights, length, goodFor } = tour;
+      {/* Destinations — 4-up card grid */}
+      <section className="py-10 lg:py-16">
+        <Container>
+          {/* Section header */}
+          <div className="mb-7 lg:mb-10">
+            <SectionLabel>Uganda Safari Routes</SectionLabel>
+            <h2 className="mt-3 text-[clamp(26px,3.2vw,40px)] leading-[1.1] text-balance">
+              Seven favourites. Every one tailor-made.
+            </h2>
+            <p className="text-ink-muted mt-2 max-w-[560px] text-[15px] leading-relaxed">
+              Prices depend on season, group size and where you stay — every trip is quoted individually.
+            </p>
+          </div>
 
-            // The first destination is the one most people come for, so it
-            // keeps the full-width card; the rest read as a list beneath it.
-            if (index === 0) {
+          {/* 4-column grid of cards */}
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+            {tours.map((tour, index) => {
+              const { slug, name, badge, blurb, highlights, length, goodFor } = tour;
+              const isFeatured = index === 0;
+
               return (
                 <article
                   key={slug}
                   id={slug}
-                  className="bg-cream border-line-300 scroll-mt-8 overflow-hidden rounded-[22px] border lg:rounded-[26px]"
+                  className="group flex scroll-mt-24 flex-col overflow-hidden rounded-2xl border border-line-200/80 bg-white shadow-[0_2px_12px_rgb(12_51_32/0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_36px_rgb(12_51_32/0.12)]"
                 >
-                  <div className="photo-zoom bg-forest-700 relative h-[260px] w-full overflow-hidden lg:h-[420px]">
-                    <TourMedia tour={tour} variant="feature" />
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0 bg-linear-to-b from-transparent from-40% to-[rgb(12_51_32_/_0.93)]"
+                  {/* Card Photo */}
+                  <div className="relative h-[210px] shrink-0 overflow-hidden bg-forest-900 sm:h-[220px]">
+                    <TourMedia
+                      tour={tour}
+                      variant="tile"
+                      className="transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="text-cream absolute inset-x-5 bottom-5 lg:inset-x-8 lg:bottom-7">
-                      <span className="bg-gold text-forest-900 inline-block rounded-full px-2.5 py-1.25 text-[11px] font-bold tracking-[0.1em] uppercase lg:px-3 lg:py-1.5 lg:text-xs">
-                        {badge}
+
+                    {/* Floating top badges */}
+                    <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                      {isFeatured && (
+                        <span className="bg-gold text-forest-900 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide shadow-sm">
+                          Featured
+                        </span>
+                      )}
+                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[10px] font-bold text-white backdrop-blur-sm">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        {length}
                       </span>
-                      <h2 className="mt-2.5 text-[27px] leading-tight lg:mt-3.5 lg:text-[40px]">
-                        {name}
-                      </h2>
+                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[10px] font-bold text-white backdrop-blur-sm">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        Uganda
+                      </span>
                     </div>
                   </div>
 
-                  <div className="grid items-start gap-x-14 gap-y-4.5 px-5 py-5.5 lg:grid-cols-[1.4fr_1fr] lg:px-8 lg:py-8">
-                    <div>
-                      <p className="text-ink-soft text-base leading-relaxed text-pretty lg:text-lg">
-                        {blurb}
-                      </p>
-                      <CheckList items={highlights} className="mt-3.5 lg:mt-5" />
-                    </div>
-                    <div>
-                      <dl className="flex flex-col gap-2 lg:gap-3">
-                        <div className="bg-sand flex justify-between gap-3 rounded-xl px-3.5 py-3 text-[15px] lg:flex-col lg:justify-start lg:gap-0 lg:rounded-[14px] lg:px-4.5 lg:py-4">
-                          <dt className="text-ink-muted font-semibold lg:text-xs lg:font-bold lg:tracking-[0.12em] lg:uppercase">
-                            Suggested length
-                          </dt>
-                          <dd className="font-bold lg:mt-1 lg:text-[17px]">{length}</dd>
-                        </div>
-                        <div className="bg-sand flex justify-between gap-3 rounded-xl px-3.5 py-3 text-[15px] lg:flex-col lg:justify-start lg:gap-0 lg:rounded-[14px] lg:px-4.5 lg:py-4">
-                          <dt className="text-ink-muted font-semibold lg:text-xs lg:font-bold lg:tracking-[0.12em] lg:uppercase">
-                            Good for
-                          </dt>
-                          <dd className="text-right font-bold lg:mt-1 lg:text-left lg:text-[17px]">
-                            {goodFor}
-                          </dd>
-                        </div>
-                      </dl>
-                      <ButtonLink href="/contact" block className="mt-4 lg:mt-3">
-                        Plan this trip <span aria-hidden="true">&rarr;</span>
-                      </ButtonLink>
+                  {/* Card Body */}
+                  <div className="flex flex-1 flex-col p-4 sm:p-5">
+                    {/* Title */}
+                    <h3 className="font-display text-forest-900 text-[17px] font-bold leading-[1.2] group-hover:text-forest-700 transition-colors">
+                      {name}
+                    </h3>
+
+                    {/* Areas */}
+                    <p className="text-ink-muted mt-1.5 text-[12.5px] leading-relaxed">
+                      <span className="font-bold text-forest-900/80">Areas: </span>
+                      {highlights.slice(0, 2).join(" · ")}
+                    </p>
+
+                    {/* Blurb */}
+                    <p className="text-ink-soft mt-2.5 text-[13px] leading-relaxed line-clamp-3">
+                      {blurb}
+                    </p>
+
+                    {/* Good For */}
+                    <p className="text-ink-muted mt-2 flex items-center gap-1.5 text-[12px]">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-forest-700" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                      {goodFor}
+                    </p>
+
+                    {/* Spacer */}
+                    <div className="mt-auto pt-4">
+                      <div className="flex items-center justify-between gap-2">
+                        <a
+                          href={`/contact`}
+                          className="bg-forest-900 text-cream hover:bg-forest-800 inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2.5 text-[13px] font-bold transition-colors"
+                        >
+                          Plan this trip <span aria-hidden="true">→</span>
+                        </a>
+                        <span className="text-ink-muted text-right">
+                          <span className="block text-[10px] font-bold uppercase tracking-wider">Days</span>
+                          <span className="font-bold text-forest-900 text-[17px] leading-none">{length.split(" ")[0]}</span>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </article>
               );
-            }
-
-            return (
-              <article
-                key={slug}
-                id={slug}
-                className="bg-cream border-line-300 grid scroll-mt-8 overflow-hidden rounded-[22px] border lg:grid-cols-[340px_1fr] lg:rounded-[26px]"
-              >
-                <div className="photo-zoom bg-forest-700 relative h-[200px] overflow-hidden lg:h-auto lg:min-h-[280px]">
-                  <TourMedia tour={tour} variant="row" />
-                </div>
-
-                <div className="px-5 py-5 lg:px-8 lg:py-7">
-                  <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2">
-                    <span className="bg-gold text-forest-900 inline-block rounded-full px-2.5 py-1.25 text-[11px] font-bold tracking-[0.1em] uppercase lg:px-3 lg:py-1.5 lg:text-xs">
-                      {badge}
-                    </span>
-                    <p className="text-ink-muted text-[13px] font-bold tracking-[0.1em] uppercase">
-                      {length} &middot; {goodFor}
-                    </p>
-                  </div>
-
-                  <h2 className="mt-2.5 text-[25px] leading-tight lg:mt-3 lg:text-[clamp(27px,2.6vw,34px)]">
-                    {name}
-                  </h2>
-                  <p className="text-ink-soft mt-2 text-base leading-relaxed text-pretty lg:mt-2.5 lg:text-[17px]">
-                    {blurb}
-                  </p>
-
-                  {/* Two columns from `lg`, so a long list does not stretch the row. */}
-                  <CheckList
-                    items={highlights}
-                    className="mt-3 lg:mt-4 lg:grid lg:grid-cols-2 lg:gap-x-7 lg:text-base"
-                  />
-
-                  <ButtonLink
-                    href="/contact"
-                    block
-                    className="mt-4 lg:mt-5 lg:inline-flex lg:w-auto"
-                  >
-                    Plan this trip <span aria-hidden="true">&rarr;</span>
-                  </ButtonLink>
-                </div>
-              </article>
-            );
-          })}
+            })}
+          </div>
         </Container>
       </section>
 
@@ -200,10 +187,6 @@ export default function ToursPage() {
                 Where you sleep is half the trip.
               </h2>
             </div>
-            <p className="text-ink-muted text-base leading-relaxed text-pretty lg:text-lg">
-              A few of the stays we book on these routes. Tap a lodge to see more of
-              it. We&apos;ll be adding more pictures, and more lodges, soon.
-            </p>
           </div>
 
           <div className="mt-6.5 flex flex-col gap-6 lg:mt-12 lg:gap-10">

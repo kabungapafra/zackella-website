@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Carousel } from "@/components/Carousel";
 import { EnquiryPanel } from "@/components/EnquiryPanel";
 import {
-  ArrowUpIcon,
   CheckCircleIcon,
   ClockIcon,
   PaperPlaneIcon,
@@ -61,6 +59,14 @@ const reasons = [
     cta: { label: "Get a quote", href: "/contact" },
   },
 ];
+/* The fleet wall: three columns of two, each column offset and each tile a
+   different height, so the photographs stagger instead of lining up. */
+const fleetColumns = [
+  { offset: "lg:pt-[90px]", heights: ["lg:h-[300px]", "lg:h-[250px]"] },
+  { offset: "lg:pt-0", heights: ["lg:h-[250px]", "lg:h-[300px]"] },
+  { offset: "lg:pt-[140px]", heights: ["lg:h-[300px]", "lg:h-[200px]"] },
+];
+
 const carHirePromises = [
   {
     Icon: ClockIcon,
@@ -99,7 +105,7 @@ export default function HomePage() {
           </SectionLabel>
           {/* Sized off the viewport so the whole line always fits across one
               line, down to the narrowest phone. */}
-          <h1 className="text-white mt-4.5 text-[clamp(23px,5.4vw,64px)] leading-[1.1] tracking-[-0.01em] whitespace-nowrap lg:mt-6.5">
+          <h1 className="font-hero text-white mt-4.5 text-[clamp(23px,5.4vw,64px)] leading-[1.1] whitespace-nowrap lg:mt-6.5">
             {/* The brush stroke is drawn under the word rather than ruled
                 across it, so it reads as a mark someone made by hand. */}
             <span className="whitespace-nowrap">
@@ -148,14 +154,14 @@ export default function HomePage() {
       {/* Tours */}
       <section id="tours" className="pt-16 pb-14 lg:pt-30 lg:pb-27.5">
         <Container>
-          <div className="grid items-end gap-x-16 gap-y-3 lg:grid-cols-2 lg:gap-y-6">
-            <div>
-              <SectionLabel>Tours &amp; Travel</SectionLabel>
-              <h2 className="mt-3.5 text-[clamp(33px,4.6vw,60px)] leading-[1.08] text-balance lg:mt-5">
-                Pick a place. We&apos;ll build the trip.
-              </h2>
-            </div>
-            <p className="text-ink-muted text-base leading-relaxed text-pretty lg:text-lg">
+          {/* Section header */}
+          <div className="max-w-[760px]">
+            <SectionLabel>Tours &amp; Travel</SectionLabel>
+            <h2 className="mt-3.5 text-[clamp(33px,4.6vw,60px)] leading-[1.08] text-balance lg:mt-5">
+              Pick a place.{" "}
+                <span className="font-serif font-medium">We&apos;ll build the trip.</span>
+            </h2>
+            <p className="text-ink-muted mt-3 text-base leading-relaxed text-pretty lg:mt-4 lg:text-lg">
               <span className="lg:hidden">
                 Every journey is tailor-made around your dates, pace and budget.
               </span>
@@ -166,57 +172,99 @@ export default function HomePage() {
               </span>
             </p>
           </div>
-        </Container>
 
-        <Carousel
-          gridClassName="mt-6.5 lg:mt-14 lg:grid-cols-3"
-          className="lg:px-7"
-        >
-          {tours.map((tour) => {
-            const { slug, shortName, badge, teaser, teaserShort, wide } = tour;
-            return (
-              <Link
-                key={slug}
-                href={`/tours#${slug}`}
-                className={`reveal tile-wrap bg-forest-700 relative block h-[380px] w-[280px] overflow-hidden rounded-[22px] lg:h-[360px] lg:w-auto lg:rounded-3xl ${
-                  wide ? "lg:col-span-2" : ""
-                }`}
-              >
-                <TourMedia tour={tour} variant="tile" className="tile-art" />
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-linear-to-b from-transparent from-40% to-[rgb(12_51_32_/_0.93)] lg:from-30%"
-                />
-                <div className="text-cream absolute inset-x-5 bottom-5 lg:inset-x-7 lg:bottom-7">
-                  <span className="bg-gold text-forest-900 inline-block rounded-full px-2.5 py-1.25 text-[11px] font-bold tracking-[0.1em] uppercase lg:px-3 lg:py-1.5 lg:text-xs">
-                    {badge}
-                  </span>
-                  <h3
-                    className={`mt-2.5 text-[25px] leading-tight lg:mt-3.5 ${
-                      wide ? "lg:text-[34px]" : "lg:text-[28px]"
-                    }`}
-                  >
-                    {shortName}
-                  </h3>
-                  <p className="text-on-dark mt-1.5 max-w-[520px] text-sm leading-snug lg:mt-2 lg:text-base lg:leading-normal">
-                    <span className="lg:hidden">{teaserShort}</span>
-                    <span className="hidden lg:inline">{teaser}</span>
-                  </p>
-                  {/* The rail already invites a tap, so this prompt is desktop only. */}
-                  <p className="text-gold mt-3 hidden text-[15px] font-bold lg:block">
-                    Ask for a quote{" "}
-                    <span className="tile-arrow" aria-hidden="true">
-                      &rarr;
-                    </span>
-                  </p>
-                </div>
-              </Link>
-            );
-          })}
-        </Carousel>
+          {/* Journey cards — spec rows, then the two actions */}
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4 lg:gap-5">
+            {tours.slice(0, 4).map((tour) => {
+              const { slug, name, badge, highlights, length, goodFor } = tour;
+              return (
+                <article
+                  key={slug}
+                  className="reveal group flex flex-col overflow-hidden rounded-2xl border border-line-200/80 bg-white shadow-[0_2px_12px_rgb(12_51_32/0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_36px_rgb(12_51_32/0.12)]"
+                >
+                  {/* Photo */}
+                  <div className="relative h-[150px] shrink-0 overflow-hidden bg-forest-900">
+                    <TourMedia
+                      tour={tour}
+                      variant="tile"
+                      className="transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <span className="bg-gold text-forest-900 rounded-full px-2.5 py-1 text-[10px] font-bold tracking-[0.1em] uppercase shadow-sm">
+                        {badge}
+                      </span>
+                    </div>
+                  </div>
 
-        <Container className="mt-4.5 lg:mt-8">
-          <div className="flex flex-wrap items-center justify-between gap-x-7 gap-y-4">
+                  {/* Body */}
+                  <div className="flex flex-1 flex-col p-4">
+                    <h3 className="text-forest-900 text-[16px] font-bold leading-[1.25] text-balance lg:text-[17px]">
+                      {name}
+                    </h3>
+
+                    {/* Labelled spec rows */}
+                    <dl className="mt-3 flex flex-col gap-2.5 border-t border-line-200/80 pt-3">
+                      <div>
+                        <dt className="text-forest-900/50 text-[10px] font-bold tracking-[0.14em] uppercase">
+                          Highlights
+                        </dt>
+                        <dd className="text-ink mt-1 text-[12.5px] leading-snug">
+                          {highlights.slice(0, 2).join(" · ")}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-forest-900/50 text-[10px] font-bold tracking-[0.14em] uppercase">
+                          Duration
+                        </dt>
+                        <dd className="text-ink mt-1 text-[12.5px] leading-snug">
+                          {length}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-forest-900/50 text-[10px] font-bold tracking-[0.14em] uppercase">
+                          Good for
+                        </dt>
+                        <dd className="text-ink mt-1 text-[12.5px] leading-snug">
+                          {goodFor}
+                        </dd>
+                      </div>
+                    </dl>
+
+                    {/* Price slot — we quote per trip rather than list a rate */}
+                    <div className="border-line-200/80 mt-3 border-t pt-3">
+                      <p className="text-forest-900/50 text-[10px] font-bold tracking-[0.14em] uppercase">
+                        Price
+                      </p>
+                      <p className="text-forest-900 mt-1 text-[15px] font-bold leading-none">
+                        Quoted individually
+                      </p>
+                      <p className="text-ink-muted mt-1.5 text-[12px] leading-snug">
+                        Season, group size and where you stay set the rate.
+                      </p>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="mt-auto flex items-center gap-2 pt-4">
+                      <Link
+                        href={`/tours#${slug}`}
+                        className="border-forest-900/20 text-forest-900 hover:border-forest-900 hover:bg-cream inline-flex flex-1 items-center justify-center rounded-lg border px-2.5 py-2 text-[12px] font-bold transition-colors"
+                      >
+                        See details
+                      </Link>
+                      <Link
+                        href="/contact"
+                        className="bg-forest-900 text-cream hover:bg-forest-800 inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg px-2.5 py-2 text-[12px] font-bold transition-colors"
+                      >
+                        Enquire <span aria-hidden="true">&rarr;</span>
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className="mt-7 flex flex-wrap items-center justify-between gap-x-7 gap-y-4 lg:mt-10">
             <p className="text-ink-muted hidden text-base lg:block">
               Something else in mind? Weddings, honeymoons, school trips, regional
               tours:{" "}
@@ -237,62 +285,65 @@ export default function HomePage() {
       {/* Car hire */}
       <section
         id="car-hire"
-        className="bg-forest-900 text-cream pt-15 pb-14 lg:pt-27.5 lg:pb-25"
+        className="bg-forest-900 text-cream pt-15 pb-14 lg:pt-22.5 lg:pb-27.5"
       >
-        <Container className="lg:grid lg:grid-cols-[minmax(0,330px)_1fr] lg:items-start lg:gap-16">
-          <div className="lg:pt-28">
+        <Container className="lg:mx-auto lg:grid lg:max-w-[1308px] lg:grid-cols-[minmax(0,380px)_minmax(0,812px)] lg:items-center lg:gap-15">
+          {/* Text block, beside the wall from lg */}
+          <div>
             <SectionLabel tone="dark" rule={false}>
               Car Hire
             </SectionLabel>
-            <h2 className="mt-3.5 text-[clamp(31px,3.6vw,50px)] leading-[1.08] text-balance lg:mt-5">
-              The right vehicle{" "}
-              <span className="text-gold">for every road.</span>
+            <h2 className="mt-3 text-[clamp(31px,3.6vw,50px)] leading-[1.08] text-balance">
+              The right vehicle
+              <span className="text-gold font-serif font-medium block">for every road.</span>
             </h2>
-            <p className="text-on-dark-soft mt-3.5 text-base leading-relaxed text-pretty lg:mt-5 lg:text-[17px]">
+            <p className="text-on-dark-soft mt-4 text-base leading-relaxed text-pretty lg:mt-5.5 lg:text-[17px]">
               From airport transfers to park tracks and long upcountry drives. Hire
               with a driver who knows the route, or take the wheel yourself. Rates
               follow the vehicle, the route and the number of days.
             </p>
-            <ButtonLink href="/car-hire" variant="gold" className="mt-5 lg:mt-7">
+            <ButtonLink href="/car-hire" variant="gold" className="mt-5 lg:mt-7.5">
               See all {fleet.length} vehicles <span aria-hidden="true">&rarr;</span>
             </ButtonLink>
           </div>
 
-          {/* A rail on phones; from `lg` the three columns sit at different
-              heights, so the fleet reads as a wall of photographs. */}
-          <div className="scroller mt-6.5 gap-3.5 pb-2 lg:mt-0 lg:grid lg:grid-cols-3 lg:items-start lg:gap-5 lg:overflow-visible lg:pb-0 lg:[&>*:nth-child(3n+1)]:mt-14 lg:[&>*:nth-child(3n)]:mt-7">
-            {fleet.map(({ slug, name, tileTagShort, photo, photoPosition }) => (
-              <Link
-                key={slug}
-                href="/car-hire"
-                className="tile-wrap photo-zoom bg-forest-700 relative block h-[300px] w-[240px] overflow-hidden rounded-[20px] lg:h-[300px] lg:w-auto lg:rounded-[22px]"
+          {/* A rail on phones; a staggered wall of photographs from lg. */}
+          <div className="scroller mt-6.5 gap-3.5 pb-2 lg:mt-0 lg:grid lg:grid-cols-3 lg:gap-[22px] lg:overflow-visible lg:pb-0">
+            {fleetColumns.map(({ offset, heights }, column) => (
+              <div
+                key={column}
+                className={`contents lg:flex lg:flex-col lg:gap-[22px] ${offset}`}
               >
-                <Image
-                  src={photo}
-                  alt={name}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, 240px"
-                  className={`tile-art object-cover ${photoPosition ?? "object-center"}`}
-                />
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-linear-to-b from-transparent from-45% to-[rgb(12_51_32_/_0.94)]"
-                />
-                <span className="absolute inset-x-4.5 bottom-4.5 pr-12 lg:inset-x-5 lg:bottom-5">
-                  <span className="text-gold block text-[11px] font-bold tracking-[0.12em] uppercase">
-                    {tileTagShort}
-                  </span>
-                  <span className="font-display text-cream mt-1 block text-[20px] leading-tight font-bold lg:text-[22px]">
-                    {name}
-                  </span>
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="bg-gold text-forest-900 absolute right-4 bottom-4 flex size-9 items-center justify-center rounded-full lg:right-4.5 lg:bottom-4.5 lg:size-10"
-                >
-                  <ArrowUpIcon size={18} className="stroke-forest-900 rotate-90" />
-                </span>
-              </Link>
+                {fleet.slice(column * 2, column * 2 + 2).map(
+                  ({ slug, name, tileTagShort, photo, photoPosition }, row) => (
+                    <Link
+                      key={slug}
+                      href="/car-hire"
+                      className={`tile-wrap photo-zoom bg-forest-700 relative block h-[250px] w-[185px] shrink-0 overflow-hidden rounded-[18px] lg:w-auto ${heights[row]}`}
+                    >
+                      <Image
+                        src={photo}
+                        alt={name}
+                        fill
+                        sizes="(min-width: 1024px) 256px, 185px"
+                        className={`tile-art object-cover ${photoPosition ?? "object-center"}`}
+                      />
+                      <span
+                        aria-hidden="true"
+                        className="absolute inset-0 bg-linear-to-b from-transparent from-40% to-[rgb(12_51_32_/_0.94)]"
+                      />
+                      <span className="absolute inset-x-4 bottom-4">
+                        <span className="text-gold block text-[10px] font-bold tracking-[0.12em] uppercase">
+                          {tileTagShort}
+                        </span>
+                        <span className="text-cream mt-1 block text-[17px] leading-tight font-bold lg:text-[19px]">
+                          {name}
+                        </span>
+                      </span>
+                    </Link>
+                  )
+                )}
+              </div>
             ))}
           </div>
         </Container>
@@ -314,6 +365,50 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* Everything we run — a quick index of every tour and vehicle */}
+      <section className="pt-13 pb-12 lg:pt-20 lg:pb-18">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
+            <h2 className="text-[clamp(28px,3.2vw,44px)] leading-[1.08] text-balance">
+              Everything we run,
+              <span className="text-ink-muted font-serif font-medium block">in one place.</span>
+            </h2>
+            <ButtonLink href="/tours" variant="outlineForest" className="shrink-0">
+              Compare tours
+            </ButtonLink>
+          </div>
+
+          <div className="mt-7 grid grid-cols-2 gap-3.5 sm:grid-cols-3 lg:mt-10 lg:grid-cols-7">
+            {[
+              ...tours.map(({ slug, shortName, length }) => ({
+                key: `tour-${slug}`,
+                href: `/tours#${slug}`,
+                label: shortName,
+                meta: length,
+              })),
+              ...fleet.map(({ slug, shortName, tileTagShort }) => ({
+                key: `car-${slug}`,
+                href: `/car-hire#${slug}`,
+                label: shortName,
+                meta: tileTagShort,
+              })),
+            ].map(({ key, href, label, meta }) => (
+              <Link
+                key={key}
+                href={href}
+                className="border-line hover:border-forest-900 hover:bg-cream-200 flex min-h-[74px] flex-col items-center justify-center gap-1 rounded-[10px] border px-2 py-2.5 text-center transition-colors"
+              >
+                <span className="text-ink text-[13px] leading-[1.2] font-semibold text-balance lg:text-[14px]">
+                  {label}
+                </span>
+                <span className="text-ink-muted text-[11px] font-bold">{meta}</span>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+
       {/* Why Zackella */}
       <section id="why" className="pt-15 pb-12 lg:pt-27.5 lg:pb-25">
         <Container>
@@ -323,7 +418,7 @@ export default function HomePage() {
                 <SectionLabel tone="dark">Why Zackella</SectionLabel>
                 <h2 className="mt-3.5 text-[clamp(29px,3.4vw,46px)] leading-[1.1] text-balance lg:mt-5">
                   Why travel with{" "}
-                  <span className="text-gold">Zackella?</span>
+                  <span className="text-gold font-serif font-medium">Zackella?</span>
                 </h2>
               </div>
               <p className="text-on-dark-soft text-base leading-relaxed text-pretty lg:text-[17px]">
@@ -354,7 +449,7 @@ export default function HomePage() {
                       <Icon size={21} className="stroke-gold" />
                     </span>
                     <div>
-                      <p className="font-display text-gold text-xs font-extrabold tracking-[0.14em]">
+                      <p className="font-display text-gold text-xs font-bold tracking-[0.14em]">
                         {String(index + 1).padStart(2, "0")}
                       </p>
                       <h3 className="mt-1.5 text-[20px] leading-snug lg:text-[23px]">
@@ -396,11 +491,6 @@ export default function HomePage() {
                 Everything around the trip, handled.
               </h2>
             </div>
-            <p className="text-ink-muted hidden text-[17px] leading-relaxed text-pretty lg:block">
-              Add these to a tour or car hire, or book them on their own. We can even
-              book and pay for your tickets from your own country, and for the journey
-              home again.
-            </p>
           </div>
 
           {/* Icon-beside-text rows on phones, a five-across strip on desktop. */}
@@ -447,7 +537,7 @@ export default function HomePage() {
 
           <h2 className="mt-4.5 max-w-[760px] text-[clamp(30px,4vw,54px)] leading-[1.08] text-balance lg:mt-6">
             Every trip here starts{" "}
-            <span className="text-gold">with a message.</span>
+            <span className="text-gold font-serif font-medium">with a message.</span>
           </h2>
 
           <p className="text-on-dark-soft mt-4 max-w-[620px] text-base leading-relaxed text-pretty lg:mt-5 lg:text-[17px]">

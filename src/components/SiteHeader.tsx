@@ -28,7 +28,7 @@ export function SiteHeader() {
 
         <nav
           aria-label="Main"
-          className="font-display hidden items-center gap-[30px] text-base font-semibold lg:flex"
+          className="font-sans hidden items-center gap-[30px] text-base font-semibold lg:flex"
         >
           {nav.map((item) => {
             const active = item.href === pathname;
@@ -50,7 +50,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <Link
             href="/contact"
-            className="btn-lift font-display bg-forest-800 text-cream hidden rounded-full px-6 py-3.5 text-[15px] font-bold whitespace-nowrap sm:block"
+            className="btn-lift font-sans bg-forest-800 text-cream hidden rounded-full px-6 py-3.5 text-[15px] font-bold whitespace-nowrap sm:block"
           >
             Get a quote
           </Link>

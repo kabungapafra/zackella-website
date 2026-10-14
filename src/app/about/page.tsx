@@ -199,7 +199,7 @@ export default function AboutPage() {
                   />
                 </div>
                 <div>
-                  <p className="font-display text-[21px] leading-[1.15] font-bold tracking-[-0.015em] text-balance lg:text-[26px]">
+                  <p className="font-display text-[21px] leading-[1.15] font-bold text-balance lg:text-[26px]">
                     {member.name}
                   </p>
                   {/* Separates the name from the role without another rule of type. */}
