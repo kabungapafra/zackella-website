@@ -35,6 +35,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: { card: "summary_large_image", images: ["/og-image.jpg"] },
+  verification: { other: { "msvalidate.01": "BC2EEDCAF70531487F6B483F26F90179" } },
 };
 
 export const viewport: Viewport = {
