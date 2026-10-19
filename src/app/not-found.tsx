@@ -16,7 +16,7 @@ const elsewhere = nav.filter((item) => item.href !== "/");
 export default function NotFound() {
   return (
     <>
-      <section className="photo-zoom bg-forest-900 text-cream relative overflow-hidden">
+      <section className="bg-forest-900 text-cream relative overflow-hidden">
         <HeroPhoto
           src="/kidepo-valley.jpg"
           position="object-[center_55%]"
@@ -26,7 +26,7 @@ export default function NotFound() {
           <p className="text-gold text-[13px] font-bold tracking-[0.18em] uppercase">
             Error 404
           </p>
-          <h1 className="mt-4 max-w-[800px] text-[clamp(40px,6vw,82px)] leading-[1.05] text-balance lg:mt-5.5">
+          <h1 className="mt-4 max-w-[800px] text-[clamp(31px,4.4vw,60px)] leading-[1.05] text-balance lg:mt-5.5">
             This one has wandered <span className="text-gold">off the route.</span>
           </h1>
           <p className="text-on-dark mt-4 max-w-[560px] text-base leading-relaxed text-pretty lg:mt-5.5 lg:text-[clamp(17px,1.5vw,20px)]">

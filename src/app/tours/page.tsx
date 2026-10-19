@@ -56,7 +56,14 @@ export default function ToursPage() {
           </>
         }
         intro="Seven favourites, all tailor-made. Pick one, or combine several into a single journey. Prices depend on season, group size and where you stay, so every trip is quoted individually."
-        media={<HeroPhoto src="/uganda-road.jpg" preload />}
+        media={
+          <HeroPhoto
+            src="/tours-hero.jpg"
+            // Keeps the herd's heads in the band rather than the grass above.
+            position="object-[center_45%]"
+            preload
+          />
+        }
       />
 
       {/* Quick-Jump Navigation — scrolls away with the page */}

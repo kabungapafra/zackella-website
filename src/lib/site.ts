@@ -107,7 +107,19 @@ export const team: readonly {
   name: string;
   role: string;
   photo: string;
+  /** Crop focus, because the two portraits are not framed alike. */
+  crop: string;
 }[] = [
-  { name: "Isaac Paul Odeke", role: "Director", photo: "/team-1.jpg" },
-  { name: "Adellah Owembabazi", role: "Managing Director", photo: "/team-2.jpg" },
+  {
+    name: "Isaac Paul Odeke",
+    role: "Director",
+    photo: "/team-1.jpg",
+    crop: "object-[center_12%]",
+  },
+  {
+    name: "Adellah Owembabazi",
+    role: "Managing Director",
+    photo: "/team-2.jpg",
+    crop: "object-[center_45%]",
+  },
 ];

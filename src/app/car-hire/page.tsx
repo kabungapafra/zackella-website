@@ -66,9 +66,9 @@ export default function CarHirePage() {
         intro="Saloons for the city, SUVs for the weekend, safari cruisers for the parks. Hire with a driver who knows the route, or take the wheel yourself."
         media={
           <HeroPhoto
-            src="/fleet-blurred.jpg"
-            // The fleet sits across the lower middle of the frame.
-            position="object-[center_58%]"
+            src="/car-hire-hero.jpg"
+            // The elephant and the cruiser both sit below the horizon.
+            position="object-[center_52%]"
             preload
           />
         }

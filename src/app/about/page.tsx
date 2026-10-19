@@ -51,14 +51,12 @@ export default function AboutPage() {
           </>
         }
         intro="Meet the Kampala team behind your tours, your car hire and the details in between."
-        tall
         media={
           <HeroPhoto
             src="/about-hero.jpg"
-            // Portrait source on a wide band. Framed so the sign lettering and
-            // the figure under it both clear the crop rather than being cut off
-            // at the top edge.
-            position="object-[center_42%] lg:object-[center_40%]"
+            // Keeps the branded cruiser and the road it is on inside the band;
+            // the sun sits too high in the frame to hold as well.
+            position="object-[center_50%]"
             preload
           />
         }
@@ -176,36 +174,38 @@ export default function AboutPage() {
 
       {/* Team */}
       <section className="py-13 lg:py-25">
-        <Container>
-          <SectionLabel>The team</SectionLabel>
-          <h2 className="mt-3.5 max-w-[760px] text-[clamp(31px,4vw,52px)] leading-[1.1] text-balance lg:mt-5">
+        <Container className="text-center">
+          {/* The rule comes off the label where it is centred, as on the home
+              hero, rather than hanging off one side of it. */}
+          <div className="flex justify-center">
+            <SectionLabel rule={false}>The team</SectionLabel>
+          </div>
+          <h2 className="mx-auto mt-3.5 max-w-[760px] text-[clamp(31px,4vw,52px)] leading-[1.1] text-balance lg:mt-5">
             The people behind Zackella.
           </h2>
-          {/* Two of them, so each gets a card of its own with the name set
-              beside the photograph rather than under it. */}
-          <ul className="mt-6 grid gap-4.5 md:mt-12 md:grid-cols-2 md:gap-7">
-            {team.map((member, index) => (
-              <li
-                key={index}
-                className="reveal border-line bg-cream-200 flex items-center gap-4.5 rounded-[22px] border p-4 lg:gap-6 lg:p-5"
-              >
-                <div className="photo-zoom border-line relative h-[138px] w-[104px] shrink-0 overflow-hidden rounded-[16px] border lg:h-[168px] lg:w-[127px] lg:rounded-[18px]">
+          {/* The portraits are small ID shots, so they stay modest circles set
+              under the heading. Run them any larger and what you notice is the
+              resolution rather than the person. */}
+          <ul className="mt-7 flex flex-wrap justify-center gap-x-14 gap-y-8 lg:mt-12 lg:gap-x-20">
+            {team.map((member) => (
+              <li key={member.name} className="reveal">
+                <div className="border-line bg-cream-200 relative mx-auto size-24 overflow-hidden rounded-full border lg:size-28">
                   <Image
                     src={member.photo}
                     alt={`${member.name}, ${member.role} at ${site.name}`}
                     fill
-                    sizes="(min-width: 1024px) 127px, 104px"
-                    className="object-cover object-[center_28%]"
+                    sizes="112px"
+                    className={`object-cover ${member.crop}`}
                   />
                 </div>
-                <div>
-                  <p className="font-display text-[21px] leading-[1.15] font-bold text-balance lg:text-[26px]">
-                    {member.name}
-                  </p>
-                  {/* Separates the name from the role without another rule of type. */}
-                  <span className="bg-gold mt-3 block h-[3px] w-9 rounded-full" />
-                  <p className="text-ink-muted mt-3 text-[15px] lg:text-[17px]">{member.role}</p>
-                </div>
+                <p className="font-display mt-4 text-[19px] leading-[1.15] font-bold lg:mt-4.5 lg:text-[21px]">
+                  {member.name}
+                </p>
+                {/* Separates the name from the role without another rule of type. */}
+                <span className="bg-gold mx-auto mt-2.5 block h-[3px] w-9 rounded-full" />
+                <p className="text-ink-muted mt-2.5 text-[15px] lg:text-base">
+                  {member.role}
+                </p>
               </li>
             ))}
           </ul>

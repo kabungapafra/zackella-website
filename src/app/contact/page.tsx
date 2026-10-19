@@ -32,7 +32,14 @@ export default function ContactPage() {
         }
         intro="Message us on WhatsApp, call, or fill in the form. Tell us where and when, and we'll come back with a plan."
         deep
-        media={<HeroPhoto src="/uganda-road.jpg" preload />}
+        media={
+          <HeroPhoto
+            src="/contact-hero.jpg"
+            // Pulled up so the kob's horns stay inside the band.
+            position="object-[center_34%]"
+            preload
+          />
+        }
       />
 
       {/* Contact details and form */}

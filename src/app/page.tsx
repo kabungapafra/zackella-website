@@ -94,7 +94,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="photo-zoom bg-forest-900 text-cream relative flex min-h-[88svh] overflow-hidden lg:min-h-[100svh]">
+      <section className="bg-forest-900 text-cream relative flex min-h-[88svh] overflow-hidden lg:min-h-[100svh]">
         <HeroSlideshow slides={heroSlides} scrim="even" />
         {/* The scrim is held back so the photograph reads; the copy carries its
             own soft shadow instead, which keeps it legible over the bright
