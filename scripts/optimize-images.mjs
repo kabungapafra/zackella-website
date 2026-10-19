@@ -10,6 +10,10 @@
  * mark the whole directory immutable: replacing a photograph produces new
  * names, so no cache anywhere can hand back the old picture.
  *
+ * It also writes `public/opt/placeholders.json`: a thumbnail of each
+ * photograph small enough to inline, which stands in for it while the real
+ * file is still arriving.
+ *
  * Sources in `public/` are never modified — they stay the originals.
  *
  *   node scripts/optimize-images.mjs
@@ -54,6 +58,8 @@ await rm(OUT, { recursive: true, force: true });
 await mkdir(OUT, { recursive: true });
 
 const manifest = {};
+/** `{ "/photo.jpg": "data:image/webp;base64,..." }` — see `blurFor`. */
+const placeholders = {};
 let before = 0;
 let after = 0;
 
@@ -75,7 +81,8 @@ for (const file of sources) {
     const buffer = await image
       .clone()
       .resize({ width, withoutEnlargement: true })
-      .webp({ quality: quality(width) })
+      // `effort` costs only build time and buys a few percent off every file.
+      .webp({ quality: quality(width), effort: 6, smartSubsample: true })
       .toBuffer();
     const hash = createHash("sha256").update(buffer).digest("hex").slice(0, 8);
     const name = `${base}-${width}.${hash}.webp`;
@@ -84,12 +91,26 @@ for (const file of sources) {
     after += buffer.length;
   }
 
+  // Twenty pixels wide is enough to carry the colour and rough shape of the
+  // photograph once it is stretched back out and blurred, and small enough to
+  // inline in the markup rather than cost another request.
+  const blur = await image
+    .clone()
+    .resize({ width: 20 })
+    .webp({ quality: 35, alphaQuality: 0, effort: 6 })
+    .toBuffer();
+  placeholders[`/${file}`] = `data:image/webp;base64,${blur.toString("base64")}`;
+
   before += (await stat(src)).size;
   manifest[`/${file}`] = variants;
   console.log(`${file.padEnd(26)} ${nativeWidth}px -> ${widths.join(", ")}`);
 }
 
 await writeFile(path.join(OUT, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
+await writeFile(
+  path.join(OUT, "placeholders.json"),
+  JSON.stringify(placeholders, null, 2) + "\n",
+);
 
 const kb = (n) => `${(n / 1024).toFixed(0)}KB`;
 console.log(`\n${sources.length} sources ${kb(before)} -> ${kb(after)} across all widths`);

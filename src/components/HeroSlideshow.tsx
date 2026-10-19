@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { blurFor } from "@/lib/placeholders";
 import { HeroScrim } from "./HeroScrim";
 
 /**
@@ -22,18 +23,25 @@ export function HeroSlideshow({
 }) {
   return (
     <div aria-hidden="true" className="bg-forest-900 absolute inset-0">
-      {slides.map(({ src, position }, index) => (
-        <div key={src} className="hero-slide">
-          <Image
-            src={src}
-            alt=""
-            fill
-            preload={index === 0}
-            sizes="100vw"
-            className={`object-cover ${position ?? "object-center"}`}
-          />
-        </div>
-      ))}
+      {slides.map(({ src, position }, index) => {
+        // `empty` for anything the optimiser has not been run over yet, since
+        // `blur` without a stand-in to show is a build error.
+        const blur = blurFor(src);
+        return (
+          <div key={src} className="hero-slide">
+            <Image
+              src={src}
+              alt=""
+              fill
+              preload={index === 0}
+              sizes="100vw"
+              placeholder={blur ? "blur" : "empty"}
+              blurDataURL={blur}
+              className={`object-cover ${position ?? "object-center"}`}
+            />
+          </div>
+        );
+      })}
       <HeroScrim spread={scrim} />
     </div>
   );

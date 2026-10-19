@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { blurFor } from "@/lib/placeholders";
 import { HeroScrim } from "./HeroScrim";
 
 /**
@@ -19,6 +20,9 @@ export function HeroPhoto({
   /** `even` for centred copy, which has no empty half to ramp into. */
   scrim?: "edge" | "even";
 }) {
+  // `empty` for anything the optimiser has not been run over yet, since
+  // `blur` without a stand-in to show is a build error.
+  const blur = blurFor(src);
   return (
     <div aria-hidden="true" className="bg-forest-900 absolute inset-0">
       <Image
@@ -27,6 +31,8 @@ export function HeroPhoto({
         fill
         preload={preload}
         sizes="100vw"
+        placeholder={blur ? "blur" : "empty"}
+        blurDataURL={blur}
         className={`object-cover ${position}`}
       />
       <HeroScrim spread={scrim} />
