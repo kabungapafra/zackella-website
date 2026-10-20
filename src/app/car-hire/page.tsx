@@ -136,15 +136,15 @@ export default function CarHirePage() {
                     {/* Floating top badges */}
                     <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
                       {accent && (
-                        <span className="bg-gold text-forest-900 rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide shadow-sm">
+                        <span className="bg-gold text-forest-900 rounded-full px-2.5 py-0.5 text-[13px] font-bold uppercase tracking-wide shadow-sm">
                           Flagship
                         </span>
                       )}
-                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[11px] font-bold text-white backdrop-blur-sm">
+                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[13px] font-bold text-white backdrop-blur-sm">
                         <GroupIcon size={10} className="stroke-current stroke-[2.5]" />
                         {tileTagShort}
                       </span>
-                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[11px] font-bold text-white backdrop-blur-sm">
+                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[13px] font-bold text-white backdrop-blur-sm">
                         <PinIcon size={10} className="stroke-current stroke-[2.5]" />
                         Uganda
                       </span>
@@ -159,18 +159,18 @@ export default function CarHirePage() {
                     </h3>
 
                     {/* Ideal for */}
-                    <p className="text-ink-muted mt-1.5 text-[12.5px] leading-relaxed">
+                    <p className="text-ink-muted mt-1.5 text-[14px] leading-relaxed">
                       <span className="font-bold text-forest-900/80">Ideal for: </span>
                       {bestFor.slice(0, 2).join(" · ")}
                     </p>
 
                     {/* Blurb */}
-                    <p className="text-ink-soft mt-2.5 text-[15px] leading-relaxed line-clamp-3">
+                    <p className="text-ink-soft mt-2.5 text-[17px] leading-relaxed line-clamp-3">
                       {blurb}
                     </p>
 
                     {/* Hire options */}
-                    <p className="text-ink-muted mt-2 flex items-center gap-1.5 text-[13px]">
+                    <p className="text-ink-muted mt-2 flex items-center gap-1.5 text-[15px]">
                       <DateRangeIcon size={11} className="stroke-forest-700 shrink-0 stroke-[2.5]" />
                       {hireTags.join(" · ")}
                     </p>
@@ -180,7 +180,7 @@ export default function CarHirePage() {
                       <div className="flex items-center justify-between gap-2">
                         <a
                           href="/contact"
-                          className="bg-forest-900 text-cream hover:bg-forest-800 inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2.5 text-[15px] font-bold transition-colors"
+                          className="bg-forest-900 text-cream hover:bg-forest-800 inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2.5 text-[17px] font-bold transition-colors"
                         >
                           Request a quote <span aria-hidden="true">→</span>
                         </a>

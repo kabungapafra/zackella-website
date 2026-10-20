@@ -130,7 +130,7 @@ export function ServicesShowcase() {
                 href={site.whatsapp.href}
                 target="_blank"
                 rel="noopener"
-                className="btn-lift inline-flex items-center justify-center gap-2.5 rounded-full border border-forest-900/20 bg-cream px-6 py-3.5 text-[14.5px] font-bold text-forest-900 transition-colors hover:bg-forest-900 hover:text-cream"
+                className="btn-lift inline-flex items-center justify-center gap-2.5 rounded-full border border-forest-900/20 bg-cream px-6 py-3.5 text-[16px] font-bold text-forest-900 transition-colors hover:bg-forest-900 hover:text-cream"
               >
                 <WhatsAppIcon size={18} className="stroke-current" />
                 <span>Quick WhatsApp Inquiry</span>
@@ -141,10 +141,10 @@ export function ServicesShowcase() {
           {/* Right Column: Inset "What's Included" Box */}
           <div className="rounded-[22px] border border-line-200/80 bg-[#faf8f4] p-5.5 sm:p-7">
             <div className="flex items-center justify-between border-b border-line-200/70 pb-3.5">
-              <p className="font-sans text-[12px] font-bold tracking-[0.14em] uppercase text-forest-900/60">
+              <p className="font-sans text-[13px] font-bold tracking-[0.14em] uppercase text-forest-900/60">
                 What&apos;s Included
               </p>
-              <span className="rounded-full bg-gold/20 px-2.5 py-0.5 text-[12px] font-bold text-forest-900">
+              <span className="rounded-full bg-gold/20 px-2.5 py-0.5 text-[13px] font-bold text-forest-900">
                 Guaranteed Quality
               </span>
             </div>

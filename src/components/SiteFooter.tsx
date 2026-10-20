@@ -75,7 +75,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="border-forest-rule text-on-dark-dim mt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t pt-4.5 text-[15px] lg:mt-14 lg:pt-6 lg:text-sm">
+        <div className="border-forest-rule text-on-dark-dim mt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t pt-4.5 text-[17px] lg:mt-14 lg:pt-6 lg:text-sm">
           <p>
             &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>

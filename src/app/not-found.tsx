@@ -23,7 +23,7 @@ export default function NotFound() {
           preload
         />
         <Container className="relative pt-16 pb-20 lg:pt-28 lg:pb-32">
-          <p className="text-gold text-[15px] font-bold tracking-[0.18em] uppercase">
+          <p className="text-gold text-[17px] font-bold tracking-[0.18em] uppercase">
             Error 404
           </p>
           <h1 className="mt-4 max-w-[800px] text-[clamp(31px,4.4vw,60px)] leading-[1.05] text-balance lg:mt-5.5">

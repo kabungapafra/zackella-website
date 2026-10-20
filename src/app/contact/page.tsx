@@ -54,7 +54,7 @@ export default function ContactPage() {
             >
               <WhatsAppIcon size={34} className="stroke-forest-900 shrink-0" />
               <div>
-                <p className="text-[15px] font-bold tracking-[0.12em] uppercase">
+                <p className="text-[17px] font-bold tracking-[0.12em] uppercase">
                   WhatsApp
                 </p>
                 <p className="font-display mt-0.5 text-2xl font-bold lg:mt-1 lg:text-[26px]">

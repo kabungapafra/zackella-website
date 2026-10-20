@@ -34,7 +34,7 @@ export function PageHero({
           deep ? "pb-27.5 lg:pb-[150px]" : "pb-16 lg:pb-25"
         }`}
       >
-        <p className="text-on-dark-soft text-[15px] lg:text-sm">
+        <p className="text-on-dark-soft text-[17px] lg:text-sm">
           <Link href="/" className="underline underline-offset-[3px]">
             Home
           </Link>{" "}

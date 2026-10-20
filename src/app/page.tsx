@@ -189,7 +189,7 @@ export default function HomePage() {
                       className="transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute top-3 left-3">
-                      <span className="bg-gold text-forest-900 rounded-full px-2.5 py-1 text-[11px] font-bold tracking-[0.1em] uppercase shadow-sm">
+                      <span className="bg-gold text-forest-900 rounded-full px-2.5 py-1 text-[13px] font-bold tracking-[0.1em] uppercase shadow-sm">
                         {badge}
                       </span>
                     </div>
@@ -204,26 +204,26 @@ export default function HomePage() {
                     {/* Labelled spec rows */}
                     <dl className="mt-3 flex flex-col gap-2.5 border-t border-line-200/80 pt-3">
                       <div>
-                        <dt className="text-forest-900/50 text-[12px] font-bold tracking-[0.14em] uppercase">
+                        <dt className="text-forest-900/50 text-[13px] font-bold tracking-[0.14em] uppercase">
                           Highlights
                         </dt>
-                        <dd className="text-ink mt-1 text-[14.5px] leading-snug">
+                        <dd className="text-ink mt-1 text-[16px] leading-snug">
                           {highlights.slice(0, 2).join(" · ")}
                         </dd>
                       </div>
                       <div>
-                        <dt className="text-forest-900/50 text-[12px] font-bold tracking-[0.14em] uppercase">
+                        <dt className="text-forest-900/50 text-[13px] font-bold tracking-[0.14em] uppercase">
                           Duration
                         </dt>
-                        <dd className="text-ink mt-1 text-[14.5px] leading-snug">
+                        <dd className="text-ink mt-1 text-[16px] leading-snug">
                           {length}
                         </dd>
                       </div>
                       <div>
-                        <dt className="text-forest-900/50 text-[12px] font-bold tracking-[0.14em] uppercase">
+                        <dt className="text-forest-900/50 text-[13px] font-bold tracking-[0.14em] uppercase">
                           Good for
                         </dt>
-                        <dd className="text-ink mt-1 text-[14.5px] leading-snug">
+                        <dd className="text-ink mt-1 text-[16px] leading-snug">
                           {goodFor}
                         </dd>
                       </div>
@@ -231,13 +231,13 @@ export default function HomePage() {
 
                     {/* Price slot — we quote per trip rather than list a rate */}
                     <div className="border-line-200/80 mt-3 border-t pt-3">
-                      <p className="text-forest-900/50 text-[12px] font-bold tracking-[0.14em] uppercase">
+                      <p className="text-forest-900/50 text-[13px] font-bold tracking-[0.14em] uppercase">
                         Price
                       </p>
                       <p className="text-forest-900 mt-1 text-[17px] font-bold leading-none">
                         Quoted individually
                       </p>
-                      <p className="text-ink-muted mt-1.5 text-[13px] leading-snug">
+                      <p className="text-ink-muted mt-1.5 text-[15px] leading-snug">
                         Season, group size and where you stay set the rate.
                       </p>
                     </div>
@@ -246,13 +246,13 @@ export default function HomePage() {
                     <div className="mt-auto flex items-center gap-2 pt-4">
                       <Link
                         href={`/tours#${slug}`}
-                        className="border-forest-900/20 text-forest-900 hover:border-forest-900 hover:bg-cream inline-flex flex-1 items-center justify-center rounded-lg border px-2.5 py-2 text-[13px] font-bold transition-colors"
+                        className="border-forest-900/20 text-forest-900 hover:border-forest-900 hover:bg-cream inline-flex flex-1 items-center justify-center rounded-lg border px-2.5 py-2 text-[15px] font-bold transition-colors"
                       >
                         See details
                       </Link>
                       <Link
                         href="/contact"
-                        className="bg-forest-900 text-cream hover:bg-forest-800 inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg px-2.5 py-2 text-[13px] font-bold transition-colors"
+                        className="bg-forest-900 text-cream hover:bg-forest-800 inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg px-2.5 py-2 text-[15px] font-bold transition-colors"
                       >
                         Inquire <span aria-hidden="true">&rarr;</span>
                       </Link>
@@ -332,7 +332,7 @@ export default function HomePage() {
                         className="absolute inset-0 bg-linear-to-b from-transparent from-40% to-[rgb(12_51_32_/_0.94)]"
                       />
                       <span className="absolute inset-x-4 bottom-4">
-                        <span className="text-gold block text-[11px] font-bold tracking-[0.12em] uppercase">
+                        <span className="text-gold block text-[13px] font-bold tracking-[0.12em] uppercase">
                           {tileTagShort}
                         </span>
                         <span className="text-cream mt-1 block text-[19px] leading-tight font-bold lg:text-[21px]">
@@ -397,10 +397,10 @@ export default function HomePage() {
                 href={href}
                 className="border-line hover:border-forest-900 hover:bg-cream-200 flex min-h-[74px] flex-col items-center justify-center gap-1 rounded-[10px] border px-2 py-2.5 text-center transition-colors"
               >
-                <span className="text-ink text-[15px] leading-[1.2] font-semibold text-balance lg:text-[16px]">
+                <span className="text-ink text-[17px] leading-[1.2] font-semibold text-balance lg:text-[16px]">
                   {label}
                 </span>
-                <span className="text-ink-muted text-[12px] font-bold">{meta}</span>
+                <span className="text-ink-muted text-[13px] font-bold">{meta}</span>
               </Link>
             ))}
           </div>

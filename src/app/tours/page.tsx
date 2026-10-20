@@ -122,15 +122,15 @@ export default function ToursPage() {
                     {/* Floating top badges */}
                     <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
                       {isFeatured && (
-                        <span className="bg-gold text-forest-900 rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide shadow-sm">
+                        <span className="bg-gold text-forest-900 rounded-full px-2.5 py-0.5 text-[13px] font-bold uppercase tracking-wide shadow-sm">
                           Featured
                         </span>
                       )}
-                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[11px] font-bold text-white backdrop-blur-sm">
+                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[13px] font-bold text-white backdrop-blur-sm">
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                         {length}
                       </span>
-                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[11px] font-bold text-white backdrop-blur-sm">
+                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[13px] font-bold text-white backdrop-blur-sm">
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
                         Uganda
                       </span>
@@ -145,18 +145,18 @@ export default function ToursPage() {
                     </h3>
 
                     {/* Areas */}
-                    <p className="text-ink-muted mt-1.5 text-[12.5px] leading-relaxed">
+                    <p className="text-ink-muted mt-1.5 text-[14px] leading-relaxed">
                       <span className="font-bold text-forest-900/80">Areas: </span>
                       {highlights.slice(0, 2).join(" · ")}
                     </p>
 
                     {/* Blurb */}
-                    <p className="text-ink-soft mt-2.5 text-[15px] leading-relaxed line-clamp-3">
+                    <p className="text-ink-soft mt-2.5 text-[17px] leading-relaxed line-clamp-3">
                       {blurb}
                     </p>
 
                     {/* Good For */}
-                    <p className="text-ink-muted mt-2 flex items-center gap-1.5 text-[13px]">
+                    <p className="text-ink-muted mt-2 flex items-center gap-1.5 text-[15px]">
                       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-forest-700" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                       {goodFor}
                     </p>
@@ -166,12 +166,12 @@ export default function ToursPage() {
                       <div className="flex items-center justify-between gap-2">
                         <a
                           href={`/contact`}
-                          className="bg-forest-900 text-cream hover:bg-forest-800 inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2.5 text-[15px] font-bold transition-colors"
+                          className="bg-forest-900 text-cream hover:bg-forest-800 inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2.5 text-[17px] font-bold transition-colors"
                         >
                           Plan this trip <span aria-hidden="true">→</span>
                         </a>
                         <span className="text-ink-muted text-right">
-                          <span className="block text-[11px] font-bold uppercase tracking-wider">Days</span>
+                          <span className="block text-[13px] font-bold uppercase tracking-wider">Days</span>
                           <span className="font-bold text-forest-900 text-[19px] leading-none">{length.split(" ")[0]}</span>
                         </span>
                       </div>
