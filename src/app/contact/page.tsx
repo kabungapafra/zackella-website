@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const cardBase =
   "lift border-line flex items-center gap-4 rounded-[20px] border bg-white p-5 lg:gap-4.5 lg:p-6";
 const cardLabel =
-  "text-ink-muted text-xs font-bold tracking-[0.12em] uppercase lg:text-[13px]";
+  "text-ink-muted text-xs font-bold tracking-[0.12em] uppercase lg:text-[15px]";
 
 export default function ContactPage() {
   return (
@@ -54,7 +54,7 @@ export default function ContactPage() {
             >
               <WhatsAppIcon size={34} className="stroke-forest-900 shrink-0" />
               <div>
-                <p className="text-[13px] font-bold tracking-[0.12em] uppercase">
+                <p className="text-[15px] font-bold tracking-[0.12em] uppercase">
                   WhatsApp
                 </p>
                 <p className="font-display mt-0.5 text-2xl font-bold lg:mt-1 lg:text-[26px]">
@@ -77,7 +77,7 @@ export default function ContactPage() {
               <MailIcon size={34} className="stroke-forest-800 shrink-0" />
               <div className="min-w-0">
                 <p className={cardLabel}>Email</p>
-                <p className="font-display mt-0.5 text-[19px] font-bold [overflow-wrap:anywhere] lg:mt-1 lg:text-[21px]">
+                <p className="font-display mt-0.5 text-[21px] font-bold [overflow-wrap:anywhere] lg:mt-1 lg:text-[21px]">
                   {site.email.display}
                 </p>
               </div>
@@ -87,7 +87,7 @@ export default function ContactPage() {
               <PinIcon size={34} className="stroke-forest-800 shrink-0" />
               <div>
                 <p className={cardLabel}>Visit us</p>
-                <p className="font-display mt-0.5 text-[19px] leading-tight font-bold lg:mt-1 lg:text-[21px]">
+                <p className="font-display mt-0.5 text-[21px] leading-tight font-bold lg:mt-1 lg:text-[21px]">
                   {site.address.oneLine}
                 </p>
               </div>
@@ -95,7 +95,7 @@ export default function ContactPage() {
 
             <div className="bg-sand rounded-[20px] px-5 py-4.5 lg:px-6 lg:py-5.5">
               <p className={cardLabel}>Opening hours</p>
-              <p className="text-ink-soft mt-1 text-base lg:mt-1.5 lg:text-[17px]">
+              <p className="text-ink-soft mt-1 text-base lg:mt-1.5 lg:text-[19px]">
                 {site.openingHours}
               </p>
             </div>

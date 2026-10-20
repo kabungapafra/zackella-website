@@ -28,7 +28,7 @@ export function SectionLabel({
   const ruleColor = tone === "dark" ? "bg-gold" : "bg-gold-800";
   return (
     <p
-      className={`flex items-center gap-2.5 text-xs tracking-[0.16em] font-bold uppercase lg:gap-3.5 lg:text-[13px] lg:tracking-[0.18em] ${color}`}
+      className={`flex items-center gap-2.5 text-xs tracking-[0.16em] font-bold uppercase lg:gap-3.5 lg:text-[15px] lg:tracking-[0.18em] ${color}`}
     >
       {rule && (
         <span aria-hidden="true" className={`block h-0.5 w-7 lg:w-11 ${ruleColor}`} />
@@ -87,7 +87,7 @@ export function ButtonLink({
       : outlined
         ? "px-6 py-3.5"
         : "px-6 py-4";
-  const text = size === "lg" ? "text-[17px]" : "text-base";
+  const text = size === "lg" ? "text-[19px]" : "text-base";
   const width = block ? "flex w-full" : "inline-flex";
   const classes = `btn-lift font-sans ${width} items-center justify-center gap-2.5 rounded-full text-center font-bold ${padding} ${text} ${buttonVariants[variant]} ${className}`;
 
@@ -145,7 +145,7 @@ export function CheckList({
   const stroke = tone === "gold" ? "stroke-forest-900" : "stroke-forest-600";
   return (
     <ul
-      className={`flex flex-col gap-2 text-base leading-snug lg:gap-2.5 lg:text-[17px] ${className}`}
+      className={`flex flex-col gap-2 text-base leading-snug lg:gap-2.5 lg:text-[19px] ${className}`}
     >
       {items.map((item) => (
         <li key={item} className="flex gap-2.5 lg:gap-3">
@@ -191,7 +191,7 @@ export function CtaBand({
           </h2>
           {body && (
             <p
-              className={`mt-3 text-[17px] leading-normal lg:mt-3.5 lg:text-xl ${
+              className={`mt-3 text-[19px] leading-normal lg:mt-3.5 lg:text-xl ${
                 backdrop ? "text-on-dark" : ""
               }`}
             >

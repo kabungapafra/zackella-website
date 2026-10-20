@@ -38,7 +38,7 @@ export function ContactForm() {
   return (
     <div className="border-line rounded-3xl border bg-white px-5 py-6 shadow-[0_20px_40px_rgb(12_51_32_/_0.1)] lg:rounded-[26px] lg:p-8.5 lg:shadow-[0_24px_48px_rgb(12_51_32_/_0.12)]">
       <h2 className="text-[29px] leading-tight lg:text-[32px]">Send us your plan</h2>
-      <p className="text-ink-muted mt-2 text-[15px] leading-relaxed lg:mt-2.5 lg:text-base">
+      <p className="text-ink-muted mt-2 text-[17px] leading-relaxed lg:mt-2.5 lg:text-base">
         Your message opens in WhatsApp or your email, ready to send.
       </p>
 
@@ -121,14 +121,14 @@ export function ContactForm() {
           href={whatsappLink(body)}
           target="_blank"
           rel="noopener"
-          className="btn-lift bg-gold text-forest-900 flex items-center justify-center gap-2.5 rounded-full px-7 py-4 text-[17px] font-bold lg:text-base"
+          className="btn-lift bg-gold text-forest-900 flex items-center justify-center gap-2.5 rounded-full px-7 py-4 text-[19px] font-bold lg:text-base"
         >
           <WhatsAppIcon size={20} className="stroke-forest-900" strokeWidth={2} />
           Send on WhatsApp
         </a>
         <a
-          href={mailtoLink(`Enquiry from ${name || "the website"}`, body)}
-          className="btn-lift border-forest-800 text-forest-800 flex items-center justify-center rounded-full border-2 px-7 py-3.5 text-[17px] font-bold lg:text-base"
+          href={mailtoLink(`Inquiry from ${name || "the website"}`, body)}
+          className="btn-lift border-forest-800 text-forest-800 flex items-center justify-center rounded-full border-2 px-7 py-3.5 text-[19px] font-bold lg:text-base"
         >
           Send by email
         </a>

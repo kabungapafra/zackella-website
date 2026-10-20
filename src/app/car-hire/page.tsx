@@ -96,7 +96,7 @@ export default function CarHirePage() {
             <h2 className="mt-3 text-[clamp(30px,4vw,50px)] leading-[1.08] text-forest-900">
               Choose your vehicle, <span className="text-gold-700 font-serif font-medium">conquer every road.</span>
             </h2>
-            <p className="text-ink-soft mt-3 max-w-[660px] text-base leading-relaxed lg:mt-4 lg:text-[17px]">
+            <p className="text-ink-soft mt-3 max-w-[660px] text-base leading-relaxed lg:mt-4 lg:text-[19px]">
               Not sure which one suits your trip? Tell us the route, the group size and
               the luggage, and our team will recommend the ideal match.
             </p>
@@ -136,15 +136,15 @@ export default function CarHirePage() {
                     {/* Floating top badges */}
                     <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
                       {accent && (
-                        <span className="bg-gold text-forest-900 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide shadow-sm">
+                        <span className="bg-gold text-forest-900 rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide shadow-sm">
                           Flagship
                         </span>
                       )}
-                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[10px] font-bold text-white backdrop-blur-sm">
+                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[11px] font-bold text-white backdrop-blur-sm">
                         <GroupIcon size={10} className="stroke-current stroke-[2.5]" />
                         {tileTagShort}
                       </span>
-                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[10px] font-bold text-white backdrop-blur-sm">
+                      <span className="flex items-center gap-1 rounded-full bg-forest-900/80 px-2.5 py-0.5 text-[11px] font-bold text-white backdrop-blur-sm">
                         <PinIcon size={10} className="stroke-current stroke-[2.5]" />
                         Uganda
                       </span>
@@ -154,7 +154,7 @@ export default function CarHirePage() {
                   {/* Card Body */}
                   <div className="flex flex-1 flex-col p-4 sm:p-5">
                     {/* Title */}
-                    <h3 className="font-display text-forest-900 text-[17px] font-bold leading-[1.2] group-hover:text-forest-700 transition-colors">
+                    <h3 className="font-display text-forest-900 text-[19px] font-bold leading-[1.2] group-hover:text-forest-700 transition-colors">
                       {name}
                     </h3>
 
@@ -165,12 +165,12 @@ export default function CarHirePage() {
                     </p>
 
                     {/* Blurb */}
-                    <p className="text-ink-soft mt-2.5 text-[13px] leading-relaxed line-clamp-3">
+                    <p className="text-ink-soft mt-2.5 text-[15px] leading-relaxed line-clamp-3">
                       {blurb}
                     </p>
 
                     {/* Hire options */}
-                    <p className="text-ink-muted mt-2 flex items-center gap-1.5 text-[12px]">
+                    <p className="text-ink-muted mt-2 flex items-center gap-1.5 text-[13px]">
                       <DateRangeIcon size={11} className="stroke-forest-700 shrink-0 stroke-[2.5]" />
                       {hireTags.join(" · ")}
                     </p>
@@ -180,7 +180,7 @@ export default function CarHirePage() {
                       <div className="flex items-center justify-between gap-2">
                         <a
                           href="/contact"
-                          className="bg-forest-900 text-cream hover:bg-forest-800 inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2.5 text-[13px] font-bold transition-colors"
+                          className="bg-forest-900 text-cream hover:bg-forest-800 inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2.5 text-[15px] font-bold transition-colors"
                         >
                           Request a quote <span aria-hidden="true">→</span>
                         </a>
@@ -214,7 +214,7 @@ export default function CarHirePage() {
             {hireOptions.map(({ name, body }) => (
               <div key={name} className="border-gold border-t-2 pt-3.5 lg:pt-5">
                 <h3 className="text-[23px] lg:text-[26px]">{name}</h3>
-                <p className="text-on-dark-soft mt-1.5 text-[15px] leading-relaxed lg:mt-2.5 lg:text-base">
+                <p className="text-on-dark-soft mt-1.5 text-[17px] leading-relaxed lg:mt-2.5 lg:text-base">
                   {body}
                 </p>
               </div>
@@ -244,10 +244,10 @@ export default function CarHirePage() {
               >
                 <Icon size={26} className="stroke-forest-800 shrink-0" />
                 <div>
-                  <h3 className="font-sans text-base font-bold lg:text-[17px]">
+                  <h3 className="font-sans text-base font-bold lg:text-[19px]">
                     {title}
                   </h3>
-                  <p className="text-ink-muted mt-0.75 text-[15px] leading-snug lg:mt-1 lg:text-base lg:leading-normal">
+                  <p className="text-ink-muted mt-0.75 text-[17px] leading-snug lg:mt-1 lg:text-base lg:leading-normal">
                     <span className="lg:hidden">{bodyShort}</span>
                     <span className="hidden lg:inline">{body}</span>
                   </p>

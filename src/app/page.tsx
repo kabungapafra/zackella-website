@@ -130,11 +130,10 @@ export default function HomePage() {
             </span>{" "}
             <span className="text-gold">fully handled.</span>
           </h1>
-          <p className="text-on-dark mt-4 max-w-[560px] text-[14px] leading-relaxed text-pretty lg:mt-6 lg:text-[clamp(15px,1.05vw,16px)]">
-            From your arrival at Entebbe to your last adventure, we take care of every
-            detail. Big Five safaris, unforgettable gorilla trekking, breathtaking
-            mountains, beautiful lakes and rivers &mdash; plus reliable 4x4 vehicle
-            hire.
+          <p className="text-on-dark mt-4 max-w-[560px] text-[17px] leading-relaxed text-pretty lg:mt-6 lg:text-[clamp(18px,1.2vw,20px)]">
+            From your home to the last Airport. All itinerary sorted. Meet the big
+            five in the wild, gorilla trekking, rivers, lakes and breathtaking
+            mountains.
           </p>
           <div className="mt-6.5 w-full lg:mt-9.5">
             <ButtonRow className="sm:justify-center">
@@ -190,7 +189,7 @@ export default function HomePage() {
                       className="transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute top-3 left-3">
-                      <span className="bg-gold text-forest-900 rounded-full px-2.5 py-1 text-[10px] font-bold tracking-[0.1em] uppercase shadow-sm">
+                      <span className="bg-gold text-forest-900 rounded-full px-2.5 py-1 text-[11px] font-bold tracking-[0.1em] uppercase shadow-sm">
                         {badge}
                       </span>
                     </div>
@@ -198,33 +197,33 @@ export default function HomePage() {
 
                   {/* Body */}
                   <div className="flex flex-1 flex-col p-4">
-                    <h3 className="text-forest-900 text-[16px] font-bold leading-[1.25] text-balance lg:text-[17px]">
+                    <h3 className="text-forest-900 text-[18px] font-bold leading-[1.25] text-balance lg:text-[19px]">
                       {name}
                     </h3>
 
                     {/* Labelled spec rows */}
                     <dl className="mt-3 flex flex-col gap-2.5 border-t border-line-200/80 pt-3">
                       <div>
-                        <dt className="text-forest-900/50 text-[10px] font-bold tracking-[0.14em] uppercase">
+                        <dt className="text-forest-900/50 text-[12px] font-bold tracking-[0.14em] uppercase">
                           Highlights
                         </dt>
-                        <dd className="text-ink mt-1 text-[12.5px] leading-snug">
+                        <dd className="text-ink mt-1 text-[14.5px] leading-snug">
                           {highlights.slice(0, 2).join(" · ")}
                         </dd>
                       </div>
                       <div>
-                        <dt className="text-forest-900/50 text-[10px] font-bold tracking-[0.14em] uppercase">
+                        <dt className="text-forest-900/50 text-[12px] font-bold tracking-[0.14em] uppercase">
                           Duration
                         </dt>
-                        <dd className="text-ink mt-1 text-[12.5px] leading-snug">
+                        <dd className="text-ink mt-1 text-[14.5px] leading-snug">
                           {length}
                         </dd>
                       </div>
                       <div>
-                        <dt className="text-forest-900/50 text-[10px] font-bold tracking-[0.14em] uppercase">
+                        <dt className="text-forest-900/50 text-[12px] font-bold tracking-[0.14em] uppercase">
                           Good for
                         </dt>
-                        <dd className="text-ink mt-1 text-[12.5px] leading-snug">
+                        <dd className="text-ink mt-1 text-[14.5px] leading-snug">
                           {goodFor}
                         </dd>
                       </div>
@@ -232,13 +231,13 @@ export default function HomePage() {
 
                     {/* Price slot — we quote per trip rather than list a rate */}
                     <div className="border-line-200/80 mt-3 border-t pt-3">
-                      <p className="text-forest-900/50 text-[10px] font-bold tracking-[0.14em] uppercase">
+                      <p className="text-forest-900/50 text-[12px] font-bold tracking-[0.14em] uppercase">
                         Price
                       </p>
-                      <p className="text-forest-900 mt-1 text-[15px] font-bold leading-none">
+                      <p className="text-forest-900 mt-1 text-[17px] font-bold leading-none">
                         Quoted individually
                       </p>
-                      <p className="text-ink-muted mt-1.5 text-[12px] leading-snug">
+                      <p className="text-ink-muted mt-1.5 text-[13px] leading-snug">
                         Season, group size and where you stay set the rate.
                       </p>
                     </div>
@@ -247,15 +246,15 @@ export default function HomePage() {
                     <div className="mt-auto flex items-center gap-2 pt-4">
                       <Link
                         href={`/tours#${slug}`}
-                        className="border-forest-900/20 text-forest-900 hover:border-forest-900 hover:bg-cream inline-flex flex-1 items-center justify-center rounded-lg border px-2.5 py-2 text-[12px] font-bold transition-colors"
+                        className="border-forest-900/20 text-forest-900 hover:border-forest-900 hover:bg-cream inline-flex flex-1 items-center justify-center rounded-lg border px-2.5 py-2 text-[13px] font-bold transition-colors"
                       >
                         See details
                       </Link>
                       <Link
                         href="/contact"
-                        className="bg-forest-900 text-cream hover:bg-forest-800 inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg px-2.5 py-2 text-[12px] font-bold transition-colors"
+                        className="bg-forest-900 text-cream hover:bg-forest-800 inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg px-2.5 py-2 text-[13px] font-bold transition-colors"
                       >
-                        Enquire <span aria-hidden="true">&rarr;</span>
+                        Inquire <span aria-hidden="true">&rarr;</span>
                       </Link>
                     </div>
                   </div>
@@ -297,7 +296,7 @@ export default function HomePage() {
               The right vehicle
               <span className="text-gold font-serif font-medium block">for every road.</span>
             </h2>
-            <p className="text-on-dark-soft mt-4 text-base leading-relaxed text-pretty lg:mt-5.5 lg:text-[17px]">
+            <p className="text-on-dark-soft mt-4 text-base leading-relaxed text-pretty lg:mt-5.5 lg:text-[19px]">
               From airport transfers to park tracks and long upcountry drives. Hire
               with a driver who knows the route, or take the wheel yourself. Rates
               follow the vehicle, the route and the number of days.
@@ -333,10 +332,10 @@ export default function HomePage() {
                         className="absolute inset-0 bg-linear-to-b from-transparent from-40% to-[rgb(12_51_32_/_0.94)]"
                       />
                       <span className="absolute inset-x-4 bottom-4">
-                        <span className="text-gold block text-[10px] font-bold tracking-[0.12em] uppercase">
+                        <span className="text-gold block text-[11px] font-bold tracking-[0.12em] uppercase">
                           {tileTagShort}
                         </span>
-                        <span className="text-cream mt-1 block text-[17px] leading-tight font-bold lg:text-[19px]">
+                        <span className="text-cream mt-1 block text-[19px] leading-tight font-bold lg:text-[21px]">
                           {name}
                         </span>
                       </span>
@@ -354,8 +353,8 @@ export default function HomePage() {
               <div key={title} className="flex items-start gap-3.5">
                 <Icon size={28} className="stroke-gold shrink-0" />
                 <div>
-                  <h3 className="font-sans text-[17px] font-bold">{title}</h3>
-                  <p className="text-on-dark-soft mt-1 text-[15px] leading-normal">
+                  <h3 className="font-sans text-[19px] font-bold">{title}</h3>
+                  <p className="text-on-dark-soft mt-1 text-[17px] leading-normal">
                     {body}
                   </p>
                 </div>
@@ -398,10 +397,10 @@ export default function HomePage() {
                 href={href}
                 className="border-line hover:border-forest-900 hover:bg-cream-200 flex min-h-[74px] flex-col items-center justify-center gap-1 rounded-[10px] border px-2 py-2.5 text-center transition-colors"
               >
-                <span className="text-ink text-[13px] leading-[1.2] font-semibold text-balance lg:text-[14px]">
+                <span className="text-ink text-[15px] leading-[1.2] font-semibold text-balance lg:text-[16px]">
                   {label}
                 </span>
-                <span className="text-ink-muted text-[11px] font-bold">{meta}</span>
+                <span className="text-ink-muted text-[12px] font-bold">{meta}</span>
               </Link>
             ))}
           </div>
@@ -421,7 +420,7 @@ export default function HomePage() {
                   <span className="text-gold font-serif font-medium">Zackella?</span>
                 </h2>
               </div>
-              <p className="text-on-dark-soft text-base leading-relaxed text-pretty lg:text-[17px]">
+              <p className="text-on-dark-soft text-base leading-relaxed text-pretty lg:text-[19px]">
                 Tours, car hire, airport transfers and the stays in between all come
                 from one team in Kampala. One person to ask, one quote to read. Here
                 is what that means in practice.
@@ -434,7 +433,7 @@ export default function HomePage() {
               {reasons.map(({ Icon, title, body, cta }, index) => {
                 const external = cta.href.startsWith("http");
                 const linkClasses =
-                  "text-gold mt-3.5 inline-flex items-center gap-2 text-[15px] font-bold";
+                  "text-gold mt-3.5 inline-flex items-center gap-2 text-[17px] font-bold";
                 const label = (
                   <>
                     {cta.label} <span aria-hidden="true">&rarr;</span>
@@ -455,7 +454,7 @@ export default function HomePage() {
                       <h3 className="mt-1.5 text-[20px] leading-snug lg:text-[23px]">
                         {title}
                       </h3>
-                      <p className="text-on-dark-soft mt-2 text-[15px] leading-relaxed lg:mt-2.5 lg:text-base">
+                      <p className="text-on-dark-soft mt-2 text-[17px] leading-relaxed lg:mt-2.5 lg:text-base">
                         {body}
                       </p>
                       {external ? (
@@ -506,7 +505,7 @@ export default function HomePage() {
                   <h3 className="font-sans text-base leading-tight font-bold lg:text-lg">
                     {name}
                   </h3>
-                  <p className="text-ink-muted mt-0.5 text-sm leading-normal lg:mt-2 lg:text-[15px]">
+                  <p className="text-ink-muted mt-0.5 text-sm leading-normal lg:mt-2 lg:text-[17px]">
                     <span className="lg:hidden">{teaserShort}</span>
                     <span className="hidden lg:inline">{teaser}</span>
                   </p>
@@ -529,7 +528,7 @@ export default function HomePage() {
       {/* Over to you */}
       <section className="bg-forest-900 text-cream border-gold/60 border-b-2 py-14 lg:py-24">
         <Container className="flex flex-col items-center text-center">
-          <p className="text-gold flex items-center gap-3.5 text-xs font-bold tracking-[0.18em] uppercase lg:text-[13px]">
+          <p className="text-gold flex items-center gap-3.5 text-xs font-bold tracking-[0.18em] uppercase lg:text-[15px]">
             <span aria-hidden="true" className="bg-gold/40 block h-px w-10 lg:w-16" />
             Over to you
             <span aria-hidden="true" className="bg-gold/40 block h-px w-10 lg:w-16" />
@@ -540,7 +539,7 @@ export default function HomePage() {
             <span className="text-gold font-serif font-medium">with a message.</span>
           </h2>
 
-          <p className="text-on-dark-soft mt-4 max-w-[620px] text-base leading-relaxed text-pretty lg:mt-5 lg:text-[17px]">
+          <p className="text-on-dark-soft mt-4 max-w-[620px] text-base leading-relaxed text-pretty lg:mt-5 lg:text-[19px]">
             It reaches the people who plan the routes and drive them, not a booking
             engine. There is nothing to pay on this site. Tell us your dates and we
             come back with a plan and a clear quote.

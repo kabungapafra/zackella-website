@@ -34,7 +34,7 @@ export function PageHero({
           deep ? "pb-27.5 lg:pb-[150px]" : "pb-16 lg:pb-25"
         }`}
       >
-        <p className="text-on-dark-soft text-[13px] lg:text-sm">
+        <p className="text-on-dark-soft text-[15px] lg:text-sm">
           <Link href="/" className="underline underline-offset-[3px]">
             Home
           </Link>{" "}
@@ -43,7 +43,7 @@ export function PageHero({
         <h1 className="mt-4 max-w-[900px] text-[clamp(31px,4.4vw,60px)] leading-[1.05] text-balance lg:mt-5.5">
           {headline}
         </h1>
-        <p className="text-on-dark mt-3.5 max-w-[620px] text-base leading-relaxed text-pretty lg:mt-5.5 lg:text-[clamp(17px,1.5vw,20px)]">
+        <p className="text-on-dark mt-3.5 max-w-[620px] text-base leading-relaxed text-pretty lg:mt-5.5 lg:text-[clamp(19px,1.5vw,22px)]">
           {intro}
         </p>
         {actions && <div className="mt-5.5 lg:mt-7.5">{actions}</div>}

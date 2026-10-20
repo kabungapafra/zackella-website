@@ -5,7 +5,7 @@ import { footerServices, nav, site } from "@/lib/site";
 const exploreLinks = nav.filter((item) => item.href !== "/");
 
 const headingClasses =
-  "text-gold font-sans text-xs font-bold tracking-[0.16em] uppercase lg:text-[13px]";
+  "text-gold font-sans text-xs font-bold tracking-[0.16em] uppercase lg:text-[15px]";
 
 export function SiteFooter() {
   return (
@@ -23,7 +23,7 @@ export function SiteFooter() {
                 className="block h-[42px] w-auto lg:h-[52px]"
               />
             </div>
-            <p className="mt-3.5 max-w-[300px] text-[15px] leading-relaxed lg:mt-4.5 lg:text-base">
+            <p className="mt-3.5 max-w-[300px] text-[17px] leading-relaxed lg:mt-4.5 lg:text-base">
               Tours, travel and car hire from Kampala. {site.tagline}.
             </p>
           </div>
@@ -46,7 +46,7 @@ export function SiteFooter() {
           <div className="mt-3.5 grid grid-cols-2 gap-6 lg:col-span-2 lg:mt-0 lg:gap-10">
             <div>
               <h2 className={headingClasses}>Explore</h2>
-              <div className="mt-3 flex flex-col gap-2.5 text-[15px] lg:mt-4 lg:gap-3 lg:text-base">
+              <div className="mt-3 flex flex-col gap-2.5 text-[17px] lg:mt-4 lg:gap-3 lg:text-base">
                 {exploreLinks.map((item) => (
                   <Link key={item.href} href={item.href}>
                     <span className="lg:hidden">{item.label}</span>
@@ -63,7 +63,7 @@ export function SiteFooter() {
                 <span className="lg:hidden">Services</span>
                 <span className="hidden lg:inline">More services</span>
               </h2>
-              <ul className="mt-3 flex flex-col gap-2.5 text-[15px] lg:mt-4 lg:gap-3 lg:text-base">
+              <ul className="mt-3 flex flex-col gap-2.5 text-[17px] lg:mt-4 lg:gap-3 lg:text-base">
                 {footerServices.map((service) => (
                   <li key={service.full}>
                     <span className="lg:hidden">{service.short}</span>
@@ -75,7 +75,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="border-forest-rule text-on-dark-dim mt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t pt-4.5 text-[13px] lg:mt-14 lg:pt-6 lg:text-sm">
+        <div className="border-forest-rule text-on-dark-dim mt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t pt-4.5 text-[15px] lg:mt-14 lg:pt-6 lg:text-sm">
           <p>
             &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>

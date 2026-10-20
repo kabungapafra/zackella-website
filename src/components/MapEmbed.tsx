@@ -41,7 +41,7 @@ export function MapEmbed() {
       {/* Stays underneath until the map has actually painted. */}
       <div className="bg-cream-100 text-ink absolute inset-0 flex flex-col items-center justify-center gap-2.5 px-6 text-center">
         <PinIcon size={30} className="stroke-forest-800" />
-        <span className="font-display text-[17px] font-bold lg:text-[19px]">
+        <span className="font-display text-[19px] font-bold lg:text-[21px]">
           {site.address.short}
         </span>
       </div>

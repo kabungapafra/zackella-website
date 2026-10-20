@@ -23,13 +23,13 @@ export default function NotFound() {
           preload
         />
         <Container className="relative pt-16 pb-20 lg:pt-28 lg:pb-32">
-          <p className="text-gold text-[13px] font-bold tracking-[0.18em] uppercase">
+          <p className="text-gold text-[15px] font-bold tracking-[0.18em] uppercase">
             Error 404
           </p>
           <h1 className="mt-4 max-w-[800px] text-[clamp(31px,4.4vw,60px)] leading-[1.05] text-balance lg:mt-5.5">
             This one has wandered <span className="text-gold">off the route.</span>
           </h1>
-          <p className="text-on-dark mt-4 max-w-[560px] text-base leading-relaxed text-pretty lg:mt-5.5 lg:text-[clamp(17px,1.5vw,20px)]">
+          <p className="text-on-dark mt-4 max-w-[560px] text-base leading-relaxed text-pretty lg:mt-5.5 lg:text-[clamp(19px,1.5vw,22px)]">
             The page you were after isn&apos;t here. It may have moved, or the link
             may have a typo in it. Everything below will get you back on track.
           </p>

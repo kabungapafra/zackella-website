@@ -45,7 +45,7 @@ export function EnquiryPanel() {
   function tabClasses(active: boolean) {
     // The tabs split the width evenly on phones and shrink to their label from
     // `lg`, where they share the row with the strapline.
-    return `min-h-[46px] flex-1 cursor-pointer rounded-full px-3 py-3.5 text-[15px] font-bold lg:flex-none lg:px-6 ${
+    return `min-h-[46px] flex-1 cursor-pointer rounded-full px-3 py-3.5 text-[17px] font-bold lg:flex-none lg:px-6 ${
       active ? "bg-forest-800 text-cream" : "text-forest-800 bg-transparent"
     }`;
   }
@@ -80,7 +80,7 @@ export function EnquiryPanel() {
             </button>
           </div>
           {/* On phones this reassurance moves below the button instead. */}
-          <p className="text-ink-muted hidden text-[15px] lg:block">
+          <p className="text-ink-muted hidden text-[17px] lg:block">
             Tell us the basics. We reply with a plan and a quote.
           </p>
         </div>

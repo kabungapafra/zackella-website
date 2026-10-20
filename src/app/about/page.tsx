@@ -109,7 +109,7 @@ export default function AboutPage() {
               >
                 <Icon size={34} className="stroke-forest-800 lg:size-[38px]" />
                 <h2 className="mt-3 text-[25px] lg:mt-4.5 lg:text-[28px]">{title}</h2>
-                <p className="text-ink-muted mt-2 text-base leading-relaxed lg:mt-2.5 lg:text-[17px]">
+                <p className="text-ink-muted mt-2 text-base leading-relaxed lg:mt-2.5 lg:text-[19px]">
                   {body}
                 </p>
               </div>
@@ -131,7 +131,7 @@ export default function AboutPage() {
               className="reveal lift bg-gold text-forest-900 flex flex-col gap-2 rounded-[22px] p-6 lg:min-h-[200px] lg:gap-3 lg:rounded-3xl lg:p-8.5"
             >
               <h3 className="text-[28px] lg:text-[34px]">Tours &amp; Travel</h3>
-              <p className="max-w-[420px] text-base leading-normal lg:text-[17px]">
+              <p className="max-w-[420px] text-base leading-normal lg:text-[19px]">
                 Safaris, gorilla treks and weekends away, built around you.
               </p>
               <p className="mt-1.5 font-bold lg:mt-auto">
@@ -151,7 +151,7 @@ export default function AboutPage() {
                 className="absolute inset-0 bg-[url('/safari-pattern.png')] bg-cover bg-center opacity-[0.07]"
               />
               <h3 className="relative text-[28px] lg:text-[34px]">Car Hire</h3>
-              <p className="text-ink-muted relative max-w-[420px] text-base leading-normal lg:text-[17px]">
+              <p className="text-ink-muted relative max-w-[420px] text-base leading-normal lg:text-[19px]">
                 Saloons to safari cruisers, with a driver or self-drive.
               </p>
               <p className="text-forest-800 relative mt-1.5 font-bold lg:mt-auto">
@@ -159,7 +159,7 @@ export default function AboutPage() {
               </p>
             </Link>
           </div>
-          <p className="text-on-dark-soft mt-5.5 max-w-[760px] text-[15px] leading-relaxed lg:mt-8 lg:text-[17px]">
+          <p className="text-on-dark-soft mt-5.5 max-w-[760px] text-[17px] leading-relaxed lg:mt-8 lg:text-[19px]">
             Plus airport pick-ups and drop-offs, hotel booking, travel consultancy,
             event planning and management, and product deliveries.{" "}
             <Link
@@ -198,12 +198,12 @@ export default function AboutPage() {
                     className={`object-cover ${member.crop}`}
                   />
                 </div>
-                <p className="font-display mt-4 text-[19px] leading-[1.15] font-bold lg:mt-4.5 lg:text-[21px]">
+                <p className="font-display mt-4 text-[21px] leading-[1.15] font-bold lg:mt-4.5 lg:text-[21px]">
                   {member.name}
                 </p>
                 {/* Separates the name from the role without another rule of type. */}
                 <span className="bg-gold mx-auto mt-2.5 block h-[3px] w-9 rounded-full" />
-                <p className="text-ink-muted mt-2.5 text-[15px] lg:text-base">
+                <p className="text-ink-muted mt-2.5 text-[17px] lg:text-base">
                   {member.role}
                 </p>
               </li>

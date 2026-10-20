@@ -53,7 +53,7 @@ export default function ServicesPage() {
             <h2 className="font-display mt-3 text-[clamp(28px,3.5vw,44px)] font-bold leading-tight text-forest-900">
               Six dedicated services, <span className="text-gold-700 font-serif font-medium">handled with perfection.</span>
             </h2>
-            <p className="text-ink-soft mt-3 text-[15px] leading-relaxed text-pretty lg:text-[17px]">
+            <p className="text-ink-soft mt-3 text-[17px] leading-relaxed text-pretty lg:text-[19px]">
               Every moving piece of your journey coordinated by our Kampala team. Switch between services below to explore what&apos;s included and request your quote.
             </p>
           </div>

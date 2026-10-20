@@ -37,7 +37,7 @@ export function MobileNav({ currentPath }: { currentPath: string }) {
         aria-expanded={open}
         aria-controls="mobile-nav-panel"
         onClick={() => setOpen((value) => !value)}
-        className="font-sans border-forest-800 text-forest-800 cursor-pointer rounded-full border-2 px-5 py-2.5 text-[15px] font-bold"
+        className="font-sans border-forest-800 text-forest-800 cursor-pointer rounded-full border-2 px-5 py-2.5 text-[17px] font-bold"
       >
         {open ? "Close" : "Menu"}
       </button>

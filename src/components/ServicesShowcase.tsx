@@ -40,7 +40,7 @@ export function ServicesShowcase() {
               id={`tab-${service.slug}`}
               type="button"
               onClick={() => setActiveIndex(index)}
-              className={`group flex shrink-0 items-center gap-2.5 rounded-full px-4.5 py-2.5 text-[14px] font-bold transition-all duration-200 cursor-pointer ${
+              className={`group flex shrink-0 items-center gap-2.5 rounded-full px-4.5 py-2.5 text-[16px] font-bold transition-all duration-200 cursor-pointer ${
                 isSelected
                   ? "bg-forest-900 text-cream shadow-md ring-2 ring-forest-900"
                   : "border border-line-300 bg-cream text-forest-900 hover:border-gold hover:bg-white"
@@ -106,7 +106,7 @@ export function ServicesShowcase() {
               <h3 className="font-display mt-5 text-[26px] font-bold leading-[1.12] text-forest-900 sm:text-[32px] lg:text-[38px]">
                 {name}
               </h3>
-              <p className="text-ink-soft mt-3.5 max-w-xl text-[15px] leading-relaxed text-pretty sm:text-[16.5px]">
+              <p className="text-ink-soft mt-3.5 max-w-xl text-[17px] leading-relaxed text-pretty sm:text-[16.5px]">
                 {blurb}
               </p>
             </div>
@@ -116,7 +116,7 @@ export function ServicesShowcase() {
               <ButtonLink
                 href="/contact"
                 variant="gold"
-                className="w-full !px-7 !py-4 text-center text-[15px] font-bold shadow-sm sm:w-auto"
+                className="w-full !px-7 !py-4 text-center text-[17px] font-bold shadow-sm sm:w-auto"
               >
                 <span>{cta}</span>
                 <span
@@ -141,10 +141,10 @@ export function ServicesShowcase() {
           {/* Right Column: Inset "What's Included" Box */}
           <div className="rounded-[22px] border border-line-200/80 bg-[#faf8f4] p-5.5 sm:p-7">
             <div className="flex items-center justify-between border-b border-line-200/70 pb-3.5">
-              <p className="font-sans text-[11px] font-bold tracking-[0.14em] uppercase text-forest-900/60">
+              <p className="font-sans text-[12px] font-bold tracking-[0.14em] uppercase text-forest-900/60">
                 What&apos;s Included
               </p>
-              <span className="rounded-full bg-gold/20 px-2.5 py-0.5 text-[11px] font-bold text-forest-900">
+              <span className="rounded-full bg-gold/20 px-2.5 py-0.5 text-[12px] font-bold text-forest-900">
                 Guaranteed Quality
               </span>
             </div>
@@ -153,7 +153,7 @@ export function ServicesShowcase() {
               {details.map((detail) => (
                 <li
                   key={detail}
-                  className="flex items-start gap-3 text-[14px] leading-snug text-ink/85 sm:text-[14.5px]"
+                  className="flex items-start gap-3 text-[16px] leading-snug text-ink/85 sm:text-[14.5px]"
                 >
                   <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-forest-900 text-gold shadow-xs">
                     <TickIcon size={12} className="stroke-[2.5]" />

@@ -144,6 +144,14 @@
      Avenir Next the body copy and the cards use. */
   --font-display: "Avenir Next", "avenir-next-lt-pro", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-serif: "Cormorant Garamond", Georgia, serif;
+
+  /* Body copy runs one step larger than Tailwind's default scale; the
+     headings keep their own px sizes and are untouched. */
+  --text-xs: 0.8125rem;
+  --text-sm: 1rem;
+  --text-base: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.375rem;
   --font-sans: "Avenir Next", "avenir-next-lt-pro", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
