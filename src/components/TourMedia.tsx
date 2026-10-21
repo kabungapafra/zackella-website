@@ -19,7 +19,7 @@ export function TourMedia({
       fill
       sizes={
         variant === "tile"
-          ? "(min-width: 1024px) 50vw, 280px"
+          ? "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 280px"
           : variant === "row"
             ? "(min-width: 1024px) 340px, 100vw"
             : "(min-width: 1024px) 1100px, 100vw"
