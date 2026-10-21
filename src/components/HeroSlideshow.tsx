@@ -8,7 +8,7 @@ import { HeroScrim } from "./HeroScrim";
  *
  * The timing lives in `.hero-slide` in globals.css, so this costs no
  * JavaScript and nothing has to hydrate before the hero moves. Only the first
- * photograph is preloaded — it is the LCP element; the rest are ordinary lazy
+ * photograph is preloaded at high priority — it is the LCP element; the rest are ordinary lazy
  * images that have eight seconds before they are needed.
  *
  * The photographs are decorative: the headline already says what the page is
@@ -34,6 +34,7 @@ export function HeroSlideshow({
               alt=""
               fill
               preload={index === 0}
+              fetchPriority={index === 0 ? "high" : undefined}
               sizes="100vw"
               placeholder={blur ? "blur" : "empty"}
               blurDataURL={blur}

@@ -30,6 +30,7 @@ export function HeroPhoto({
         alt=""
         fill
         preload={preload}
+        fetchPriority={preload ? "high" : undefined}
         sizes="100vw"
         placeholder={blur ? "blur" : "empty"}
         blurDataURL={blur}
