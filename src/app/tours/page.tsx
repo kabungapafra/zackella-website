@@ -4,6 +4,7 @@ import { LodgeCard } from "@/components/LodgeCard";
 import { HeroPhoto } from "@/components/HeroPhoto";
 import { PageHero } from "@/components/PageHero";
 import { ReelWatermark } from "@/components/ReelWatermark";
+import { TourGallery } from "@/components/TourGallery";
 import { TourMedia } from "@/components/TourMedia";
 import {
   ButtonLink,
@@ -113,11 +114,15 @@ export default function ToursPage() {
                 >
                   {/* Card Photo */}
                   <div className="relative h-[210px] shrink-0 overflow-hidden bg-forest-900 sm:h-[220px]">
-                    <TourMedia
-                      tour={tour}
-                      variant="tile"
-                      className="transition-transform duration-500 group-hover:scale-105"
-                    />
+                    {tour.morePhotos ? (
+                      <TourGallery tour={tour} />
+                    ) : (
+                      <TourMedia
+                        tour={tour}
+                        variant="tile"
+                        className="transition-transform duration-500 group-hover:scale-105"
+                      />
+                    )}
 
                     {/* Floating top badges */}
                     <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">

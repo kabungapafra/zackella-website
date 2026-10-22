@@ -1,3 +1,14 @@
+export type TourPhoto = {
+  src: string;
+  alt: string;
+  /**
+   * Crop focus. Several of these photographs are portrait but the feature
+   * slot is a wide band, so centring would cut the subject; set this where
+   * the interesting part is not in the middle.
+   */
+  position?: string;
+};
+
 export type Tour = {
   /** Anchor id on the Tours page, also used as the React key. */
   slug: string;
@@ -17,16 +28,12 @@ export type Tour = {
   goodFor: string;
   /** Wide tiles take two columns in the home grid. */
   wide: boolean;
-  photo: {
-    src: string;
-    alt: string;
-    /**
-     * Crop focus. Several of these photographs are portrait but the feature
-     * slot is a wide band, so centring would cut the subject; set this where
-     * the interesting part is not in the middle.
-     */
-    position?: string;
-  };
+  photo: TourPhoto;
+  /**
+   * Further photographs of the same place, shown after `photo` in the card's
+   * gallery. Omitted where we only have the one picture.
+   */
+  morePhotos?: readonly TourPhoto[];
 };
 
 export const tours: readonly Tour[] = [
@@ -76,6 +83,24 @@ export const tours: readonly Tour[] = [
       src: "/murchison-falls.jpg",
       alt: "Aerial view of the Nile forcing through the gorge at Murchison Falls, surrounded by dense green bush",
     },
+    morePhotos: [
+      {
+        src: "/murchison-falls-viewpoint.jpg",
+        alt: "A traveller standing at the viewpoint railing above Murchison Falls with both arms raised, the Nile pouring over the lip at sunrise",
+      },
+      {
+        src: "/murchison-falls-gorge.jpg",
+        alt: "The falls dropping into the gorge seen from the viewpoint path, with the rapids stretching away upstream",
+      },
+      {
+        src: "/murchison-falls-nile-rapids.jpg",
+        alt: "The Nile running white and fast below a wooded bank above Murchison Falls",
+      },
+      {
+        src: "/murchison-falls-white-water.jpg",
+        alt: "White water breaking over the rocks at the foot of Murchison Falls",
+      },
+    ],
   },
   {
     slug: "queen",
