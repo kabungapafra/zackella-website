@@ -56,7 +56,16 @@ export function ContactForm() {
         }),
       });
       const result = await response.json();
-      setStatus(result.success ? "sent" : "error");
+      if (!result.success) {
+        setStatus("error");
+        return;
+      }
+      setName("");
+      setContact("");
+      setTopic("");
+      setDate("");
+      setMessage("");
+      setStatus("sent");
     } catch {
       setStatus("error");
     }
