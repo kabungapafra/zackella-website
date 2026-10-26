@@ -1,8 +1,9 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useState, type FormEvent } from "react";
 import { enquiryTopics } from "@/data/services";
-import { mailtoLink, whatsappLink } from "@/lib/whatsapp";
+import { site } from "@/lib/site";
+import { whatsappLink } from "@/lib/whatsapp";
 import { WhatsAppIcon } from "./Icon";
 
 const fieldBase =
@@ -12,9 +13,8 @@ const labelClasses =
   "text-ink-muted text-xs font-bold tracking-[0.12em] uppercase";
 
 /**
- * Enquiry form that hands off to WhatsApp or the visitor's mail client rather
- * than posting to a server, so there is no backend to keep running and no
- * contact details stored anywhere.
+ * Enquiry form that either hands off to WhatsApp or emails the inquiry to the
+ * office through Web3Forms, so the static site needs no backend of its own.
  */
 export function ContactForm() {
   const [name, setName] = useState("");
@@ -22,6 +22,9 @@ export function ContactForm() {
   const [topic, setTopic] = useState("");
   const [date, setDate] = useState("");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
 
   const ids = useId();
 
@@ -35,11 +38,37 @@ export function ContactForm() {
     .filter(Boolean)
     .join(" ");
 
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("sending");
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: site.email.formKey,
+          subject: `Inquiry from ${name || "the website"}`,
+          from_name: name,
+          contact,
+          topic: topic || "a quote",
+          date: date || "flexible",
+          message,
+        }),
+      });
+      const result = await response.json();
+      setStatus(result.success ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
-    <div className="border-line rounded-3xl border bg-white px-5 py-6 shadow-[0_20px_40px_rgb(12_51_32_/_0.1)] lg:rounded-[26px] lg:p-8.5 lg:shadow-[0_24px_48px_rgb(12_51_32_/_0.12)]">
+    <form
+      onSubmit={handleSubmit}
+      className="border-line rounded-3xl border bg-white px-5 py-6 shadow-[0_20px_40px_rgb(12_51_32_/_0.1)] lg:rounded-[26px] lg:p-8.5 lg:shadow-[0_24px_48px_rgb(12_51_32_/_0.12)]">
       <h2 className="text-[29px] leading-tight lg:text-[32px]">Send us your plan</h2>
       <p className="text-ink-muted mt-2 text-[17px] leading-relaxed lg:mt-2.5 lg:text-base">
-        Your message opens in WhatsApp or your email, ready to send.
+        Send it straight to our inbox, or open it in WhatsApp.
       </p>
 
       <div className="mt-5.5 grid gap-4 sm:grid-cols-2 lg:mt-6.5 lg:gap-4.5">
@@ -51,6 +80,7 @@ export function ContactForm() {
             id={`${ids}-name`}
             type="text"
             autoComplete="name"
+            required
             value={name}
             onChange={(event) => setName(event.target.value)}
             className={inputClasses}
@@ -64,6 +94,7 @@ export function ContactForm() {
           <input
             id={`${ids}-contact`}
             type="text"
+            required
             value={contact}
             onChange={(event) => setContact(event.target.value)}
             className={inputClasses}
@@ -126,13 +157,29 @@ export function ContactForm() {
           <WhatsAppIcon size={20} className="stroke-forest-900" strokeWidth={2} />
           Send on WhatsApp
         </a>
-        <a
-          href={mailtoLink(`Inquiry from ${name || "the website"}`, body)}
+        <button
+          type="submit"
+          disabled={status === "sending"}
           className="btn-lift border-forest-800 text-forest-800 flex items-center justify-center rounded-full border-2 px-7 py-3.5 text-[19px] font-bold lg:text-base"
         >
-          Send by email
-        </a>
+          {status === "sending" ? "Sending…" : "Send by email"}
+        </button>
       </div>
-    </div>
+
+      {status === "sent" && (
+        <p role="status" className="text-forest-800 mt-4 text-[17px] font-semibold">
+          Thank you! Your inquiry is on its way. We&apos;ll be in touch soon.
+        </p>
+      )}
+      {status === "error" && (
+        <p role="alert" className="mt-4 text-[17px] font-semibold text-red-700">
+          Sorry, that didn&apos;t send. Please try again, or email us at{" "}
+          <a href={site.email.href} className="underline">
+            {site.email.display}
+          </a>
+          .
+        </p>
+      )}
+    </form>
   );
 }

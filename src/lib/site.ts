@@ -21,6 +21,11 @@ export const site = {
   email: {
     display: "info@zackellatours.com",
     href: "mailto:info@zackellatours.com",
+    /**
+     * Web3Forms access key for the address above. Kept out of git in
+     * `.env.local`; set the same variable in Cloudflare Pages for deploys.
+     */
+    formKey: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
   },
   address: {
     room: "Room B02",
