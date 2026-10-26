@@ -1,8 +1,10 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useState, type FormEvent } from "react";
 import { fleet } from "@/data/fleet";
 import { tours } from "@/data/tours";
+import { sendInquiry } from "@/lib/inquiry";
+import { site } from "@/lib/site";
 import { whatsappLink } from "@/lib/whatsapp";
 import { WhatsAppIcon } from "./Icon";
 
@@ -23,9 +25,9 @@ const labelClasses =
   "text-ink-muted text-xs font-bold tracking-[0.12em] uppercase";
 
 /**
- * Quick-enquiry card that straddles the hero. It never posts anywhere: it
- * composes a WhatsApp message from the chosen options, which keeps the whole
- * site static while still giving people a one-tap way to reach the office.
+ * Quick-enquiry card that straddles the hero. It composes a message from the
+ * chosen options and either opens it in WhatsApp or emails it to the office
+ * through Web3Forms, so the site stays static.
  */
 export function EnquiryPanel() {
   const [mode, setMode] = useState<Mode>("tour");
@@ -34,6 +36,11 @@ export function EnquiryPanel() {
   const [date, setDate] = useState("");
   const [party, setParty] = useState("");
   const [driver, setDriver] = useState("");
+  const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
 
   const ids = useId();
   const isTour = mode === "tour";
@@ -41,6 +48,29 @@ export function EnquiryPanel() {
   const message = isTour
     ? `Hello Zackella! I'd like a tour quote. Destination: ${destination || "not sure yet"}. Travel date: ${date || "flexible"}. Travellers: ${party || "to be confirmed"}.`
     : `Hello Zackella! I'd like to hire a car. Vehicle: ${vehicle || "not sure yet"}. From: ${date || "flexible"}. Driver: ${driver || "to be confirmed"}.`;
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("sending");
+    const sent = await sendInquiry({
+      subject: `${isTour ? "Tour" : "Car hire"} inquiry from ${name}`,
+      from_name: name,
+      contact,
+      message,
+    });
+    if (!sent) {
+      setStatus("error");
+      return;
+    }
+    setDestination("");
+    setVehicle("");
+    setDate("");
+    setParty("");
+    setDriver("");
+    setName("");
+    setContact("");
+    setStatus("sent");
+  }
 
   function tabClasses(active: boolean) {
     // The tabs split the width evenly on phones and shrink to their label from
@@ -55,7 +85,10 @@ export function EnquiryPanel() {
       id="enquire"
       className="relative z-[3] -mt-19 px-4 sm:-mt-28 sm:px-7 lg:mx-auto lg:max-w-[1600px]"
     >
-      <div className="border-line bg-cream-100 rounded-[22px] border p-4.5 shadow-[0_24px_48px_rgb(12_51_32_/_0.28)] lg:rounded-3xl lg:px-7 lg:py-6.5 lg:shadow-[0_30px_60px_rgb(12_51_32_/_0.28)]">
+      <form
+        onSubmit={handleSubmit}
+        className="border-line bg-cream-100 rounded-[22px] border p-4.5 shadow-[0_24px_48px_rgb(12_51_32_/_0.28)] lg:rounded-3xl lg:px-7 lg:py-6.5 lg:shadow-[0_30px_60px_rgb(12_51_32_/_0.28)]"
+      >
         <div className="flex flex-wrap items-center justify-between gap-3.5">
           <div
             role="group"
@@ -85,7 +118,7 @@ export function EnquiryPanel() {
           </p>
         </div>
 
-        <div className="mt-4 grid items-end gap-3.5 md:grid-cols-2 lg:mt-5 lg:gap-4 lg:grid-cols-[1.4fr_1fr_1fr_auto]">
+        <div className="mt-4 grid items-end gap-3.5 md:grid-cols-2 lg:mt-5 lg:gap-4 lg:grid-cols-3">
           {isTour ? (
             <div className="flex flex-col gap-2">
               <label htmlFor={`${ids}-dest`} className={labelClasses}>
@@ -178,21 +211,74 @@ export function EnquiryPanel() {
             </div>
           )}
 
-          <a
-            href={whatsappLink(message)}
-            target="_blank"
-            rel="noopener"
-            className="btn-lift bg-gold text-forest-900 flex h-[54px] items-center justify-center gap-2.5 rounded-xl px-6 text-base font-bold whitespace-nowrap"
-          >
-            <WhatsAppIcon size={20} className="stroke-forest-900" strokeWidth={2} />
-            Send
-          </a>
+          <div className="flex flex-col gap-2">
+            <label htmlFor={`${ids}-name`} className={labelClasses}>
+              Your name
+            </label>
+            <input
+              id={`${ids}-name`}
+              type="text"
+              autoComplete="name"
+              required
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+              className={fieldClasses}
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label htmlFor={`${ids}-contact`} className={labelClasses}>
+              Phone or email
+            </label>
+            <input
+              id={`${ids}-contact`}
+              type="text"
+              required
+              value={contact}
+              onChange={(event) => setContact(event.target.value)}
+              className={fieldClasses}
+            />
+          </div>
+
+          <div className="flex gap-2.5">
+            <a
+              href={whatsappLink(message)}
+              target="_blank"
+              rel="noopener"
+              className="btn-lift bg-gold text-forest-900 flex h-[54px] flex-1 items-center justify-center gap-2.5 rounded-xl px-4 text-base font-bold whitespace-nowrap"
+            >
+              <WhatsAppIcon size={20} className="stroke-forest-900" strokeWidth={2} />
+              WhatsApp
+            </a>
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="btn-lift border-forest-800 text-forest-800 flex h-[54px] flex-1 items-center justify-center rounded-xl border-2 px-4 text-base font-bold whitespace-nowrap"
+            >
+              {status === "sending" ? "Sending…" : "Send by email"}
+            </button>
+          </div>
         </div>
+
+        {status === "sent" && (
+          <p role="status" className="text-forest-800 mt-3.5 text-[17px] font-semibold">
+            Thank you! Your inquiry is on its way. We&apos;ll be in touch soon.
+          </p>
+        )}
+        {status === "error" && (
+          <p role="alert" className="mt-3.5 text-[17px] font-semibold text-red-700">
+            Sorry, that didn&apos;t send. Please try again, or email us at{" "}
+            <a href={site.email.href} className="underline">
+              {site.email.display}
+            </a>
+            .
+          </p>
+        )}
 
         <p className="text-ink-muted mt-3.5 text-center text-sm lg:hidden">
           We reply with a plan and a quote.
         </p>
-      </div>
+      </form>
     </div>
   );
 }

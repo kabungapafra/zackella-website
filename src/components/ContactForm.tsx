@@ -2,6 +2,7 @@
 
 import { useId, useState, type FormEvent } from "react";
 import { enquiryTopics } from "@/data/services";
+import { sendInquiry } from "@/lib/inquiry";
 import { site } from "@/lib/site";
 import { whatsappLink } from "@/lib/whatsapp";
 import { WhatsAppIcon } from "./Icon";
@@ -41,34 +42,24 @@ export function ContactForm() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("sending");
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: site.email.formKey,
-          subject: `Inquiry from ${name || "the website"}`,
-          from_name: name,
-          contact,
-          topic: topic || "a quote",
-          date: date || "flexible",
-          message,
-        }),
-      });
-      const result = await response.json();
-      if (!result.success) {
-        setStatus("error");
-        return;
-      }
-      setName("");
-      setContact("");
-      setTopic("");
-      setDate("");
-      setMessage("");
-      setStatus("sent");
-    } catch {
+    const sent = await sendInquiry({
+      subject: `Inquiry from ${name || "the website"}`,
+      from_name: name,
+      contact,
+      topic: topic || "a quote",
+      date: date || "flexible",
+      message,
+    });
+    if (!sent) {
       setStatus("error");
+      return;
     }
+    setName("");
+    setContact("");
+    setTopic("");
+    setDate("");
+    setMessage("");
+    setStatus("sent");
   }
 
   return (
